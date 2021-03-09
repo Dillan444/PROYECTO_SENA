@@ -1,6 +1,16 @@
 # PROYECTO_SENA
 
-# OBJETIVOS:
+
+
+
+# PLANTEAMIENTO DEL PROBLEMA:
+La Institución Educativa Departamental Enrique Santos Montejo se ubica en Tenjo, municipio de la Provincia Sabana Centro de Cundinamarca, es un colegio de naturaleza oficial, de carácter académico,  calendario A, género mixto; de jornada diurna, nocturna y fin de semana.
+La gestión documental ha sido mencionada como un problema recurrente en la institución, específicamente lo que tiene que ver con el cargue de notas al sistema de información.
+
+Es un colegio de naturaleza oficial, de carácter académico,  calendario A, género mixto; de jornada diurna, nocturna y fin de semana.
+<img width="1119" alt="image" src="https://user-images.githubusercontent.com/80134806/110405794-1ea78980-804f-11eb-8c2d-99e991d6b2cb.png">
+
+# Objetivos
 
 # General
 Desarrollar un sistema de información para el registro, control y administración de las calificaciones en la Institución Educativa Departamental Enrique Santos Montejo.
@@ -10,9 +20,7 @@ Diseñar  funciones de establecimiento de cantidad de notas y valor porcentual d
 Desarrollar funciones para que los directores de grupo puedan ver las calificaciones de todo su grupo.
 Establecer funciones estadísticas dentro del sistema para que se pueda hacer la trazabilidad del rendimiento de los estudiantes. 
 
-# PLANTEAMIENTO DEL PROBLEMA:
-La Institución Educativa Departamental Enrique Santos Montejo se ubica en Tenjo, municipio de la Provincia Sabana Centro de Cundinamarca, es un colegio de naturaleza oficial, de carácter académico,  calendario A, género mixto; de jornada diurna, nocturna y fin de semana.
-La gestión documental ha sido mencionada como un problema recurrente en la institución, específicamente lo que tiene que ver con el cargue de notas al sistema de información.
+
 
 # JUSTIFICACIÓN 
 El registro y la gestión de las calificaciones es un proceso de importancia pedagógica y administrativa dentro de una institución educativa. En el primer sentido, estas labores se enmarcan dentro de la gestión documental y son claves para el cumplimiento de los derechos del estudiante. 
