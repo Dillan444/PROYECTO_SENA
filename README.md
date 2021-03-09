@@ -9,6 +9,11 @@ La gestión documental ha sido mencionada como un problema recurrente en la inst
 
 Es un colegio de naturaleza oficial, de carácter académico,  calendario A, género mixto; de jornada diurna, nocturna y fin de semana.
 
+Ofrece los niveles de preescolar,  primaria, básica secundaria y media para niños, jóvenes y adultos con un modelo pedagógico de educación tradicional. Cuenta con unos 1500 estudiantes, cerca de 65 docentes, un rector, tres administrativos, tres coordinadores, tres personas de servicios generales y una orientadora.
+La gestión documental ha sido mencionada como un problema recurrente en la institución, específicamente lo que tiene que ver con el cargue de notas al sistema de información.
+
+
+
 
 # Objetivos
 
