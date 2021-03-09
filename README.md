@@ -8,7 +8,7 @@ La Institución Educativa Departamental Enrique Santos Montejo se ubica en Tenjo
 La gestión documental ha sido mencionada como un problema recurrente en la institución, específicamente lo que tiene que ver con el cargue de notas al sistema de información.
 
 Es un colegio de naturaleza oficial, de carácter académico,  calendario A, género mixto; de jornada diurna, nocturna y fin de semana.
-<img width="1119" alt="image" src="https://user-images.githubusercontent.com/80134806/110405794-1ea78980-804f-11eb-8c2d-99e991d6b2cb.png">
+
 
 # Objetivos
 
