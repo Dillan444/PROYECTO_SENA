@@ -72,7 +72,6 @@
 <li><a href='#Estudiante'>Estudiante</a></li>
 <li><a href='#Estudiante_x_Materia'>Estudiante_x_Materia</a></li>
 <li><a href='#Materia'>Materia</a></li>
-<li><a href='#Rol'>Rol</a></li>
 <li><a href='#Usuario'>Usuario</a></li>
 </ul>
 <table id='Administrador'>
@@ -628,48 +627,6 @@
     <td></td>
     <td>Nombre de la materia. No es un dato nulo.</td>
 </tr>
-<table id='Rol'>
-<caption>Rol</caption>
-<tr><td colspan='11'></td></tr>
-<tr>
-    <th>Column name</th>
-    <th>DataType</th>
-    <th><abbr title='Primary Key'>PK</abbr></th>
-    <th><abbr title='Not Null'>NN</abbr></th>
-    <th><abbr title='Unique'>UQ</abbr></th>
-    <th><abbr title='Binary'>BIN</abbr></th>
-    <th><abbr title='Unsigned'>UN</abbr></th>
-    <th><abbr title='Zero Fill'>ZF</abbr></th>
-    <th><abbr title='Auto Increment'>AI</abbr></th>
-    <th>Default</th>
-    <th>Comment</th>
-</tr>
-<tr>
-    <td>Cod_tipo_usuario</td>
-    <td>INT</td>
-    <td>&#10004;</td>
-    <td>&#10004;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td class='attr'>&nbsp;</td>
-    <td></td>
-    <td>Código del tipo de usuario. Es la llave primaria. No es un dato nulo. </td>
-</tr>
-<tr>
-    <td>Tipo_Rol_usuario</td>
-    <td>VARCHAR(45)</td>
-    <td>&nbsp;</td>
-    <td>&#10004;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td class='attr'>&nbsp;</td>
-    <td></td>
-    <td>Se escribe el tipo de usuario. No es un dato nulo.</td>
-</tr>
 <table id='Usuario'>
 <caption>Usuario</caption>
 <tr><td colspan='11'></td></tr>
@@ -776,6 +733,32 @@
     <td class='attr'>&nbsp;</td>
     <td></td>
     <td>Número de teléfono fijo y/o móvil del usuario. No es un dato nulo.</td>
+</tr>
+<tr>
+    <td>Cod_Tipo_Usuario</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Código del tipo de usuario. No es un dato nulo.</td>
+</tr>
+<tr>
+    <td>Tipo_Usuario</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Tipo de usuario. No es un dato nulo.</td>
 </tr>
 </table>
 </body>
