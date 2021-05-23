@@ -2,10 +2,12 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
+  font-family: sans-serif;
+  color: white;
 }
 
 body{
-  background: linear-gradient(#02145c, #fff);
+  background: #2ba0d2;
   height: 900px;
 }
 
@@ -13,10 +15,24 @@ body{
   width: 100%;
   background: none;
   overflow: auto;
+  display: inline-block;
+}
+
+.nav .escudo{
+  width: 300px;
+}
+
+.nav .escudo img{
+  margin-left:  50px;
+}
+
+.nav a{
+  top: -80px;
 
 }
 
 .nav a, label{
+
   position: relative;
   float: left;
   text-align:center;
@@ -25,7 +41,7 @@ body{
   text-decoration: none;
   color: white;
   margin-top: 0px;
-  left: 55%;
+  left: 70%;
 }
 
 .nav label{
@@ -33,7 +49,7 @@ body{
   font-size: 27px;
   letter-spacing: 2px;
   margin-top: 4px;
-  left: 1%;
+  left: 10%;
 }
 
 .nav a:hover{
@@ -45,22 +61,51 @@ body{
 section{
   margin: auto;
   width: 90%;
-  height: 500px;
-  border: solid 1px white;
-
-}
-
-section .formulario{
-  border: 1px white solid;
-  width: 400px
+  height: 700px;
+  background: #22366e
 }
 
 section .opciones-rol{
-  display: inline-block;
-  margin: 20px;
+    max-width: 250px;
+    justify-content: center;
 }
 
-section .opciones-rol input{
-  margin-right: 15px;
-  width: 90px;
+section .opciones-rol a{
+  width: 400px;
+  color: black;
+}
+
+section .opciones-rol img{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    margin: 20px;
+    position: relative;
+    margin-left:  20px;
+    transition: 300ms;
+}
+
+section .opciones-rol p{
+  font-size: 30px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+section .opciones-rol img:hover{
+  width: 147px;
+  height: 147px;
+  outline: none;
+}
+
+
+
+section .content{
+  line-height: 25px;
+  word-spacing: 5px;
+  position: relative;
+  left: 45%;
+  width: 540px;
+  top: -450px;
+  font-size: 20px;
+  text-align: center;
 }
