@@ -1,0 +1,111 @@
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  color: white;
+}
+
+body{
+  background: #2ba0d2;
+  height: 900px;
+}
+
+.nav{
+  width: 100%;
+  background: none;
+  overflow: auto;
+  display: inline-block;
+}
+
+.nav .escudo{
+  width: 300px;
+}
+
+.nav .escudo img{
+  margin-left:  50px;
+}
+
+.nav a{
+  top: -80px;
+
+}
+
+.nav a, label{
+
+  position: relative;
+  float: left;
+  text-align:center;
+  padding: 16px;
+  margin-left: 18px;
+  text-decoration: none;
+  color: white;
+  margin-top: 0px;
+  left: 70%;
+}
+
+.nav label{
+  font-family: monospace;
+  font-size: 27px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+  left: 10%;
+}
+
+.nav a:hover{
+  text-shadow: 0 0 5px, 0 0 10px #4a148c, 0 0 15px #2196F2, 0 0 20px #2196F3, 0 0 25px #2196F3;
+}
+
+/**/
+
+section{
+  margin: auto;
+  width: 90%;
+  height: 700px;
+  background: #22366e
+}
+
+section .opciones-rol{
+    max-width: 250px;
+    justify-content: center;
+}
+
+section .opciones-rol a{
+  width: 400px;
+  color: black;
+}
+
+section .opciones-rol img{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    margin: 20px;
+    position: relative;
+    margin-left:  20px;
+    transition: 300ms;
+}
+
+section .opciones-rol p{
+  font-size: 30px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+section .opciones-rol img:hover{
+  width: 147px;
+  height: 147px;
+  outline: none;
+}
+
+
+
+section .content{
+  line-height: 25px;
+  word-spacing: 5px;
+  position: relative;
+  left: 45%;
+  width: 540px;
+  top: -450px;
+  font-size: 20px;
+  text-align: center;
+}
