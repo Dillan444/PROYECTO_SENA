@@ -92,8 +92,8 @@ section .opciones-rol p{
 }
 
 section .opciones-rol img:hover{
-  width: 147px;
-  height: 147px;
+  filter: blur(1.2px);
+  -webkit-transform:scale(1);transform:scale(1.1);
   outline: none;
 }
 
