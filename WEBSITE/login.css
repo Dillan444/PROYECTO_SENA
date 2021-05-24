@@ -6,8 +6,8 @@
 
 body{
   background: #050505;
-  background: -webkit-linear-gradient(to right, #2ba0d2, #fff);
-  background: linear-gradient(to right, #2ba0d2, #fff);
+  background: -webkit-linear-gradient(to right, #2ba0d2, #22366e);
+  background: linear-gradient(to right, #2ba0d2, #22366e);
   height: 650px;
   display: flex;
   justify-content: center;
@@ -83,7 +83,7 @@ div input:valid~label{
   width: 0%;
   bottom: 0;
   position: absolute;
-  background: linear-gradient(to right, #2ba0d2, #fff);
+  background: linear-gradient(to right, #2ba0d2, #22366e);
   transition: 0.4s ease width;
   left: 0;
 }
@@ -96,8 +96,8 @@ div input:focus~.barra::before{
 
 a input{
   background: #050505;
-  background: -webkit-linear-gradient(to right, #2ba0d2, #fff);
-  background: linear-gradient(to right, #2ba0d2, #fff);
+  background: -webkit-linear-gradient(to right, #2ba0d2, #22366e);
+  background: linear-gradient(to right, #2ba0d2, #22366e);
   border: none;
   height: 40px;
   display: block;

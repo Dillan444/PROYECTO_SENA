@@ -41,7 +41,7 @@ body{
   text-decoration: none;
   color: black;
   margin-top: 0px;
-  left: 70%;
+  right: -60%;
   transition: 300ms;
 }
 
@@ -145,4 +145,15 @@ td{
   background: none;
   width: 80%;
   border: black 1px solid;
+}
+
+.container-notas h1{
+
+}
+
+.container-notas input{
+  margin-left: 800px;
+  width: 250px;
+  height: 25px;
+  outline: none;
 }
