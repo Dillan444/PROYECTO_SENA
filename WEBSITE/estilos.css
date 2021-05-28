@@ -1,0 +1,389 @@
+*{
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+}
+
+body{
+  background: #FFFFFA;
+}
+
+/*CABECERA DE LA PAGINA WEB*/
+
+header{
+  width: 100%;
+  position: relative;
+}
+
+header .conteiner{
+  width: 20%;
+}
+
+header .escudo{
+  margin-top: -40px;
+  margin-left: 20px;
+}
+
+header .titulo{
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+   /*PRIMERA NAVEGACIÓN DE AYUDA*/
+
+      header .escudo, nav, .titulo{
+        display: inline-block;
+      }
+
+      header nav{
+        width: 70%;
+        max-width: 1000px;
+        margin: 20px;
+        background: none;
+        float: right;
+        transition: 300ms;
+      }
+
+      .menu-bar{
+        display: none;
+      }
+
+      header nav ul{
+        overflow: hidden;
+        list-style: none;
+      }
+
+      header nav ul li{
+        float: right;
+      }
+
+      header nav ul li a{
+        color: black;
+        padding: 20px;
+        display: inline-block;
+        transition: 400ms;
+      }
+
+      header nav ul li span{
+        margin-right: 10px;
+      }
+
+      header nav ul li a:hover{
+        background: #037E8C;
+      }
+
+/*PRESENTACIÓN O PORTADA DE LA PAGINA CON EL NOMBRE DEL COLEGIO*/
+
+.container-portada{
+    width: 100%;
+
+    background: #22366e;
+    background-size: 100%;
+
+}
+
+.container-details{
+  width: 100%;
+  max-width: 1000px
+  position: relative;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.details{
+  width: 90%;
+  max-width: 900px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  color: white;
+  margin: 20px auto;
+  margin-top: 30px;
+}
+
+.details h2{
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.details p{
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+section .details nav{
+  margin: 20px auto;
+}
+
+section .details nav li{
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+    border-bottom: 1px solid rgba(255, 255,255, .3);
+}
+
+section .details nav li a{
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    transition: 300ms;
+}
+
+
+section .details nav li a:hover{
+  background: white;
+  color: #22366e;
+  border-radius: 10px;
+}
+
+/*NAVEGACIÓN ENTRE LOS TRES PERFILES DE USUARIO*/
+
+.wrap{
+  width: 800px;
+  max-width: 90%;
+  margin: 30px auto;
+}
+
+ul.tabs{
+  width: 100%;
+  background: #363636;
+  display: flex;
+  list-style: none;
+
+}
+
+ul.tabs li{
+  width: 25%;
+}
+
+ul.tabs li a{
+  color: white;
+  display: block;
+  text-align: center;
+  padding: 20px 0px;
+  transition: 300ms;
+}
+
+ul.tabs li a .tab-text{
+  margin-left: 8px;
+}
+
+.active{
+  background: #a3a7ad;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.secciones{
+  width: 100%;
+  background: #a3a7ad;
+}
+.secciones article{
+  padding: 30px;
+}
+
+.secciones article p{
+  text-align: justify;
+}
+
+/*FORMULARIO DE LOGUEO DE USUARIO*/
+
+    #t-login{
+      text-align: center;
+      font-weight: 700;
+      color: black;
+    }
+
+    form{
+      background: #fff;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      box-shadow: 0 0 6px 0 rgba(225, 225, 225, 0.8);
+      border-radius:  10px;
+    }
+
+    .form{
+      width: 100%;
+      margin: auto;
+    }
+
+    form .grupo{
+      position: relative;
+      margin: 45px;
+    }
+
+    input{
+      background: none;
+      color: #c6c6c6;
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      width: 100%;
+      display: block;
+      border: none;
+      border-bottom: 1px solid grey;
+    }
+
+    input:focus{
+      outline: none;
+      color: #5e5d5d;
+    }
+
+    label{
+      color: grey;
+      font-size: 16px;
+      position: absolute;
+      bottom: 0;
+      left: 5px;
+      top: 10px;
+      transition: 0.5s ease-in-out all;
+      pointer-events: none;
+    }
+
+    input:focus~label,
+    input:valid~label{
+      top: -14px;
+      font-size: 12px;
+      color: #2193f3;
+    }
+
+    .barra{
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .barra::before{
+      content: "";
+      height: 2px;
+      width: 0%;
+      bottom: 0;
+      position: absolute;
+      background: linear-gradient(to right, #b8adad, #050505);
+      transition: 0.4s ease width;
+      left: 0;
+    }
+
+    input:focus~.barra::before{
+      width: 107%;
+    }
+
+/* BOTÓN DE ENVIO DE FORMULARIO (SUBMIT) */
+
+          button{
+            background: #050505;
+            background: -webkit-linear-gradient(to right, #b8adad, #050505);
+            background: linear-gradient(to right, #b8adad, #050505);
+            border: none;
+            height: 40px;
+            display: block;
+            color: white;
+            margin: 10px auto;
+            font-size: 16px;
+            width: 80%;
+            cursor: pointer;
+            transition: 300ms;
+          }
+
+          button:hover,
+          button:focus{
+            outline: none;
+            width: 83%;
+            font-size: 18px;
+            border-radius: 5px;
+          }
+
+
+footer{
+  width: 100%;
+  height: 50px;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer p{
+  margin-top: 20px;
+}
+
+/* RESPONSIVE DESING */
+
+@media screen and (max-width:800px ){
+  header .conteiner{
+    width: 100%;
+  }
+
+  header nav{
+    z-index: 2;
+    width: 40%;
+    height: 100%;
+    right: -100%;
+    margin:0px;
+    margin-top: 175px;
+    position: fixed;
+  }
+
+  header nav ul li{
+    display: block;
+    float: none;
+    border-bottom: 1px solid rgba(255, 255,255, .3);
+    background: #024959;
+  }
+
+  header nav ul li a{
+    color:white;
+  }
+
+  .menu-bar{
+    display: block;
+    width: 100%;
+    background: #ccc;
+  }
+
+  .menu-bar .bt-menu{
+    display: block;
+    padding: 20px;
+    background: #024959;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+
+  .menu-bar span{
+    float: right;
+    font-size: 30px;
+  }
+
+  ul.labs li{
+    width: none;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width:600px ){
+  section .details nav ul li{
+    display: block;
+  }
+
+  ul.tabs li a{
+    padding: 15px 0px;
+  }
+
+  ul.tabs li .tab-text{
+    display: none;
+  }
+
+  .secciones article{
+    padding: 20px;
+  }
+
+}

@@ -2,63 +2,145 @@
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Pagina web del SIGC"/>
-    <meta name="author" content="Dillan"/>
-    <meta name="keywords" content="notas, subir, estadisticas, sigc, colegio"/>
     <title>SIGC</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="icono.ico">
+    <link rel="icon" href="./pictures/icono.ico">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="fonts.css">
+    <meta name="author" content="Dillan Portocarrero">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minium-scale=1.0">
   </head>
   <body>
-    <div class="nav">
+      <div class="fondo">
+        <header>
 
-      <div class="nav">
-        <div class="escudo">
-          <label for="">SIGC</label>
-          <img src="escudo.png" alt="">
-        </div>
-         <div class="indices">
-           <a href="#"><i class="fa fa-fw fa-home"></i>Acerca de</a>
-           <a href="#"><i class="fa fa-fw fa-envelope"></i>Ayuda</a>
-           <a href="#"><i class="fa fa-fw fa-user"></i>Información</a>
+              <nav>
+                    <ul>
+                          <li><a href="#"></span>Ayuda</a></li>
+                          <li><a href="#"></span>Acerca de</a></li>
+                          <li><a href="#"></span>Información</a></li>
 
-         </div>
+                    </ul>
+              </nav>
 
-      </div>
+              <div class="conteiner">
+                    <div class="titulo">
+                            <h1>SIGC</h1>
+                    </div>
 
-    </div>
+                    <div class="escudo">
+                            <img src="pictures/escudo.png" alt="">
 
-    <section>
+                    </div>
+              </div>
 
-      <div class="opciones-rol">
 
-          <a href="login.html">
-            <p >Docente</p><br>
-            <img src="maestro.png" alt="">
-          </a>
 
-          <a href="login_estudiante.html">
-            <p >Estudiante</p>
-            <img src="estudiante.png" alt="">
-          </a>
-          <a href="login_administrador.html">
-            <p >Administrador</p>
-            <img src="administrador.png" alt="">
-          </a>
-      </div>
+              <div class="menu-bar">
+                    <a href="#" class="bt-menu"><span class="icon-menu"></span>Menu</a>
+              </div>
 
-      <article class="content">
-        <div class="">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        </header>
+
         </div>
 
-      </article>
+        <section class="container-portada" id="portada">
+            <div class="container-details">
+                <div class="details">
+                    <h2>IE Departamental Enrique Santos Montejo</h2><br />
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
 
-    </section>
+                    <div class="wrap">
+                        <ul class="tabs">
+                              <li><a href="#tab1"><span class="icon-pencil2"></span><span class="tab-text">Docente</span></a></li>
+                              <li><a href="#tab2"><span class="icon-user"></span><span class="tab-text">Estudiante</span></a></li>
+                              <li><a href="#tab3"><span class="icon-cogs"></span><span class="tab-text">Administrador</span></a></li>
 
+                        </ul>
+
+                        <div class="secciones">
+                            <article id="tab1">
+                              <form id="form" action="maestro.html" method="post">
+                                    <div class="form">
+                                          <h1 id="t-login">Iniciar Sesión</h1>
+                                          <div class="grupo">
+                                                <input type="text" name="" id="name" required><span class="barra"></span>
+                                                <label for="">Nombre de usuario</label>
+                                          </div>
+
+                                          <div class="grupo">
+                                                <input type="password" name="" id="name" required><span class="barra"></span>
+                                                <label for="">Contraseña</label>
+                                          </div>
+
+                                          <button type="submit" name="Siguiente">Siguiente</button>
+
+                                    </div>
+                              </form>
+
+                            </article>
+
+
+                            <article id="tab2">
+                              <form id="form" action="estudiante.html" method="post">
+                                    <div class="form">
+                                          <h1 id="t-login">Iniciar Sesión</h1>
+                                          <div class="grupo">
+                                                <input type="text" name="" id="name" required><span class="barra"></span>
+                                                <label for="">Nombre de usuario</label>
+                                          </div>
+
+                                          <div class="grupo">
+                                                <input type="password" name="" id="name" required><span class="barra"></span>
+                                                <label for="">Contraseña</label>
+                                          </div>
+
+                                          <button type="submit" name="Siguiente">Siguiente</button>
+
+                                    </div>
+                              </form>
+                            </article>
+
+
+                            <article id="tab3">
+                              <form id="form" action="administrador.html" method="post">
+                                    <div class="form">
+                                          <h1 id="t-login">Iniciar Sesión</h1>
+                                          <div class="grupo">
+                                                <input type="text" name="" id="name" required><span class="barra"></span>
+                                                <label for="">Nombre de usuario</label>
+                                          </div>
+
+                                          <div class="grupo">
+                                                <input type="password" name="" id="name" required><span class="barra"></span>
+                                                <label for="">Contraseña</label>
+                                          </div>
+
+                                          <button type="submit" name="Siguiente">Siguiente</button>
+
+                                    </div>
+                              </form>
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+                <p>Derechos Reservados</p>
+        </footer>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
+        <script type="text/javascript" src="menu.js"> </script>
 
   </body>
 </html>

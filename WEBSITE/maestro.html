@@ -2,48 +2,67 @@
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Pagina web del SIGC"/>
-    <meta name="author" content="Dillan"/>
-    <meta name="keywords" content="notas, subir, estadisticas, sigc, colegio"/>
     <title>SIGC</title>
-    <link rel="icon" href="icono.ico">
-    <link rel="stylesheet" href="maestro.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./pictures/icono.ico">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="estilos_2.css">
+    <meta name="author" content="Dillan Portocarrero">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minium-scale=1.0">
   </head>
   <body>
-    <div class="nav">
+      <div class="fondo">
+        <header>
 
-      <div class="nav">
-        <div class="escudo">
-          <label for="">SIGC</label>
-          <img src="escudo.png" alt="">
-        </div>
-         <div class="indices">
-           <a href="#"><i class="fa fa-fw fa-user"></i>Marta Gonzales Perez</a>
-           <a href="index.html"><i class="fa fa-fw fa-not"></i>Cerrar Sesión</a>
+              <nav>
+                    <ul>
+                          <li><a href="#" class="bt-menu"><span class="icon-user"></span>Nombre Usuario</a></li>
+                          <li><a href="#" class="bt-menu"><span class="icon-keyboard"></span>Ayuda</a></li>
+                          <li><a href="visualizar.html" class="bt-menu"><span class="icon-eye"></span>Visualizar</a></li>
+                          <li><a href="calificar.html" class="bt-menu"><span class="icon-pencil2"></span>Calificar</a></li>
+                          <li><a href="index.html" class="bt-menu"><span class="icon-exit"></span>Cerrar Sesión</a></li>
+                    </ul>
+              </nav>
 
-         </div>
+              <div class="conteiner">
+                    <div class="titulo">
+                            <h1>SIGC</h1>
+                    </div>
 
-      </div>
-        <hr />
+                    <div class="escudo">
+                            <img src="pictures/escudo.png" alt="">
 
-      <section>
-              <div class="opciones">
-                    <h2>Opciones: </h2>
-
-                    <a href="calificar.html">
-                          <img src="calificar.png" alt="">
-                          <p>Calificar</p>
-                    </a>
-
-                    <a href="visualizar.html">
-                          <img src="visualizar.png" alt="">
-                          <p>Visualizar</p>
-                    </a>
+                    </div>
               </div>
-      </section>
 
 
-    </div>
+
+              <div class="menu-bar">
+                    <a href="#" class="bt-menu"><span class="icon-menu"></span>Menu</a>
+              </div>
+
+
+        </header>
+
+        </div>
+
+        <section>
+                <div class="opciones">
+                      <h2>Opciones: </h2>
+
+                      <a href="calificar.html">
+                            <img src="./pictures/calificar.png" alt="">
+                            <p>Calificar</p>
+                      </a>
+
+                      <a href="visualizar.html">
+                            <img src="./pictures/visualizar.png" alt="">
+                            <p>Visualizar</p>
+                      </a>
+                </div>
+        </section>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
+        <script type="text/javascript" src="menu.js"> </script>
   </body>
 </html>

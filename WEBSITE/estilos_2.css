@@ -1,0 +1,38 @@
+section{
+  width: 80%;
+  margin: auto;
+  margin-top: 20PX;
+  background: #22366e;
+  color: white;
+  text-align: center;
+
+}
+
+section .opciones{
+  width: 80%;
+  height: 300px;
+  margin: auto;
+}
+
+section .opciones a{
+  margin: none;
+  left: 18%;
+  top: 10px;
+  display: inline-block;
+  color: white;
+}
+
+section .opciones a img{
+  width: 150px;
+  height: 150px;
+  background: white;
+  margin: 20px;
+  margin-left: 20px;
+  border-radius: 10px;
+  transition: 300ms;
+}
+
+section .opciones a img:hover{
+filter: blur(1.2px);
+-webkit-transform:scale(1);transform:scale(1.1);
+}
