@@ -53,7 +53,7 @@
 <div id="title-sect">
 <h1>SIGC<br> Data Dictionay</h1>
 <p>
-<em>2021-05-14</em>
+<em>2021-07-28</em>
 </p>
 <p class="proj-desc">
 <em></em>
@@ -62,6 +62,7 @@
 <h2>Alphabetic Index</h2>
 <ul>
 <li><a href='#Administrador'>Administrador</a></li>
+<li><a href='#A駉'>A駉</a></li>
 <li><a href='#Cursos'>Cursos</a></li>
 <li><a href='#Cursos_x_Materia'>Cursos_x_Materia</a></li>
 <li><a href='#Direcctor'>Direcctor</a></li>
@@ -72,6 +73,7 @@
 <li><a href='#Estudiante'>Estudiante</a></li>
 <li><a href='#Estudiante_x_Materia'>Estudiante_x_Materia</a></li>
 <li><a href='#Materia'>Materia</a></li>
+<li><a href='#Notas'>Notas</a></li>
 <li><a href='#Usuario'>Usuario</a></li>
 </ul>
 <table id='Administrador'>
@@ -101,7 +103,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del usuario administrador. Es la llave primaria.</td>
+    <td>C骴igo de identificaci髇 del usuario administrador. Es la llave primaria.</td>
 </tr>
 <tr>
     <td>Rol_Cod_tipo_usuario</td>
@@ -114,7 +116,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo del tipo de usuario. No es un dato nulo.</td>
+    <td>C骴igo del tipo de usuario. No es un dato nulo.</td>
 </tr>
 <tr>
     <td>Usuario_Id_Usuario</td>
@@ -128,6 +130,62 @@
     <td class='attr'>&nbsp;</td>
     <td></td>
     <td>Nombre de usuario. No es una dato nulo.</td>
+</tr>
+<table id='A駉'>
+<caption>A駉</caption>
+<tr><td colspan='11'></td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Estudiante_N_doc_Estudiante</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>El el n鷐ero de documento del estudiante. Llave foranea que concecta a la tabla Estudiante con la tabla A駉. No es un dato nulo</td>
+</tr>
+<tr>
+    <td>Cursos_N鷐ero_Curso</td>
+    <td>CHAR(10)</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>N鷐ero del curso. Es una llave foranea que conecta a la tabla a駉 con la tabla Curso. No es un dato nulo.
+</td>
+</tr>
+<tr>
+    <td>Fecha</td>
+    <td>YEAR(4)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>El a駉 en que un estudiante esta un curso. No es un dato nulo.</td>
 </tr>
 <table id='Cursos'>
 <caption>Cursos</caption>
@@ -146,7 +204,7 @@
     <th>Comment</th>
 </tr>
 <tr>
-    <td>N煤mero_Curso</td>
+    <td>N鷐ero_Curso</td>
     <td>CHAR(10)</td>
     <td>&#10004;</td>
     <td>&#10004;</td>
@@ -156,7 +214,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>N煤mero del curso. Es la llave primaria. No es un dato nulo.</td>
+    <td>N鷐ero del curso. Es la llave primaria. No es un dato nulo.</td>
 </tr>
 <tr>
     <td>Grado</td>
@@ -201,7 +259,7 @@
     <th>Comment</th>
 </tr>
 <tr>
-    <td>Cursos_N煤mero_Curso</td>
+    <td>Cursos_N鷐ero_Curso</td>
     <td>CHAR(10)</td>
     <td>&#10004;</td>
     <td>&#10004;</td>
@@ -211,7 +269,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>N煤mero del curso. Es la llave primaria. No es un dato nulo. Relaciona Cursos con N煤mero de Curso.</td>
+    <td>N鷐ero del curso. Es la llave primaria. No es un dato nulo. Relaciona Cursos con N鷐ero de Curso.</td>
 </tr>
 <tr>
     <td>Materia_idMateria</td>
@@ -224,7 +282,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n de la materia. Es una llave primaria. No es un dato nulo. Relaciona Materia con Id Materia.</td>
+    <td>C骴igo de identificaci髇 de la materia. Es una llave primaria. No es un dato nulo. Relaciona Materia con Id Materia.</td>
 </tr>
 <table id='Direcctor'>
 <caption>Direcctor</caption>
@@ -253,10 +311,10 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del director de grupo. Es una llave primaria. No es un dato nulo.</td>
+    <td>C骴igo de identificaci髇 del director de grupo. Es una llave primaria. No es un dato nulo.</td>
 </tr>
 <tr>
-    <td>Cursos_N煤mero_Curso</td>
+    <td>Cursos_N鷐ero_Curso</td>
     <td>CHAR(10)</td>
     <td>&#10004;</td>
     <td>&#10004;</td>
@@ -266,7 +324,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>N煤mero de identificaci贸n del curso. Es una llave primaria. No es un dato nulo. Relaciona Curso y N煤mero de curso.</td>
+    <td>N鷐ero de identificaci髇 del curso. Es una llave primaria. No es un dato nulo. Relaciona Curso y N鷐ero de curso.</td>
 </tr>
 <table id='Docentes'>
 <caption>Docentes</caption>
@@ -295,7 +353,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del docente. Es la llave primaria. No es un dato nulo.</td>
+    <td>C骴igo de identificaci髇 del docente. Es la llave primaria. No es un dato nulo.</td>
 </tr>
 <tr>
     <td>Rol_Cod_tipo_usuario</td>
@@ -308,7 +366,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo del tipo de rol de usuario. Es una llave for谩nea. No es un dato nulo. Relaciona Rol con C贸digo del tipo de usuario.</td>
+    <td>C骴igo del tipo de rol de usuario. Es una llave for醤ea. No es un dato nulo. Relaciona Rol con C骴igo del tipo de usuario.</td>
 </tr>
 <tr>
     <td>Usuario_Id_Usuario</td>
@@ -321,7 +379,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del usuario. Es una llave for谩nea. No es un dato nulo. Relaciona Usuario con Id de Usuario.</td>
+    <td>C骴igo de identificaci髇 del usuario. Es una llave for醤ea. No es un dato nulo. Relaciona Usuario con Id de Usuario.</td>
 </tr>
 <tr>
     <td>Direcctor_idDirecctor</td>
@@ -334,7 +392,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del director de grupo. Es una clave for谩nea. No es un dato nulo. Relaciona al Director con el id de Director.</td>
+    <td>C骴igo de identificaci髇 del director de grupo. Es una clave for醤ea. No es un dato nulo. Relaciona al Director con el id de Director.</td>
 </tr>
 <table id='Docentes_x_Cursos'>
 <caption>Docentes_x_Cursos</caption>
@@ -363,10 +421,10 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del usuario docente. Es una llave primaria. No es un dato nulo. Relaciona Docentes con identificaci贸n del usuario docente.</td>
+    <td>C骴igo de identificaci髇 del usuario docente. Es una llave primaria. No es un dato nulo. Relaciona Docentes con Identificaci髇 del usuario docente.</td>
 </tr>
 <tr>
-    <td>Cursos_N煤mero_Curso</td>
+    <td>Cursos_N鷐ero_Curso</td>
     <td>CHAR(10)</td>
     <td>&#10004;</td>
     <td>&#10004;</td>
@@ -376,7 +434,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del curso. Es una llave primaria. No es un dato nulo. Relaciona Cursos con N煤mero de curso.</td>
+    <td>C骴igo de identificaci髇 del curso. Es una llave primaria. No es un dato nulo. Relaciona Cursos con N鷐ero de curso.</td>
 </tr>
 <table id='Docentes_x_Materia'>
 <caption>Docentes_x_Materia</caption>
@@ -405,7 +463,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del docente. Es una llave primaria. No es un dato nulo. Relaciona Decente con Id de usuario docente.</td>
+    <td>C骴igo de identificaci髇 del docente. Es una llave primaria. No es un dato nulo. Relaciona Decente con Id de usuario docente.</td>
 </tr>
 <tr>
     <td>Materia_idMateria</td>
@@ -418,7 +476,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n de la materia. Es una llave primaria. Relaciona Materia con Ide de Materia.</td>
+    <td>C骴igo de identificaci髇 de la materia. Es una llave primaria. Relaciona Materia con Ide de Materia.</td>
 </tr>
 <table id='Documento'>
 <caption>Documento</caption>
@@ -450,7 +508,7 @@
     <td>Tipo de documento del usuario. Es la llave primaria. No es un dato nulo.</td>
 </tr>
 <tr>
-    <td>Decripci贸n</td>
+    <td>Decripci髇</td>
     <td>VARCHAR(45)</td>
     <td>&nbsp;</td>
     <td>&#10004;</td>
@@ -473,7 +531,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del usuario. No es un dato nulo.</td>
+    <td>C骴igo de identificaci髇 del usuario. No es un dato nulo.</td>
 </tr>
 <table id='Estudiante'>
 <caption>Estudiante</caption>
@@ -502,7 +560,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>N煤mero de documento de identificaci贸n del estudiante. Es la clave primaria. </td>
+    <td>N鷐ero de documento de identificaci髇 del estudiante. Es la clave primaria. </td>
 </tr>
 <tr>
     <td>Rol_Cod_tipo_usuario</td>
@@ -515,7 +573,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del tipo de usuario. No es un dato nulo. Es una llave for谩nea. Conecta la tabla estudiante con la tabla rol.</td>
+    <td>C骴igo de identificaci髇 del tipo de usuario. No es un dato nulo. Es una llave for醤ea. Conecta la tabla estudiante con la tabla rol.</td>
 </tr>
 <tr>
     <td>Usuario_Id_Usuario</td>
@@ -528,10 +586,10 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del usuario. No es un dato nulo. Es una llave for谩nea. Conecta las tablas estudiante y rol.</td>
+    <td>C骴igo de identificaci髇 del usuario. No es un dato nulo. Es una llave for醤ea. Conecta las tablas estudiante y rol.</td>
 </tr>
 <tr>
-    <td>Cursos_N煤mero_Curso</td>
+    <td>Cursos_N鷐ero_Curso</td>
     <td>CHAR(10)</td>
     <td>&#10004;</td>
     <td>&#10004;</td>
@@ -541,7 +599,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>N煤mero de identificaci贸n del curso. No es un dato nulo. Es una llave for谩nea. Relaciona las tablas estudiante y rol.</td>
+    <td>N鷐ero de identificaci髇 del curso. No es un dato nulo. Es una llave for醤ea. Relaciona las tablas estudiante y rol.</td>
 </tr>
 <table id='Estudiante_x_Materia'>
 <caption>Estudiante_x_Materia</caption>
@@ -570,7 +628,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del estudiante. Es una llave for谩nea. Resulta de la relaci贸n entre las tablas Estudiante y Materia.</td>
+    <td>C骴igo de identificaci髇 del estudiante. Es una llave for醤ea. Resulta de la relaci髇 entre las tablas Estudiante y Materia.</td>
 </tr>
 <tr>
     <td>Materia_idMateria</td>
@@ -583,7 +641,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n de la materia. Es una llave for谩nea. Es la resulta de la relaci贸n entre las tablas Estudiante y Materia.</td>
+    <td>C骴igo de identificaci髇 de la materia. Es una llave for醤ea. Es la resulta de la relaci髇 entre las tablas Estudiante y Materia.</td>
 </tr>
 <table id='Materia'>
 <caption>Materia</caption>
@@ -612,7 +670,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n de la materia. Es la llave primaria. No es un dato nulo. </td>
+    <td>C骴igo de identificaci髇 de la materia. Es la llave primaria. No es un dato nulo. </td>
 </tr>
 <tr>
     <td>NombreMateria</td>
@@ -626,6 +684,87 @@
     <td class='attr'>&nbsp;</td>
     <td></td>
     <td>Nombre de la materia. No es un dato nulo.</td>
+</tr>
+<tr>
+    <td>Notas_idNotas</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Llave foranea que conecta a la tabla materia con la tabla notas. No es un dato nulo.</td>
+</tr>
+<table id='Notas'>
+<caption>Notas</caption>
+<tr><td colspan='11'></td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idNotas</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Es una llave primaria de la tabla Notas, no es un dato nulo</td>
+</tr>
+<tr>
+    <td>Definitiva</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Guarda la nota definitiva de cada materia por bimestre. No es un dato nulo.</td>
+</tr>
+<tr>
+    <td>Porcentaje</td>
+    <td>VARCHAR(4)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Es la equivalencia del 25% de cada definita por bimestre. No es un dato nulo</td>
+</tr>
+<tr>
+    <td>Docentes_N_doc_Docente</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Es una llave foranea. Conecta a la tabla Notas con la tabla Notas.</td>
 </tr>
 <table id='Usuario'>
 <caption>Usuario</caption>
@@ -654,7 +793,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo de identificaci贸n del usuario. Es la clave primaria.</td>
+    <td>C骴igo de identificaci髇 del usuario. Es la clave primaria.</td>
 </tr>
 <tr>
     <td>Nombre_Perfil_Usuario</td>
@@ -706,7 +845,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>Edad del usuario en a帽os cumplidos. No es un dato nulo.</td>
+    <td>Edad del usuario en a駉s cumplidos. No es un dato nulo.</td>
 </tr>
 <tr>
     <td>Sexo</td>
@@ -722,7 +861,7 @@
     <td>Especificar si el ususrio es hombre, mujer o intersexual. No es un dato nulo.</td>
 </tr>
 <tr>
-    <td>Telef贸no</td>
+    <td>Telef髇o</td>
     <td>VARCHAR(12)</td>
     <td>&nbsp;</td>
     <td>&#10004;</td>
@@ -732,7 +871,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>N煤mero de tel茅fono fijo y/o m贸vil del usuario. No es un dato nulo.</td>
+    <td>N鷐ero de tel閒ono fijo y/o m髒il del usuario. No es un dato nulo.</td>
 </tr>
 <tr>
     <td>Cod_Tipo_Usuario</td>
@@ -745,7 +884,7 @@
     <td>&nbsp;</td>
     <td class='attr'>&nbsp;</td>
     <td></td>
-    <td>C贸digo del tipo de usuario. No es un dato nulo.</td>
+    <td>C骴igo del tipo de usuario. No es un dato nulo.</td>
 </tr>
 <tr>
     <td>Tipo_Usuario</td>
@@ -759,6 +898,19 @@
     <td class='attr'>&nbsp;</td>
     <td></td>
     <td>Tipo de usuario. No es un dato nulo.</td>
+</tr>
+<tr>
+    <td>Contrase馻</td>
+    <td>VARCHAR(10)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Es la contrase馻 de cada usuario para que pueda ingresar al sistema. No es un dato nulo.</td>
 </tr>
 </table>
 </body>
