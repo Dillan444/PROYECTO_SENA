@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    background: url(../IMG/fondo_colegio-2.jpg); 
+    background-attachment: fixed;
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+}
+header{
+    border: solid rgb(0, 89, 255) 2px;
+    background-image: url(../IMG/fondo_colegio.jpg);
+    background-size: 50%;
+    background-repeat: repeat;
+    background-position: top right;
+}
+
+.Presentacion{
+    width: 100%;
+    margin-left: 30px;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.Presentacion h3{
+    font-family: Santiago;
+    color: rgb(255, 205, 40);
+}
+
+/* ESTILOS DE LA NAVEGACIÓN */
+
+nav ul li{
+    list-style: none;
+}
+
+.Nav{
+    width: 100%;
+    background-color: rgba(114, 5, 148, 0.7);
+    border-radius: 3px;
+}
+
+.Nav ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.Nav ul li{
+    padding: 6px;
+    transition: 300ms;
+}
+
+.Nav ul li:hover{
+    transform: scale(1.2);
+}
+
+.Nav ul li:hover a{
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+}
+
+.Nav ul li a{
+    color: black;
+    font-size: 18px;
+}
+
+
+.Nav ul li a img{
+    width: 50px;
+    height: 50px;
+}
+
+
+/* ESTILOS DEL CONTENIDO DE LA PAGINA */
+
+
+#Contenido{
+    width: 98%;
+    margin: 20px auto;
+    
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 80px;
+    border: 3px solid rgb(12, 30, 131);
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+
+/* ESTILOS DE ASIDE QUE CONTIENE LOS TEMAS */
+
+.temas{
+    background : rgba(3, 3, 3, 0.7) ;
+    border-radius: 10px;
+    padding: 20px;
+    height: 300px;
+    /* position:fixed; */
+
+}
+
+
+.temas h5{
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+.temas ul{
+    display: block;
+    
+}
+.temas nav ul li{
+    list-style: none;
+    transition: 300ms;
+}
+
+.temas nav ul li:hover{
+    transform: scale(1.1);
+}
+
+.temas nav ul li a{
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(249, 250, 253);
+}
+
+nav ul li a i{
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+/* ETILOS DE LOS ARTICULOS */
+
+.Texto{
+    padding: 10px 20px;
+    background: rgba(12, 10, 10, 0.9);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+    transition: 300ms;
+}
+
+.Texto:hover{
+    transform: scale(1.04);
+}
+
+.Texto div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Texto img{
+    width: 600px;
+    height: 350px;
+
+}
+
+h3{
+    color: green;
+}
+
+h5{
+    color: blue;
+}
+
+
+/* ESTILOS DEL PIE DE PAGINA */
+
+.pie_pagina{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px 10px;
+    width: 100%;
+    border: 0px solid white;
+    background: rgba(151, 65, 238, 0.816);
+    border-radius: 20px;
+    
+}
+
+.pie_pagina nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pie_pagina i{
+    font-size: 30px;
+    color: black;
+}
+
+.pie_pagina i:hover{
+    color:rgb(5, 36, 138);
+}
+
+.pie_pagina h6{
+    color: black;
+}
+
+

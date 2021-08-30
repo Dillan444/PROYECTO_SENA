@@ -1,0 +1,203 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  body{
+    background: url(../IMG/fondo_colegio-2.jpg); 
+    background-attachment: fixed;
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contenedor{
+    width: 50%;
+    max-width: 90%;
+    position: absolute;
+    right: 200px;
+    bottom: 150px;
+    color: black;
+
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    grid-gap: 30px;
+  }
+  
+/* ESTILOS DE LOS TRES TIPOS DE ROLES */
+
+  ul.tabs{ 
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    /* padding: 10px 0; */
+    gap: 6px;
+  }
+  
+  ul.tabs li{
+    background: #363636;
+    border-radius: 3px;
+    
+  }
+  
+  ul.tabs li a{
+    color: white;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    text-align: center;
+    padding: 6px 0;
+    /* padding: 20px 0px; */
+  }
+
+  ul.tabs li a i{
+      display: block;
+      /* transform: scale(4); */
+      font-size: 50px;
+      margin-bottom: 20px;
+  }
+
+  
+  .active{
+    background: #0984CC;
+    border-radius: 3px;
+  }
+
+  
+/* ESTILOS DEL ARTICILO DONDE ESTAN LOS FORMULARIOS */
+
+.secciones{
+width: 100%;
+background: white;
+}
+.secciones article{
+padding: 20px 10px;
+
+}
+
+/* TITULO DEL FORMULARIO */
+
+.secciones .titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    width: 100%;
+}
+
+.secciones .titulo i{
+    color: #0984CC;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+
+
+/* ESTILOS DEL FORMULARIO  */
+
+.secciones form{
+    width: 90%;
+    margin: 0 auto;
+}
+
+ .secciones form label{
+    display: flex;
+    flex-direction: column;
+
+    margin: 10px 0;
+ }
+
+.secciones h3, .secciones form label span{
+    color: #363636;
+    margin-left: 10px;
+}
+
+.secciones form label input{
+    height: 30px;
+    outline: none;
+    padding: 0px 10px;
+    border-radius: 3px;
+    /* border: solid #0984CC 1px; */
+    background-color: rgb(235, 233, 229);
+}
+  
+.boton_envio input{
+    background: #0984CC;
+    color: white;
+    font-size: 20px;
+    font-weight: -30;
+    height: 30px;
+    outline: none;
+    border-radius: 3px;
+    width: 100%;
+    transition: 300ms;
+} 
+
+.boton_envio input:focus{
+    background-color: #363636;
+    color: #0984CC;
+}
+
+[required] {
+	border: solid #0984CC 1px;
+}
+
+input:invalid {
+	border: red solid 2px;
+}
+
+.forget{
+    width: 100%;
+    text-align: center;
+    margin-top: 6px;
+}
+
+.forget a{
+    text-align: center;
+    color:  #363636;
+    text-decoration: none;
+}
+
+.forget a:hover,
+.back a:hover i{
+    text-decoration: underline;
+    color:#0984CC;
+}
+
+.back a{
+    text-align: center;
+    color:  #363636;
+    text-decoration: none;
+}
+
+.back a i{
+    font-size: 30px;
+}
+  
+  @media screen and (max-width: 700px){
+    ul.labs li{
+      width: none;
+      flex-basis: 0;
+      flex-grow: 1;
+    }
+  }
+  
+  @media screen and (max-width: 450px){
+    ul.tabs li a{
+      padding: 15px 0px;
+    }
+  
+    ul.tabs li .tab-text{
+      display: none;
+    }
+  
+    .secciones div{
+      padding: 20px;
+    }
+  
+  }
+  
