@@ -1,0 +1,88 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body{
+    background: rgb(208, 203, 203);
+}
+
+/* ESTILOS DE LA CABECERA */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 6px;
+}
+
+/* ESTILOS DE LA NAVEGACIÓN */
+
+    .list_header{
+        order: 2;
+    }
+
+    .list_header ul{
+        display: flex;
+    }
+
+    .list_header ul li{
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 50px;
+        text-align: center;
+    }
+
+    .list_header ul li i{
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        background: gray;
+        padding: 10px;
+        border-radius: 100%;
+    }
+
+    .SIGC{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+/* CONTENEDOR  PRINCIPAL*/
+
+.cont_funciones{
+    width: 80%;
+    margin: 6px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 3px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 6px;
+}
+
+.cont_funciones .card{
+    width: 400px;
+    height: 100%;
+    border: solid 1px black;
+
+    display: grid;
+    grid-template-rows: 1.5fr 3fr;
+    
+}
+
+.card .option{
+    background: rgb(121, 9, 9);
+    text-align: center;
+}
+
+.option i{
+    font-size: 50px;
+}
