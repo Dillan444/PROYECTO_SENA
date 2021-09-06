@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2021 a las 23:15:44
+-- Tiempo de generación: 07-09-2021 a las 01:22:32
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -52,7 +52,24 @@ CREATE TABLE `asignatura` (
 
 CREATE TABLE `año` (
   `id_año` int(4) NOT NULL,
-  `año_curso` year(4) NOT NULL
+  `año_curso` year(4) NOT NULL,
+  `id_estudiante` int(11) DEFAULT NULL,
+  `id_docente` int(11) DEFAULT NULL,
+  `numero_curso` int(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clase`
+--
+
+CREATE TABLE `clase` (
+  `id_clase` int(8) NOT NULL,
+  `id_estudiante` int(11) DEFAULT NULL,
+  `id_docente` int(11) DEFAULT NULL,
+  `id_asignatura` int(4) DEFAULT NULL,
+  `id_notas` int(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,7 +91,10 @@ CREATE TABLE `curso` (
 
 CREATE TABLE `definitivas` (
   `id_notas` int(15) NOT NULL,
-  `calificacion` int(3) NOT NULL
+  `definitiva_B1` int(3) DEFAULT NULL,
+  `definitiva_B2` int(3) DEFAULT NULL,
+  `definitiva_B3` int(3) DEFAULT NULL,
+  `definitiva_B4` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -171,7 +191,8 @@ INSERT INTO `usuario` (`id_Usuario`, `nombre_perfil`, `p_nombre`, `s_nombre`, `p
 -- Indices de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`id_administrador`);
+  ADD PRIMARY KEY (`id_administrador`),
+  ADD KEY `id_Usuario` (`id_Usuario`);
 
 --
 -- Indices de la tabla `asignatura`
@@ -183,7 +204,20 @@ ALTER TABLE `asignatura`
 -- Indices de la tabla `año`
 --
 ALTER TABLE `año`
-  ADD PRIMARY KEY (`id_año`);
+  ADD PRIMARY KEY (`id_año`),
+  ADD KEY `id_estudiante` (`id_estudiante`),
+  ADD KEY `id_docente` (`id_docente`),
+  ADD KEY `numero_curso` (`numero_curso`);
+
+--
+-- Indices de la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD PRIMARY KEY (`id_clase`),
+  ADD KEY `id_estudiante` (`id_estudiante`),
+  ADD KEY `id_docente` (`id_docente`),
+  ADD KEY `id_asignatura` (`id_asignatura`),
+  ADD KEY `id_notas` (`id_notas`);
 
 --
 -- Indices de la tabla `curso`
@@ -201,7 +235,8 @@ ALTER TABLE `definitivas`
 -- Indices de la tabla `docente`
 --
 ALTER TABLE `docente`
-  ADD PRIMARY KEY (`id_docente`);
+  ADD PRIMARY KEY (`id_docente`),
+  ADD KEY `id_Usuario` (`id_Usuario`);
 
 --
 -- Indices de la tabla `documento`
@@ -214,7 +249,8 @@ ALTER TABLE `documento`
 -- Indices de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  ADD PRIMARY KEY (`id_estudiante`);
+  ADD PRIMARY KEY (`id_estudiante`),
+  ADD KEY `id_Usuario` (`id_Usuario`);
 
 --
 -- Indices de la tabla `rol`
@@ -245,6 +281,12 @@ ALTER TABLE `asignatura`
   MODIFY `id_asignatura` int(4) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `clase`
+--
+ALTER TABLE `clase`
+  MODIFY `id_clase` int(8) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
@@ -267,10 +309,47 @@ ALTER TABLE `usuario`
 --
 
 --
+-- Filtros para la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  ADD CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuario` (`id_Usuario`),
+  ADD CONSTRAINT `administrador_ibfk_2` FOREIGN KEY (`id_Usuario`) REFERENCES `usuario` (`id_Usuario`);
+
+--
+-- Filtros para la tabla `año`
+--
+ALTER TABLE `año`
+  ADD CONSTRAINT `año_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id_estudiante`),
+  ADD CONSTRAINT `año_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `año_ibfk_3` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `año_ibfk_4` FOREIGN KEY (`numero_curso`) REFERENCES `curso` (`numero_curso`);
+
+--
+-- Filtros para la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD CONSTRAINT `clase_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id_estudiante`),
+  ADD CONSTRAINT `clase_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `clase_ibfk_3` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
+  ADD CONSTRAINT `clase_ibfk_4` FOREIGN KEY (`id_notas`) REFERENCES `definitivas` (`id_notas`);
+
+--
+-- Filtros para la tabla `docente`
+--
+ALTER TABLE `docente`
+  ADD CONSTRAINT `docente_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuario` (`id_Usuario`);
+
+--
 -- Filtros para la tabla `documento`
 --
 ALTER TABLE `documento`
   ADD CONSTRAINT `documento_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuario` (`id_Usuario`);
+
+--
+-- Filtros para la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`id_Usuario`) REFERENCES `usuario` (`id_Usuario`);
 
 --
 -- Filtros para la tabla `rol`
