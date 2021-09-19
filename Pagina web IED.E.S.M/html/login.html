@@ -11,134 +11,139 @@
     <title>SIGC-login</title>
 </head>
 <body>
-    <div class="contenedor">
 
-        <ul class="tabs">
-              <li><a href="#tab1"><span class="rol"><i class="fas fa-chalkboard-teacher"></i>DOCENTE</span></a></li>
-              <li><a href="#tab2"><span class="rol"><i class="fas fa-user-graduate"></i>ESTUDIANTE</span></a></li>
-              <li><a href="#tab3"><span class="rol"><i class="fas fa-user-cog"></i>ADMINISTRADOR</span></a></li>
-        </ul>
-
-        <div class="secciones">
-            
-            <!-- ARTICULOS PARA EL INGRESO DE LOS DOCENTES -->
-            <article id="tab1">  
-                <div class="titulo">
-                     <h3>Iniciar Sesión Como Docente</h3>
-                     <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-
-                <form action="./docente-dc.html" method="GET">
-                <label for="userName">
-                    <span>Nombre de Usuario</span>
-                    <input type="text" name="userName" id="userName" autocomplete="name" required>
-                </label>
-                <label for="correo">
-                    <span>Correo Electronico</span>
-                    <input type="email" name="correo" id="correo" autocomplete="email" required>
-                </label>
-                <label for="password">
-                    <span>Contraseña</span>
-                    <input type="password" name="password" id="password" required>
-                </label>
-                <div class="boton_envio">
-                    <input type="submit" name="enviar" id="envar">
-                </div>
-
-                </form>
-
-                <div class="forget">
-                    <a href="#">Olvide mi Contraseña</a>
-                </div>
-
-                <div class="back">
-                    
-                    <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
-                </div>
+    <div class="gradient">
+        
+        <div class="contenedor">
+    
+            <ul class="tabs">
+                  <li><a href="#tab1"><span class="rol"><i class="fas fa-chalkboard-teacher"></i>DOCENTE</span></a></li>
+                  <li><a href="#tab2"><span class="rol"><i class="fas fa-user-graduate"></i>ESTUDIANTE</span></a></li>
+                  <li><a href="#tab3"><span class="rol"><i class="fas fa-user-cog"></i>ADMINISTRADOR</span></a></li>
+            </ul>
+    
+            <div class="secciones">
                 
-            </article>
-
-            <!-- ARTICULOS PARA EL INGRESO DE LOS ESTUDIANTES -->
-            <article id="tab2">  
-                <div class="titulo">
-                     <h3>Iniciar sesión como Estudiante</h3>
-                     <i class="fas fa-user-graduate"></i>
-                </div>
-
-                <form action="./estudiante-es.html" method="GET">
-                <label for="userName">
-                    <span>Nombre de Usuario</span>
-                    <input type="text" name="userName" id="userName" autocomplete="name" required>
-                </label>
-                <label for="correo">
-                    <span>Correo Electronico</span>
-                    <input type="email" name="correo" id="correo" autocomplete="email" required>
-                </label>
-                <label for="password">
-                    <span>Contraseña</span>
-                    <input type="password" name="password" id="password" required>
-                </label>
-                <div class="boton_envio">
-                    <input type="submit" name="enviar" id="envar">
-                </div>
-
-                </form>
-
-                <div class="forget">
-                    <a href="#">Olvide mi Contraseña</a>
-                </div>
-
-                <div class="back">
+                <!-- ARTICULOS PARA EL INGRESO DE LOS DOCENTES -->
+                <article id="tab1">  
+                    <div class="titulo">
+                         <h3>Iniciar Sesión Como Docente</h3>
+                         <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+    
+                    <form action="../PHP/login_registro.php" method="POST">
+                    <label for="userName">
+                        <span>Nombre de Usuario</span>
+                        <input type="text" name="userName" id="userName" autocomplete="name" required>
+                    </label>
+                    <label for="email">
+                        <span>Correo Electronico</span>
+                        <input type="email" name="email" id="email" autocomplete="email" required>
+                    </label>
+                    <label for="password">
+                        <span>Contraseña</span>
+                        <input type="password" name="password" id="password" required>
+                    </label>
+                    <div class="boton_envio">
+                        <input type="submit" name="ingresar" id="ingresar">
+                    </div>
+    
+                    </form>
+    
+                    <div class="forget">
+                        <a href="#">Olvide mi Contraseña</a>
+                    </div>
+    
+                    <div class="back">
+                        
+                        <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
+                    </div>
                     
-                    <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
-                </div>
-                
-            </article>
-
-            <!-- ARTICULOS PARA EL INGRESO DEL ADMINISTRADOR -->
-            <article id="tab3">  
-                <div class="titulo">
-                     <h3>Iniciar Sesión Como Administrador</h3>
-                     <i class="fas fa-user-cog"></i>
-                </div>
-
-                <form action="./administrador-ad.html" method="GET">
-                <label for="userName">
-                    <span>Nombre de Usuario</span>
-                    <input type="text" name="userName" id="userName" autocomplete="name" required>
-                </label>
-                <label for="correo">
-                    <span>Correo Electronico</span>
-                    <input type="email" name="correo" id="correo" autocomplete="email" required>
-                </label>
-                <label for="codigo">
-                    <span>Código</span>
-                    <input type="text" name="codigo" id="codigo" autocomplete="text" required>
-                </label>
-                <label for="password">
-                    <span>Contraseña</span>
-                    <input type="password" name="password" id="password" required>
-                </label>
-                <div class="boton_envio">
-                    <input type="submit" name="enviar" id="envar">
-                </div>
-
-                </form>
-
-                <div class="forget">
-                    <a href="#">Olvide mi Contraseña</a>
-                </div>
-
-                <div class="back">
+                </article>
+    
+                <!-- ARTICULOS PARA EL INGRESO DE LOS ESTUDIANTES -->
+                <article id="tab2">  
+                    <div class="titulo">
+                         <h3>Iniciar sesión como Estudiante</h3>
+                         <i class="fas fa-user-graduate"></i>
+                    </div>
+    
+                    <form action="../PHP/login_registro.php" method="POST">
+                    <label for="userName">
+                        <span>Nombre de Usuario</span>
+                        <input type="text" name="userName" id="userName" autocomplete="name" required>
+                    </label>
+                    <label for="email">
+                        <span>Correo Electronico</span>
+                        <input type="email" name="email" id="email" autocomplete="email" required>
+                    </label>
+                    <label for="password">
+                        <span>Contraseña</span>
+                        <input type="password" name="password" id="password" required>
+                    </label>
+                    <div class="boton_envio">
+                        <input type="submit" name="enviar" id="enviar">
+                    </div>
+    
+                    </form>
+    
+                    <div class="forget">
+                        <a href="#">Olvide mi Contraseña</a>
+                    </div>
+    
+                    <div class="back">
+                        
+                        <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
+                    </div>
                     
-                    <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
-                </div>
+                </article>
+    
+                <!-- ARTICULOS PARA EL INGRESO DEL ADMINISTRADOR -->
+                <article id="tab3">  
+                    <div class="titulo">
+                         <h3>Iniciar Sesión Como Administrador</h3>
+                         <i class="fas fa-user-cog"></i>
+                    </div>
+    
+                    <form action="../PHP/login_registro.php" method="POST">
+                    <label for="userName">
+                        <span>Nombre de Usuario</span>
+                        <input type="text" name="userName" id="userName" autocomplete="name" required>
+                    </label>
+                    <label for="email">
+                        <span>Correo Electronico</span>
+                        <input type="email" name="email" id="email" autocomplete="email" required>
+                    </label>
+                    <label for="codigo">
+                        <span>Código</span>
+                        <input type="text" name="codigo" id="codigo" autocomplete="text" required>
+                    </label>
+                    <label for="password">
+                        <span>Contraseña</span>
+                        <input type="password" name="password" id="password" required>
+                    </label>
+                    <div class="boton_envio">
+                        <input type="submit" name="entrar" id="entrar">
+                    </div>
+    
+                    </form>
+    
+                    <div class="forget">
+                        <a href="#">Olvide mi Contraseña</a>
+                    </div>
+    
+                    <div class="back">
+                        
+                        <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
+                    </div>
+                    
+                </article>
                 
-            </article>
-            
-            
+                
+            </div>
+    
         </div>
-
+        
     </div>
 
   <script src="../js/main.js"></script>
