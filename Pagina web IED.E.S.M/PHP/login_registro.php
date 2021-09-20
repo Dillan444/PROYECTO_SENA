@@ -1,6 +1,6 @@
 <?php 
 
-    include('./conexion.php');
+    include('conexion.php');
 
     $user = $_POST['userName'];
     $email = $_POST['email'];
@@ -13,12 +13,12 @@
         $nr = mysqli_num_rows($query);
 
         if ($nr == 1) {
-            echo "<script> alert('Bienvenido a la plataforma SIGC $user'); window.location= '../html/docente-dc.html'</script>";        
+            echo "<script> alert('Bienvenido a la plataforma SIGC $user'); window.location= '../html/docente-dc.php'</script>";        
         }
         else{
             echo "<script> alert('Usuario no existente'); window.location = '../html/login.html'</script>";
         }
-    
+        
     }  
     
     #VALIDAR ESTUDIANTE
@@ -55,6 +55,21 @@
 
 
     
+    // function detectarUsuario($conx, $user){
+        
+    //     $usuario = $user;
+    //     $buscarNombre = mysqli_query($conx, "SELECT p_nombre, s_nombre, p_apellido, s_apellido 
+    //     FROM usuario WHERE nombre_perfil = '$usuario' ");
+    //     $resultado = mysqli_query_($conx, $buscarNombre);
+
+    //     while ($fila = mysqli_fetch_array($resultado)) {
+    //         echo "<p>" . $fila['userName'] . "</p>";
+    //         # echo $buscarNombre'userName';
+    //     }
+
+
+    //     mysqli_close($conx,$user);
+    // }
     
 
 ?>
