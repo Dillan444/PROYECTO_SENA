@@ -7,7 +7,7 @@
 }
 
 body{
-    background: rgb(208, 203, 203);
+    background: rgb(211, 0, 0);
 }
 
 /* ESTILOS DE LA CABECERA */
@@ -16,36 +16,53 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    background: tomato;
     margin: 0 6px;
 }
 
 /* ESTILOS DE LA NAVEGACIÓN */
 
-    .list_header{
-        order: 2;
-    }
-
-    .list_header ul{
-        display: flex;
-    }
-
-    .list_header ul li{
-        display: flex;
-        align-items: center;
+    .menu ul{
         list-style: none;
-        margin: 50px;
-        text-align: center;
+        margin: 0;
+        padding: 0;
+
+        width: 400px;
     }
 
-    .list_header ul li i{
-        width: 50px;
-        height: 50px;
-        font-size: 30px;
-        background: gray;
-        padding: 10px;
-        border-radius: 100%;
+    .menu .item{
+        float: left;
     }
+
+    .menu .item a{
+        background-color: blue;    
+        color: white;
+        padding: 12px 22px;
+        display: block;
+        font-family: arial;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    .menu .despliegue{
+        display: none;
+        position: absolute;
+        min-width: 220px;  
+    }
+
+    .menu .item a:hover{
+        background: white;
+        transition: 1s;
+        color: blue;
+        
+    }
+
+    .menu .item:hover .despliegue{
+        display: block;
+        transition: 6s ease all;
+    }
+
+
 
     .SIGC{
         display: flex;

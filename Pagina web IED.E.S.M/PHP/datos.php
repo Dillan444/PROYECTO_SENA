@@ -1,7 +1,7 @@
 <?php 
     
-    include('conexion.php');
-    include('login_registro.php');
+    include('conexion.php');    
+    
     
     function cargarTabla($conx){
         $consulta = "SELECT c.numero_curso, COUNT(e.n_matricula) AS cantidad
@@ -17,7 +17,7 @@
                 echo "<td data_titulo = 'Cantidad'> ". $fila['cantidad'] . "</td>";
 
                 echo"<td data-titulo = 'Calificar'> 
-                        <a href='#'><i class=\"far fa-edit\"></i></a> 
+                        <a href=\"../html/calificar.php?curso=$fila[numero_curso]\"><i class=\"far fa-edit\"></i></a>
                     </td>";
                  
                 echo"<td data-titulo = 'Revisar'> 
@@ -55,6 +55,7 @@
                 
     }
     
+  
     
 
 ?>
