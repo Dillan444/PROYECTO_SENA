@@ -17,7 +17,7 @@ function validar($user, $email, $pass, $rol, $conx)
 
             if('$rol' == \"D\"){
                 
-                window.location= '../html/docente-index.php';
+                window.location= '../html/docente-index.php?user=$user';
 
             }else if('$rol' == \"E\"){
 

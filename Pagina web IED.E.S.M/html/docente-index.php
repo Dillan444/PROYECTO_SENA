@@ -1,4 +1,7 @@
-<?php include('../PHP/datos.php'); ?>
+<?php include('../PHP/datos.php'); 
+    $usuario = rand(201, 205);
+    // $usuario = 201;
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -22,30 +25,37 @@
 
 
         <div id="menu">
-        <ul>
-            <li id="item">
-                <div id="icon_perfil">
-                    <i class="fas fa-user"></i>
-                </div>
+            
+            <ul>
 
-            <ul id="despliegue" class="despliegue">
-                <div class="opciones_mi-perfil">
-                    <div class="perfil">
-                        <div><img src="" alt=""></div>
-                        <span>Mi nombre</span>
-                    </div>
-                    <hr>
-                    <nav class="opciones">
-                        <li><a href="#">Actualizar mis datos</a> </li>
-                        <li><a href="#">Cambiar Contraseña</a> </li>
-                        <li><a href="#">Configuración</a> </li>
-                        <li><a href="../index.html">Cerrar Sesión</a> </li>
-                    </nav>
-                        
-                </div>
+                <li>
+                    <h3> <?php buscarNombreUsuario($usuario, $conx);?> </h3>                     
+                </li>
                 
-            </ul>
-            </li>
+                <li id="item">
+                    <div id="icon_perfil">
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <ul id="despliegue" class="despliegue">
+                        <div class="opciones_mi-perfil">
+                            <div class="perfil">
+                                <div><img src="" alt=""></div>
+                                <span>Mi nombre</span>
+                            </div>
+                            <hr>
+                            <nav class="opciones">
+                                <li><a href="#">Actualizar mis datos</a> </li>
+                                <li><?php  echo "<a href=\"./cambioPassword.php?user=$usuario\">Cambiar Contraseña</a>"; ?></li>
+                                <li><a href="#">Configuración</a> </li>
+                                <li><a href="../index.html">Cerrar Sesión</a> </li>
+                            </nav>
+                                
+                        </div>
+                        
+                    </ul>
+                </li>
+
         </ul>
         </div>
     </header>
@@ -56,12 +66,12 @@
                 <thead>
                     <th>N_Curso</th>
                     <th>GradoGrado</th>
-                    <th>N_Estudiantes</th>
+                    <th>Materia</th>
                     <th>Calificar</th>
                     <th>Registros</th>
                 </thead>
                 <tbody>
-                    <?= cargarTabla($conx); ?>
+                    <?php cargarTabla($conx, $usuario);?>
                 </tbody>
             </table>
         </center>
