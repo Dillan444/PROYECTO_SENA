@@ -88,9 +88,9 @@
         mysqli_close($conx);
     }
   
-    function buscarNombreUsuario($usuario, $conx){
-        $nombreUsuario =  "SELECT * FROM docente d, usuario u
-        WHERE d.id_usuario = u.id_usuario AND d.id_docente = $usuario";
+    function buscarNombreUsuario($usuario, $conx, $rol){
+        $nombreUsuario =  "SELECT * FROM $rol d, usuario u
+        WHERE d.id_usuario = u.id_usuario AND d.id_$rol = $usuario";
         $fullName = mysqli_query($conx, $nombreUsuario);
 
         while ($name = mysqli_fetch_array($fullName)) {

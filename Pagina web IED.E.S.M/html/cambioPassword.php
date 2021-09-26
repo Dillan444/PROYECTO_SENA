@@ -1,3 +1,11 @@
+<?php 
+    include('../PHP/conexion.php');
+    include('../PHP/actualizar.php');
+    
+    $user = $_GET['user'];
+    $rol = $_GET['rol'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,6 +18,7 @@
 </head>
 
 <body>
+            
     <div class="contenedor">
         <h2>Cambio de Contraseña</h2>
 
@@ -35,25 +44,23 @@
             <p></p>
             <div class="botones">
             <input type="submit" name="enviar" value="Enviar">
-            <a href="./docente-index.php"><input type="button" name="cancelar" value="Cancelar"></a>
-            </div>
-        </form>
+            <?php 
+            echo "<a href=\"./$rol-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Cancelar\"></a>";            
+            ?>
 
+        </div>
+    </form>
+    
+    <?php
+        if (isset($_POST['enviar'])) {
+            $lastpw = $_POST['lastPassword'];
+            $newpw = $_POST['newPassword'];
+            $confpw = $_POST['confirmPassword'];
+            
+            cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol);
+        }
+    ?>
 
-        <?php
-
-            include('../PHP/conexion.php');
-            include('../PHP/actualizar.php');
-
-            if (isset($_POST['enviar'])) {
-                $lastpw = $_POST['lastPassword'];
-                $newpw = $_POST['newPassword'];
-                $confpw = $_POST['confirmPassword'];
-                $user = $_GET['user'];
-
-                cambioContraseña($lastpw, $newpw, $confpw, $user, $conx);
-            }
-        ?>
 
     </div>
 </body>

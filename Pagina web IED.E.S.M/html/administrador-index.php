@@ -1,7 +1,7 @@
 <?php include('../PHP/datos.php'); 
-    $usuario = rand(201, 205);
-    // $usuario = 201;
-    $rol ='docente';
+    $usuario = rand(20, 22);
+    // $usuario = 21;
+    $rol = 'administrador';
 ?>
 
 <!DOCTYPE html>
@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/96a22afc86.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../IMG/icono.ico">
-    <link rel="stylesheet" href="../css/table.css">
     <link rel="stylesheet" href="../css/cabecera.css">
+    <link rel="stylesheet" href="../css/cuerpo-admi.css">
     <title>Docente</title>
 </head>
 <body>
-    <header>
+    <header style="background: linear-gradient(to right, gray, white, gray);">
 
         <div>
             <h2>SIGC</h2>
@@ -60,22 +60,16 @@
         </ul>
         </div>
     </header>
-
-    <main>
-        <center>
-        <table border="7">
-                <thead>
-                    <th>N_Curso</th>
-                    <th>GradoGrado</th>
-                    <th>Materia</th>
-                    <th>Calificar</th>
-                    <th>Registros</th>
-                </thead>
-                <tbody>
-                    <?php cargarTabla($conx, $usuario);?>
-                </tbody>
-            </table>
-        </center>
+    
+    <main class="cuerpo-admi">
+        <nav>
+            <ul>
+               <a href="#"><li><strong>Crea Cuentas</strong></li></a>
+               <a href="#"><li><strong>Modificas</strong></li></a>
+               <a href="#"><li><strong>Desavilitalas</strong></li></a>
+               <a href="#"><li><strong>Havilita el Sistema </strong></li></a>
+            </ul>
+        </nav>
     </main>
-</body>
+</body> 
 </html>

@@ -25,9 +25,8 @@ function validar($user, $email, $pass, $rol, $conx)
             }
 
             </script>";
-
     } else {
-        
+
         echo "<script> alert('Usuario no existente'); window.location = '../html/login.html'</script>";
     }
 }
@@ -53,7 +52,7 @@ if (isset($_POST['entrar'])) {
     $nr = mysqli_num_rows($query);
 
     if ($nr == 1) {
-        echo "<script> alert('Bienvenido a la plataforma SIGC $user'); window.location= '../html/administrador-ad.html'</script>";
+        echo "<script> alert('Bienvenido a la plataforma SIGC $user'); window.location= '../html/administrador-index.php'</script>";
     } else {
         echo "<script> alert('Usuario no existente'); window.location = '../html/login.html'</script>";
     }

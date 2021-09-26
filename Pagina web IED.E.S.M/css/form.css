@@ -39,6 +39,8 @@ form{
 form label input{
     height: 30px;
     width: 300px;
+    outline: none;
+    padding-left: 6px;
 }
 
 form .botones input{
@@ -46,4 +48,9 @@ form .botones input{
     height: 30px;
     color: blue;
     font-weight: 600;
+}
+
+form .botones input:hover, input:focus{
+    background: black;
+    color: white;
 }

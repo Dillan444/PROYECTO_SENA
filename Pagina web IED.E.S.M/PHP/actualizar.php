@@ -1,10 +1,10 @@
 <?php
 
-function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx)
+function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol)
 {
 
-    $consulta = "SELECT u.id_usuario, u.contraseña FROM usuario u, docente d 
-        WHERE id_docente = $user AND u.id_usuario = d.id_usuario";
+    $consulta = "SELECT u.id_usuario, u.contraseña FROM usuario u, $rol d 
+        WHERE id_$rol = $user AND u.id_usuario = d.id_usuario";
     $resultado = mysqli_query($conx, $consulta);
     $pass = mysqli_fetch_array($resultado);
 
@@ -18,11 +18,12 @@ function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx)
 
     if ($newpw !== $confpw) {
         echo "<p class = 'mensaje'>La nueva contraseña no coincide con la confimación</p>";
+        
     } else if ($lastpw === $pass['contraseña']) {
 
         if (mysqli_query($conx, $actualizar)) {
             echo "<script> 
-                    window.location='../html/docente-index.php';
+                    window.location='../html/$rol-index.php';
                     alert('Contraseña actualizada con exito');
                 </script>";
         } else {
