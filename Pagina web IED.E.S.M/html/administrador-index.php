@@ -14,14 +14,14 @@
     <link rel="icon" href="../IMG/icono.ico">
     <link rel="stylesheet" href="../css/cabecera.css">
     <link rel="stylesheet" href="../css/cuerpo-admi.css">
-    <title>Docente</title>
+    <title>Administrador</title>
 </head>
 <body>
     <header style="background: linear-gradient(to right, gray, white, gray);">
 
         <div>
             <h2>SIGC</h2>
-            <h3>Docente</h3>
+            <h3>Administrador</h3>
         </div>
 
 
@@ -46,7 +46,7 @@
                             </div>
                             <hr>
                             <nav class="opciones">
-                                <li><a href="#">Actualizar mis datos</a> </li>
+                                <li><a href="./create-users.php">Actualizar mis datos</a> </li>
                                 <li><?php  echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol\">Cambiar Contraseña</a>"; ?></li>
                                 <li><a href="#">Configuración</a> </li>
                                 <li><a href="../index.html">Cerrar Sesión</a> </li>
@@ -64,10 +64,10 @@
     <main class="cuerpo-admi">
         <nav>
             <ul>
-               <a href="#"><li><strong>Crea Cuentas</strong></li></a>
+               <?php echo "<a href=\"../html/create-users.php?user=$usuario&rol=$rol\"><li><strong>Crea Cuentas</strong></li></a>";?>
                <a href="#"><li><strong>Modificas</strong></li></a>
-               <a href="#"><li><strong>Desavilitalas</strong></li></a>
-               <a href="#"><li><strong>Havilita el Sistema </strong></li></a>
+               <a href="#"><li><strong>Desabilitalas</strong></li></a>
+               <a href="#"><li><strong>Habilita el Sistema </strong></li></a>
             </ul>
         </nav>
     </main>

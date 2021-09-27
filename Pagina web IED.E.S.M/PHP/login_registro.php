@@ -21,7 +21,7 @@ function validar($user, $email, $pass, $rol, $conx)
 
             }else if('$rol' == \"E\"){
 
-                window.location= '../html/estudiante-as.html'   ;
+                window.location= '../html/estudiante-index.php';
             }
 
             </script>";

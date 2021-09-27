@@ -1,4 +1,4 @@
-<?php 
+<?php
     
     include('conexion.php');    
     
@@ -88,7 +88,7 @@
         mysqli_close($conx);
     }
   
-    function buscarNombreUsuario($usuario, $conx, $rol){
+    function buscarNombreUsuario($usuario, $conx, $rol = 'docente'){
         $nombreUsuario =  "SELECT * FROM $rol d, usuario u
         WHERE d.id_usuario = u.id_usuario AND d.id_$rol = $usuario";
         $fullName = mysqli_query($conx, $nombreUsuario);
@@ -100,5 +100,43 @@
         // mysqli_close($conx);
     }
 
-?>
+    function buscarNombreUsuarioE($usuario, $conx, $rol = 'docente'){
+        $nombreUsuario =  "SELECT * FROM $rol[0] d, usuario u
+        WHERE d.id_usuario = u.id_usuario AND d.$rol[1] = $usuario";
+        $fullName = mysqli_query($conx, $nombreUsuario);
 
+        while ($name = mysqli_fetch_array($fullName)) {
+            echo "<a> ".$name['p_nombre'] .' '. $name['s_nombre'] .' '. $name['p_apellido'] .' '. $name['s_apellido']."</a>";
+        }
+        
+        // mysqli_close($conx);
+    }
+
+    function cargarMisNotas($conx, $usuario){
+        $consulta = "SELECT a.nombre_asignatura, df.definitiva_B1, df.definitiva_B2, df.definitiva_B3, df.definitiva_B4 
+        FROM estudiante e, usuario u, asignatura a, definitivas df
+        WHERE u.id_usuario = e.id_usuario AND e.n_matricula = df.n_matricula AND a.id_asignatura = df.id_asignatura
+        AND e.n_matricula = $usuario";
+        $resultado = mysqli_query($conx, $consulta);
+        $i = 1;
+
+        while ($fila = mysqli_fetch_array($resultado)){
+                
+            echo "<tr>";
+                echo "<td>" . $i . "</td>";
+                echo "<td>" . $fila['nombre_asignatura']. "</td>";
+                echo "<td>" . $fila['definitiva_B1'] . "</td>";
+                echo "<td>" . $fila['definitiva_B2'] . "</td>";
+                echo "<td>" . $fila['definitiva_B3'] . "</td>";
+                echo "<td>" . $fila['definitiva_B4'] . "</td>";
+            echo "</tr>";   
+                
+            $i++;
+                  
+
+        }    
+        mysqli_close($conx);
+    }    
+    
+
+?>

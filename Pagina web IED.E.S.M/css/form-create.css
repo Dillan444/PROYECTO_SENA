@@ -1,0 +1,124 @@
+.contenedor-in{
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+.contenedor-in .titulo{
+    text-align: center;
+    width: 100%;
+}
+
+/*Estilos formulario*/
+
+
+.formulario-in{
+    width: 80%;
+    background: rgba(28, 28, 28, 0.923);
+    padding: 1%;
+    margin: 0 auto;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+.inputs{
+    display:  grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    padding: 2%;
+}
+
+.formulario-in fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, gray, white, gray);
+}
+
+legend{
+    color: rgb(0, 0, 0);
+    background: rgba(28, 247, 8, 0.83);
+    font-weight: 700;
+    height: 25px; 
+
+}
+
+label{
+    /* width: 165px; */
+    /*display: inline-block;*/
+    margin-bottom: 10px;
+}
+
+label span{
+    color: rgb(0, 0, 0);
+    text-align: left;
+    
+}
+
+.text-in input{
+    height: 30px;
+    width: 200px;
+    outline: none;
+    padding-left: 3px;
+    background: rgba(255, 255, 255, 0.597);
+    border: none;
+    border-bottom: solid 2px  gray ;
+}
+
+
+#boton{
+    width: 200px;
+    /* height: 30px; */
+    padding: 3px 0px;
+    background: rgb(21, 247, 0);
+    font-weight: 600;
+    font-size: 20px;
+    transition: 300ms;
+}
+
+
+#boton:hover{
+    transform: scale(1.10);
+    background: black;
+    color: rgb(21, 247, 0);
+}
+
+
+
+/*Pie de pagina*/
+
+.pie_pagina{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px 10px;
+    width: 100%;
+    border: 0px solid rgb(142, 223, 13);
+    background: linear-gradient(to right, black, gray, black);
+    border-radius: 3px;
+    
+}
+
+.pie_pagina nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 6px;
+}
+
+.pie_pagina i{
+    font-size: 30px;
+    color: black;
+}
+
+.pie_pagina i:hover{
+    color:rgb(142, 223, 13);
+}
+
+.pie_pagina h6{
+    color: rgb(255, 255, 255);
+}
+

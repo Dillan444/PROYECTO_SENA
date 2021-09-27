@@ -75,7 +75,8 @@
                 </tbody>
             </table>
 
-            <button name="guardarNotas">GuardarNotas</button>
+            <button type="submit" name="guardarNotas">GuardarNotas</button>
+            <a href="./docente-index.php"><button type="button" name="Regresar">Regresar</button></a>
         </form>
 
         <?php 

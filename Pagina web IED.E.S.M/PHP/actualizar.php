@@ -3,8 +3,15 @@
 function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol)
 {
 
+    if ($rol[0] === 'estudiante') {
+    $consulta = "SELECT u.id_usuario, u.contraseña FROM usuario u, $rol[0] d 
+        WHERE $rol[1] = $user AND u.id_usuario = d.id_usuario";
+        
+    }else{
     $consulta = "SELECT u.id_usuario, u.contraseña FROM usuario u, $rol d 
         WHERE id_$rol = $user AND u.id_usuario = d.id_usuario";
+    }
+
     $resultado = mysqli_query($conx, $consulta);
     $pass = mysqli_fetch_array($resultado);
 
