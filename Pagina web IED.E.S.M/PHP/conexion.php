@@ -1,5 +1,8 @@
 <?php
 
+    /*CONEXIÓN 
+        Se reunenen los datos necesarios para lograr la conexión con la base de datos
+        En caso de no conectarse mostrará un mensaje*/
     $bdhost = 'localhost';
     $bduser = 'root';
     $bdpass = '';

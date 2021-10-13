@@ -2,12 +2,23 @@
 
 include('conexion.php');
 
+/*
+    Se almacenan los datos enviados por POST en cada una de las variables corespondientes
+*/
 $user = $_POST['userName'];
 $email = $_POST['email'];
 $pass = $_POST['password'];
 
-function validar($user, $email, $pass, $rol, $conx)
-{
+
+/*VALIDACIÓN DEL USUARIO "D"-"E"
+    Recibe parametros de datos de un formulario
+    Se realiza una consulta especifica con cada uno de los datos pasador por parametros
+    Los resultador de la consulta se almacenan en un arreglo
+
+    Si la busqueda arrojo resultados se procede a enviar al usuario dentro del sitema dependientdo de su rol
+        De lo contrario lo devuelve a para que se vuelva loguear
+ */
+function validar($user, $email, $pass, $rol, $conx){
     $query = mysqli_query($conx, "SELECT * FROM usuario, datos_adicionales
         WHERE nombre_perfil = '$user' AND id_rol = '$rol' AND contraseña = '$pass' AND correo = '$email'");
     $nr = mysqli_num_rows($query);
@@ -31,19 +42,32 @@ function validar($user, $email, $pass, $rol, $conx)
     }
 }
 
-#VALIDAR DOCENTE
+/*DETECTAR DOCENTE
+    Se comprueba si fue un Usuario con el rol Docente si fue el que ingreso
+*/
 if (isset($_POST['ingresar'])) {
     $rol = 'D';
     validar($user, $email, $pass, $rol, $conx);
 }
 
-#VALIDAR ESTUDIANTE
+/*DETECTAR ESTUDIANTE
+    Se comprueba si fue un Usuario con el rol Estudiante si fue el que ingreso
+*/
 if (isset($_POST['enviar'])) {
     $rol = 'E';
     validar($user, $email, $pass, $rol, $conx);
 }
 
-#VALIDAR ADMINISTRADOR
+/*DETECTAR ADMINISTRADOR
+    Se comprueba si fue un Usuario con el rol Administrador si fue el que ingreso
+    Recibe parametros de datos de un formulario
+    Se realiza una consulta especifica con cada uno de los datos pasador por parametros
+    Los resultador de la consulta se almacenan en un arreglo
+
+    Si la busqueda arrojo resultados se procede a enviar al usuario dentro del sitema dependientdo de su rol
+        De lo contrario lo devuelve a para que se vuelva loguear
+*/
+
 if (isset($_POST['entrar'])) {
     $code = $_POST['codigo'];
 

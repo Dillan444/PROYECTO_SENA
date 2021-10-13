@@ -53,6 +53,7 @@
     
     <?php
         if (isset($_POST['enviar'])) {
+            // almacenamiento de datos de para el cambio de cantraseña
             $lastpw = $_POST['lastPassword'];
             $newpw = $_POST['newPassword'];
             $confpw = $_POST['confirmPassword'];

@@ -1,3 +1,7 @@
+
+  /*FORMULARIOS DE USUARIOS AYAX
+    Muestra un solo un formulario cuando hace click en el icono del rol correspondiente
+    quitando y agregando clases a un contenedo */
 $(document).ready(function(){
     $('ul.tabs li a:first').addClass('active');
     $('.secciones article').hide();

@@ -1,7 +1,12 @@
 <?php
 
-function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol)
-{
+
+    /*CAMBIAR LA CONTRASEÑA
+        Se realiza la consulta para saber si la contraseña antigua que ingreso es igual al de la base de datos
+        Se verifica si laconfirmación de la contraseña es igual al de la nueva contaseña 
+        Si pasa por todos los filtros se ejecutara la actualización de la contraseña
+        Se le aletara en la pantalla si fue exitoso o no*/
+function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol){
 
     if ($rol[0] === 'estudiante') {
     $consulta = "SELECT u.id_usuario, u.contraseña FROM usuario u, $rol[0] d 
@@ -26,7 +31,7 @@ function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol)
     if ($newpw !== $confpw) {
         echo "<p class = 'mensaje'>La nueva contraseña no coincide con la confimación</p>";
         
-    } else if ($lastpw === $pass['contraseña']) {
+    }else if($lastpw === $pass['contraseña']) {
 
         if (mysqli_query($conx, $actualizar)) {
             echo "<script> 
