@@ -14,9 +14,10 @@ function cargarTabla($conx, $usuario){
     // GROUP BY numero_curso";
 
     $consulta = "SELECT d.id_docente, u.p_nombre, u.p_apellido, c.numero_curso, a.nombre_asignatura
-    FROM usuario u, docente d, dicta dt, asignatura a, curso c
-    WHERE u.id_Usuario = d.id_Usuario AND d.id_docente = dt.id_docente 
-    AND a.id_asignatura = dt.id_asignatura AND c.numero_curso = dt.numero_curso
+    FROM usuario u, docente d, dicta dt, asignatura a, curso c, clases cl
+    WHERE u.id_Usuario = d.id_Usuario AND d.id_docente = dt.id_docente AND cl.id_asignatura = a.id_asignatura
+    AND cl.numero_curso = c.numero_curso
+    AND a.id_asignatura = dt.id_asignatura  AND a.nombre_asignatura = 'sociales' /*AND c.numero_curso = dt.numero_curso*/
     AND d.id_docente = $usuario
     ORDER BY c.numero_curso";
     $resultado = mysqli_query($conx, $consulta);
