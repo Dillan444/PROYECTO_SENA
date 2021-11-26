@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2021 a las 02:48:30
+-- Tiempo de generación: 26-11-2021 a las 21:05:47
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -573,33 +573,31 @@ INSERT INTO `clases` (`id_asignatura`, `numero_curso`, `docente`) VALUES
 --
 
 CREATE TABLE `curso` (
-  `numero_curso` int(4) NOT NULL,
-  `id_docente` int(11) DEFAULT NULL,
-  `año` year(4) DEFAULT NULL
+  `numero_curso` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `curso`
 --
 
-INSERT INTO `curso` (`numero_curso`, `id_docente`, `año`) VALUES
-(601, 200, 2020),
-(602, 201, 2020),
-(603, 202, 2020),
-(604, 203, 2020),
-(701, 204, 2020),
-(702, 205, 2020),
-(801, 206, 2020),
-(802, 207, 2020),
-(803, 208, 2020),
-(901, 209, 2020),
-(902, 210, 2020),
-(903, 211, 2020),
-(1001, 212, 2020),
-(1002, 213, 2020),
-(1101, 214, 2020),
-(1102, 215, 2020),
-(1103, 216, 2020);
+INSERT INTO `curso` (`numero_curso`) VALUES
+(601),
+(602),
+(603),
+(604),
+(701),
+(702),
+(801),
+(802),
+(803),
+(901),
+(902),
+(903),
+(1001),
+(1002),
+(1101),
+(1102),
+(1103);
 
 -- --------------------------------------------------------
 
@@ -760,41 +758,37 @@ INSERT INTO `definitivas` (`id_notas`, `definitiva_B1`, `definitiva_B2`, `defini
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `dicta`
+-- Estructura de tabla para la tabla `direccion`
 --
 
-CREATE TABLE `dicta` (
+CREATE TABLE `direccion` (
   `id_docente` int(11) DEFAULT NULL,
-  `id_asignatura` int(4) DEFAULT NULL
+  `numero_curso` int(4) DEFAULT NULL,
+  `año` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `dicta`
+-- Volcado de datos para la tabla `direccion`
 --
 
-INSERT INTO `dicta` (`id_docente`, `id_asignatura`) VALUES
-(200, 203),
-(201, 200),
-(201, 212),
-(202, 206),
-(203, 204),
-(203, 201),
-(204, 202),
-(204, 211),
-(205, 205),
-(206, 207),
-(206, 208),
-(207, 209),
-(208, 210),
-(209, 213),
-(210, 214),
-(210, 216),
-(211, 215),
-(212, 217),
-(213, 218),
-(214, 219),
-(215, 221),
-(216, 220);
+INSERT INTO `direccion` (`id_docente`, `numero_curso`, `año`) VALUES
+(200, 601, 2020),
+(201, 602, 2020),
+(202, 603, 2020),
+(203, 604, 2020),
+(204, 701, 2020),
+(205, 702, 2020),
+(206, 801, 2020),
+(207, 802, 2020),
+(208, 803, 2020),
+(209, 901, 2020),
+(210, 902, 2020),
+(211, 903, 2020),
+(212, 1001, 2020),
+(213, 1002, 2020),
+(214, 1101, 2020),
+(215, 1102, 2020),
+(216, 1103, 2020);
 
 -- --------------------------------------------------------
 
@@ -903,34 +897,35 @@ INSERT INTO `estudiante` (`n_matricula`, `id_Usuario`) VALUES
 
 CREATE TABLE `integrantescurso` (
   `n_matricula` int(15) DEFAULT NULL,
-  `numero_curso` int(4) DEFAULT NULL
+  `numero_curso` int(4) DEFAULT NULL,
+  `año` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `integrantescurso`
 --
 
-INSERT INTO `integrantescurso` (`n_matricula`, `numero_curso`) VALUES
-(1000, 603),
-(1001, 801),
-(1002, 603),
-(1003, 1002),
-(1004, 603),
-(1005, 802),
-(1006, 1002),
-(1007, 802),
-(1008, 801),
-(1009, 1002),
-(1000, 603),
-(1001, 801),
-(1002, 603),
-(1003, 1002),
-(1004, 603),
-(1005, 802),
-(1006, 1002),
-(1007, 802),
-(1008, 801),
-(1009, 1002);
+INSERT INTO `integrantescurso` (`n_matricula`, `numero_curso`, `año`) VALUES
+(1000, 603, 0000),
+(1001, 801, 0000),
+(1002, 603, 0000),
+(1003, 1002, 0000),
+(1004, 603, 0000),
+(1005, 802, 0000),
+(1006, 1002, 0000),
+(1007, 802, 0000),
+(1008, 801, 0000),
+(1009, 1002, 0000),
+(1000, 603, 0000),
+(1001, 801, 0000),
+(1002, 603, 0000),
+(1003, 1002, 0000),
+(1004, 603, 0000),
+(1005, 802, 0000),
+(1006, 1002, 0000),
+(1007, 802, 0000),
+(1008, 801, 0000),
+(1009, 1002, 0000);
 
 -- --------------------------------------------------------
 
@@ -1075,8 +1070,7 @@ ALTER TABLE `clases`
 -- Indices de la tabla `curso`
 --
 ALTER TABLE `curso`
-  ADD PRIMARY KEY (`numero_curso`),
-  ADD KEY `id_docente` (`id_docente`);
+  ADD PRIMARY KEY (`numero_curso`);
 
 --
 -- Indices de la tabla `datos_adicionales`
@@ -1096,10 +1090,11 @@ ALTER TABLE `definitivas`
   ADD KEY `id_asignatura` (`id_asignatura`);
 
 --
--- Indices de la tabla `dicta`
+-- Indices de la tabla `direccion`
 --
-ALTER TABLE `dicta`
-  ADD KEY `id_asignatura` (`id_asignatura`),
+ALTER TABLE `direccion`
+  ADD UNIQUE KEY `UC_direccion` (`id_docente`,`numero_curso`,`año`),
+  ADD KEY `id_asignatura` (`numero_curso`),
   ADD KEY `id_docente` (`id_docente`);
 
 --
@@ -1207,12 +1202,6 @@ ALTER TABLE `clases`
   ADD CONSTRAINT `clases_ibfk_3` FOREIGN KEY (`docente`) REFERENCES `docente` (`id_docente`);
 
 --
--- Filtros para la tabla `curso`
---
-ALTER TABLE `curso`
-  ADD CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`);
-
---
 -- Filtros para la tabla `definitivas`
 --
 ALTER TABLE `definitivas`
@@ -1223,11 +1212,11 @@ ALTER TABLE `definitivas`
   ADD CONSTRAINT `definitivas_ibfk_5` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`);
 
 --
--- Filtros para la tabla `dicta`
+-- Filtros para la tabla `direccion`
 --
-ALTER TABLE `dicta`
-  ADD CONSTRAINT `dicta_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
-  ADD CONSTRAINT `dicta_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`);
+ALTER TABLE `direccion`
+  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`numero_curso`) REFERENCES `curso` (`numero_curso`);
 
 --
 -- Filtros para la tabla `docente`
