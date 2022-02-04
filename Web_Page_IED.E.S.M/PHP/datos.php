@@ -112,34 +112,23 @@ function cargarLista($conx, $materia, $user, $curso){
         2.Se usan esos datos para realizar una consulta especifica del usuario
         3.Se almacenan en un arreglo los resultados
         4.Luego se imprimen los datos en pantalla*/
-function buscarNombreUsuario($usuario, $conx, $rol = 'docente'){
-    $nombreUsuario =  "SELECT * FROM $rol d, usuario u
-    WHERE d.id_usuario = u.id_usuario AND d.id_$rol = $usuario";
-    $fullName = mysqli_query($conx, $nombreUsuario);
+function buscarNombreUsuario($usuario, $conx, $rol){
+    $nombreUsuario =  "SELECT * FROM $rol d INNER JOIN usuario u ON d.id_usuario = u.id_usuario AND u.nombre_perfil = '$usuario';";
+    $fullName = $conx -> query($nombreUsuario);
 
-    while ($name = mysqli_fetch_array($fullName)) {
-        echo "<a> ".$name['p_nombre'] .' '. $name['s_nombre'] .' '. $name['p_apellido'] .' '. $name['s_apellido']."</a>";
+    $name = $fullName -> fetch_array();
+
+    if ($name) {
+        echo $name['p_nombre'] .' '. $name['s_nombre'] .' '. $name['p_apellido'] .' '. $name['s_apellido'];
+    }else{
+
+        // echo "No hay resultados";
+        header("Location: ../index.html");
     }
     
     // mysqli_close($conx);
 }
 
-    /*BUSCAR EL NOMBRE DEL ESTUDIANTE QUE INICIO SESIÓN
-        1.Se traen tres parametros para identificar quien fue el que entro en su cuenta
-        2.Se usan esos datos para realizar una consulta especifica del usuario
-        3.Se almacenan en un arreglo los resultados
-        4.Luego se imprimen los datos en pantalla*/
-function buscarNombreUsuarioE($usuario, $conx, $rol = 'docente'){
-    $nombreUsuario =  "SELECT * FROM $rol[0] d, usuario u
-    WHERE d.id_usuario = u.id_usuario AND d.$rol[1] = $usuario";
-    $fullName = mysqli_query($conx, $nombreUsuario);
-
-    while ($name = mysqli_fetch_array($fullName)) {
-        echo "<a> ".$name['p_nombre'] .' '. $name['s_nombre'] .' '. $name['p_apellido'] .' '. $name['s_apellido']."</a>";
-    }
-    
-    // mysqli_close($conx);
-}
 
     /*BUSCAR LAS CALIFICACIONES DEL ESTUDIANTE
         El estudiante puede buscar sus calificaciones por materia en cada uno de los bimestres 

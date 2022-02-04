@@ -1,7 +1,13 @@
 <?php include('../PHP/datos.php'); 
-    // $usuario = rand(201, 205);
-    $usuario = 201;
-    $rol ='docente';
+    session_start();
+
+    $usuario = $_SESSION["usuario"];
+
+    $rol ='Docente';
+
+    if(!isset($usuario)){
+        header("Location: ./login.html");
+    }    
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +48,14 @@
                         <div class="opciones_mi-perfil">
                             <div class="perfil">
                                 <div><img src="" alt=""></div>
-                                <span>Mi nombre</span>
+                                <span><?php echo $usuario ?></span>
                             </div>
                             <hr>
                             <nav class="opciones">
                                 <li><a href="#">Actualizar mis datos</a> </li>
                                 <li><?php  echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol\">Cambiar Contraseña</a>"; ?></li>
                                 <li><a href="#">Configuración</a> </li>
-                                <li><a href="../index.html">Cerrar Sesión</a> </li>
+                                <li><a href="../PHP/cerrarSesion.php">Cerrar Sesión</a> </li>
                             </nav>
                                 
                         </div>

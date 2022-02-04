@@ -1,7 +1,14 @@
 <?php include('../PHP/datos.php'); 
-    $usuario = rand(1000, 1009);
-    // $usuario = 21;
+    
+    session_start();
+
+    $usuario = $_SESSION["usuario"];
+
     $rol = array('estudiante', 'n_matricula');
+
+    if (!isset($usuario)) {
+        header("Location: ./login.html");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +38,7 @@
             <ul>
 
                 <li>
-                    <h3> <?php buscarNombreUsuarioE($usuario, $conx, $rol);?> </h3>                     
+                    <h3> <?php buscarNombreUsuario($usuario, $conx, $rol[0]);?> </h3>                     
                 </li>
                 
                 <li id="item">
@@ -43,14 +50,14 @@
                         <div class="opciones_mi-perfil">
                             <div class="perfil">
                                 <div><img src="" alt=""></div>
-                                <span>Mi nombre</span>
+                                <span><?php echo $usuario; ?></span>
                             </div>
                             <hr>
                             <nav class="opciones">
                                 <li><a href="./create-users.php">Actualizar mis datos</a> </li>
                                 <li><?php  echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol[0]\">Cambiar Contraseña</a>"; ?></li>
                                 <li><a href="#">Configuración</a> </li>
-                                <li><a href="../index.html">Cerrar Sesión</a> </li>
+                                <li><a href="../PHP/cerrarSesion.php">Cerrar Sesión</a> </li>
                             </nav>
                                 
                         </div>

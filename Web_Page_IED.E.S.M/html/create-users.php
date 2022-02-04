@@ -3,8 +3,13 @@
     include('../PHP/create.php');
     include('../PHP/datos.php');
 
-    $user = $_GET['user'];
-    $rol = $_GET['rol'];
+    session_start();
+    $usuario = $_SESSION["usuario"];
+    $rol = 'Administrador';
+
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: login.html");
+    }
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +39,7 @@
                 <ul>
 
                     <li>
-                        <h3> <?php buscarNombreUsuario($user, $conx, $rol); ?> </h3>
+                        <h3>  <?php buscarNombreUsuario($usuario, $conx, $rol); ?> </h3>
                     </li>
 
                     <li id="item">
@@ -46,14 +51,14 @@
                             <div class="opciones_mi-perfil">
                                 <div class="perfil">
                                     <div><img src="" alt=""></div>
-                                    <span>Nombre Usuario</span>
+                                    <span><?php echo $usuario ?></span>
                                 </div>
                                 <hr>
                                 <nav class="opciones">
                                     <li><a href="#">Actualizar mis datos</a> </li>
-                                    <li><?php echo "<a href=\"./cambioPassword.php?user=$user&rol=$rol\">Cambiar Contraseña</a>";?></li>
+                                    <li><?php echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol\">Cambiar Contraseña</a>";?></li>
                                     <li><a href="#">Configuración</a> </li>
-                                    <li><a href="../index.html">Cerrar Sesión</a> </li>
+                                    <li><a href="../PHP/cerrarSesion.php">Cerrar Sesión</a> </li>
                                 </nav>
 
                             </div>

@@ -1,83 +1,75 @@
-<?php
-
-include('conexion.php');
+<?php include('conexion.php');
 
 /*
     Se almacenan los datos enviados por POST en cada una de las variables corespondientes
 */
-$user = $_POST['userName'];
-$email = $_POST['email'];
-$pass = $_POST['password'];
+$datos = array(
+    'conx' => $conx,
+    'user' => $_POST['userName'],
+    'email' => $_POST['email'],
+    'pass' => $_POST['password']
+);
 
 
-/*VALIDACIÓN DEL USUARIO "D"-"E"
-    Recibe parametros de datos de un formulario
-    Se realiza una consulta especifica con cada uno de los datos pasador por parametros
-    Los resultador de la consulta se almacenan en un arreglo
-
-    Si la busqueda arrojo resultados se procede a enviar al usuario dentro del sitema dependientdo de su rol
-        De lo contrario lo devuelve a para que se vuelva loguear
+/*VALIDACIÓN DEL USUARIOS
+    #Recibe por paramentro un arreglo de datos que serviran para realizar la consulta. 
+    #Se evalua si un dato necesario para el administrador se encuentra o no, si es así se almacena una concatenación para la consulta.
+    #Después de haber realizado la consulta se consulta la cantidad de resultados, si solo arrojo un resultado pasa y si no se debuelve al login.
+    #En en condicional verdadero se inicia la sesión y se guarda el dato del usuario ingresado.
  */
-function validar($user, $email, $pass, $rol, $conx){
-    $query = mysqli_query($conx, "SELECT * FROM usuario, datos_adicionales
-        WHERE nombre_perfil = '$user' AND id_rol = '$rol' AND contraseña = '$pass' AND correo = '$email'");
-    $nr = mysqli_num_rows($query);
+function validar($d){
 
-    if ($nr == 1) {
-        echo "<script> alert('Bienvenido a la plataforma SIGC $user');
+    $resultado = " ";
+    if ($d['cod']) {
+        $resulCod = "AND codigo = '$d[cod]'";
+    }
 
-            if('$rol' == \"D\"){
-                
-                window.location= '../html/docente-index.php?user=$user';
+    $sql = $d['conx']->query("SELECT u.nombre_perfil 
+        FROM usuario u INNER JOIN $d[rol] a INNER JOIN datos_adicionales ad ON u.id_Usuario = a.id_usuario AND u.id_datos_adicionales = ad.id_datos_adicionales AND nombre_perfil = '$d[user]' AND id_rol = '$d[id_rol]' AND contraseña = '$d[pass]' " . $resulCod . "  AND correo = '$d[email]';");
 
-            }else if('$rol' == \"E\"){
+    $resultado =  mysqli_num_rows($sql);
 
-                window.location= '../html/estudiante-index.php';
-            }
+    if ($resultado === 1) {
+        session_start();
+        $usuario = $sql->fetch_row();
 
-            </script>";
+        $_SESSION["usuario"] = $usuario[0];
+
+        header("Location: ../html/$d[rol]-index.php");
     } else {
-
-        echo "<script> alert('Usuario no existente'); window.location = '../html/login.html'</script>";
+        header("Location: ../index.html");
     }
 }
 
 /*DETECTAR DOCENTE
     Se comprueba si fue un Usuario con el rol Docente si fue el que ingreso
 */
-if (isset($_POST['ingresar'])) {
-    $rol = 'D';
-    validar($user, $email, $pass, $rol, $conx);
+if (isset($_POST['form_docente'])) {
+
+    $datos["id_rol"] = 'D';
+    $datos["rol"] = 'docente';
+
+    validar($datos);
 }
 
 /*DETECTAR ESTUDIANTE
     Se comprueba si fue un Usuario con el rol Estudiante si fue el que ingreso
 */
-if (isset($_POST['enviar'])) {
-    $rol = 'E';
-    validar($user, $email, $pass, $rol, $conx);
+if (isset($_POST['form_estudiante'])) {
+    $datos["id_rol"] = 'E';
+    $datos["rol"] = 'estudiante';
+
+    validar($datos);
 }
 
 /*DETECTAR ADMINISTRADOR
-    Se comprueba si fue un Usuario con el rol Administrador si fue el que ingreso
-    Recibe parametros de datos de un formulario
-    Se realiza una consulta especifica con cada uno de los datos pasador por parametros
-    Los resultador de la consulta se almacenan en un arreglo
-
-    Si la busqueda arrojo resultados se procede a enviar al usuario dentro del sitema dependientdo de su rol
-        De lo contrario lo devuelve a para que se vuelva loguear
+    Si se ingreso desde el fomulario del administrador y si es así, se le agregan datos al arrglo y se llama la función validar
 */
 
-if (isset($_POST['entrar'])) {
-    $code = $_POST['codigo'];
+if (isset($_POST['form_administrador'])) {
+    $datos["id_rol"] = 'A';
+    $datos["rol"] = 'administrador';
+    $datos["cod"] = $_POST['codigo'];
 
-    $query = mysqli_query($conx, "SELECT * FROM usuario u, administrador a, datos_adicionales ad
-        WHERE nombre_perfil = '$user' AND id_rol = 'A' AND contraseña = '$pass' AND codigo = '$code' AND correo = '$email'");
-    $nr = mysqli_num_rows($query);
-
-    if ($nr == 1) {
-        echo "<script> alert('Bienvenido a la plataforma SIGC $user'); window.location= '../html/administrador-index.php'</script>";
-    } else {
-        echo "<script> alert('Usuario no existente'); window.location = '../html/login.html'</script>";
-    }
+    validar($datos);
 }
