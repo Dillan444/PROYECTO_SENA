@@ -1,0 +1,189 @@
+:root{
+    --azul-intenso: #1818a6;
+    --azul-claro: #aaaaff;
+    --verde-intenso: #00e300;
+    --vende-suave: #c6ffc6;
+    --blanco-grisaceso: #f1f1f1;
+    --blanco: white;
+    --negro: black;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+.header{
+    position: relative;
+    width: 100%;
+    min-width: 320px;
+    min-height: 300px;
+    text-align: center;
+    background: var(--azul-claro);
+    padding: 0 6px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.header img{
+    width: 150px;
+    padding: 30px 0px;
+}
+
+.header-info{
+    max-width: 640px;
+}
+
+.header-info h1{
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.header-info p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 35px;
+}
+
+.header-nav{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.466);
+    height: 25px;
+
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+}
+
+.header-nav li{
+    width: 130px;
+    padding: 3px 0;
+    font-size: 1.4rem;
+}
+
+.header-nav li i{
+    margin: 0 6px;
+}
+
+.header-nav a{
+    color: var(--blanco);
+    text-decoration: none;
+    transition: .3s;
+}
+
+.header-nav a:hover{
+    color: var(--verde-intenso);
+    font-size: 1.6rem;
+}
+
+.header--button{
+    position: absolute;
+    text-decoration: none;
+    text-align: left;
+    font-size: 2.3rem;
+    font-weight: 100;
+    background: var(--verde-intenso);
+    box-shadow: 3px 3px 9px;
+    border-radius: 3px;
+    color: black;
+
+    width: 150px;
+    height: 40px;
+    padding-top: 6px;
+    padding-left: 6px;
+    bottom: -15px;
+    outline: none;
+}
+
+.header--button i{
+    position: absolute;
+    right: 20px;
+    bottom: 7px;
+    transition: .3s;
+    /* font-size: 1.8rem; */
+}
+
+.header--button:hover i{
+    right: 10px;
+}
+
+
+.main-content{
+    min-width: 320px;
+    background-color: var(--blanco-grisaceso);
+    padding: 40px 0;
+    /* padding: 0 6px; */
+}
+
+.main-img{
+    width: 100%;
+    min-height: 150px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    background: url(../IMG/fondo_colegio.jpg);
+    background-size: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.main-content--info{
+    text-align: justify;
+    font-size: 1.6rem;
+    padding: 12px 6px;
+    background-color: var(--blanco);
+    margin-bottom: 6px;
+}
+
+.main-content--info h3{
+    color: var(--azul-intenso);
+    margin-bottom: 6px;
+}
+
+.main-content--info p{
+    letter-spacing: .06rem;
+    line-height: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.Pie_pagina{
+    height: 50px;
+    background-color: black;
+    
+}
+
+@media (min-width: 900px){
+    .main-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+    }
+
+    .main-img{
+        order: 2;
+        max-width: 40%;
+        background-size: 110%;
+        height: 350px;
+    }
+    
+    .main-content--info{
+        border-radius: 3px;
+        padding: 12px 24px;
+        max-width: 40%;
+    }
+}
