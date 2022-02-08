@@ -1,209 +1,235 @@
+:root{
+    --azul-intenso: #1818a6;
+    --azul-claro: #aaaaff;
+    --verde-intenso: #00e300;
+    --vende-suave: #c6ffc6;
+    --blanco-grisaceso: #f1f1f1;
+    --blanco: white;
+    --negro: black;
+}
+
 *{
     margin: 0;
     padding: 0;
-  }
-  
-  body{
-    background: url(../IMG/fondo_colegio-2.jpg); 
-    background-attachment: fixed;
-    margin: 0px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 100vh;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+.contenedor{
+ width: 100%;
+ min-width: 320px;
+ height: 100vh;
+ background: var(--blanco-grisaceso);
+
+ position: relative;
+ 
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.regresar{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.tabs{
+    order: 2;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
     display: flex;
+    justify-content: space-around;
+    gap: 3px;
+}
+
+.tabs li{
+    list-style: none;
+    /* min-width: 33%; */
+    flex-basis: 200px;
+    height: 60px;
+    background-color: var(--azul-claro);
+    border-radius: 3px;
+}
+
+.tabs li a{
+    border-radius: 3px;
+    height: 100%;
+    text-decoration: none;
+    color: var(--negro);
+    
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .gradient{
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to left , rgb(0, 0, 0), rgba(0, 0, 0, 0.391));
-  }
-  
-  .contenedor{
-    width: 50%;
-    max-width: 90%;
-    position: absolute;
-    right: 200px;
-    bottom: 150px;
-    color: black;
-
-    display: grid;
-    grid-template-columns: 1fr 500px;
-    grid-gap: 30px;
-  }
-  
-/* ESTILOS DE LOS TRES TIPOS DE ROLES */
-
-  ul.tabs{ 
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    /* padding: 10px 0; */
     gap: 6px;
-  }
-  
-  ul.tabs li{
-    background: #363636;
-    border-radius: 3px;
-    
-  }
-  
-  ul.tabs li a{
-    color: white;
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    text-align: center;
-    padding: 6px 0;
-    /* padding: 20px 0px; */
-  }
-
-  ul.tabs li a i{
-      display: block;
-      /* transform: scale(4); */
-      font-size: 50px;
-      margin-bottom: 20px;
-  }
-
-  
-  .active{
-    background: #0984CC;
-    border-radius: 3px;
-  }
-
-  
-/* ESTILOS DEL ARTICILO DONDE ESTAN LOS FORMULARIOS */
-
-.secciones{
-width: 100%;
-background: white;
-}
-.secciones article{
-padding: 20px 10px;
-
 }
 
-/* TITULO DEL FORMULARIO */
 
-.secciones .titulo{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
 
-    width: 100%;
+.tabs li a span{
+    font-size: 1.2rem;
+    display: none;
 }
 
-.secciones .titulo i{
-    color: #0984CC;
+.tabs li:focus, li a.active{
+    background-color: var(--azul-intenso);
+    color: var(--blanco-grisaceso)
+}
+
+.tabs li i{
     font-size: 30px;
-    margin-bottom: 20px;
 }
 
-
-
-/* ESTILOS DEL FORMULARIO  */
-
-.secciones form{
-    width: 90%;
+.articulo-login{
+    width: 317px;
+    height: 436px;
+    max-width: none;
+    background: var(--blanco-grisaceso);
+    padding: 20px 3px;
     margin: 0 auto;
+    /* margin-top: 20px; */
+    box-shadow: 3px 3px 12px 3px;
+    border-radius: 3px;
 }
 
- .secciones form label{
+.articulo-login .login-titulo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    /* gap: 6px; */
+
+    margin-bottom: 30px;
+    padding: 5px 6px;
+    background-color: var(--azul-intenso);
+    font-size: 1.4rem;
+    border-radius: 3px;
+    color: var(--blanco);
+}
+
+.articulo-login .login-titulo i{
+    font-size: 20px;
+}
+
+.form-login{
     display: flex;
     flex-direction: column;
-
-    margin: 10px 0;
- }
-
-.secciones h3, .secciones form label span{
-    color: #363636;
-    margin-left: 10px;
+    gap: 20px;
 }
 
-.secciones form label input{
-    height: 30px;
-    outline: none;
-    padding: 0px 10px;
-    border-radius: 3px;
-    /* border: solid #0984CC 1px; */
-    background-color: rgb(235, 233, 229);
+.form-login label{
+    display: flex;
+    flex-direction: column;
 }
-  
-.boton_envio input{
-    background: #0984CC;
-    color: white;
-    font-size: 20px;
-    font-weight: -30;
-    height: 30px;
-    outline: none;
-    border-radius: 3px;
+
+.form-login label span{
+    font-size: 1.3rem;
+    margin-bottom: 3px;
+    padding-left: 6px;
+}
+
+.form-login label input{
     width: 100%;
-    transition: 300ms;
+    height: 30px;
+    border: none;
+    padding-left: 6px;
+    border-radius: 3px;
+}
+
+.form-login .acciones{
+    width: 100%;
+
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-login .acciones a{
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #0000EE;
+}
+
+.form-login .boton_envio{
+    width: 100%;
+    max-width: 370px;
+    margin: 12px auto;;
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 3px;
+    height: 25px;
+    background-color: var(--verde-intenso);
+}
+
+@media (min-width: 500px){
+    .contenedor{
+        display: flex;
+        gap: 20px;
+    }
+
+    .tabs{
+        order: 0;
+        position: static;
+        flex-direction: column;
+        justify-content: space-evenly;
+        max-width: 150px;
+        height: 500px;
+    }
+
+    .tabs li{
+        max-height: 75px;
+    }
+
+    .tabs li a span{
+        display: block;
+    }
 } 
 
-.boton_envio input:focus{
-    background-color: #363636;
-    color: #0984CC;
-}
-
-[required] {
-	border: solid #0984CC 1px;
-}
-
-input:invalid {
-	border: red solid 2px;
-}
-
-.forget{
-    width: 100%;
-    text-align: center;
-    margin-top: 6px;
-}
-
-.forget a{
-    text-align: center;
-    color:  #363636;
-    text-decoration: none;
-}
-
-.forget a:hover,
-.back a:hover i{
-    text-decoration: underline;
-    color:#0984CC;
-}
-
-.back a{
-    text-align: center;
-    color:  #363636;
-    text-decoration: none;
-}
-
-.back a i{
-    font-size: 30px;
-}
-  
-  @media screen and (max-width: 700px){
-    ul.labs li{
-      width: none;
-      flex-basis: 0;
-      flex-grow: 1;
+@media (min-width: 700px){
+    .contenedor{
+        gap: 100px;
     }
-  }
-  
-  @media screen and (max-width: 450px){
-    ul.tabs li a{
-      padding: 15px 0px;
+}
+
+@media (max-height: 400px){
+
+    .tabs{
+        max-height: 100vh;
     }
-  
-    ul.tabs li .tab-text{
-      display: none;
+
+    .articulo-login{
+        padding-bottom: 0px;
+        width: 100%;
+        height: auto;
     }
-  
-    .secciones div{
-      padding: 20px;
+
+    .form-login{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
-  
-  }
-  
+
+    .form-login .short{
+        width: 100%;
+    }
+
+    .acciones .boton_envio{
+        width: 40%;
+        align-items: center;
+        justify-content: space-around;
+        /* margin: 12px 20px; */
+    }
+}

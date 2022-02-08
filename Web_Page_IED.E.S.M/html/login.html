@@ -1,152 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/96a22afc86.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="icon" href="../IMG/icono.ico">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/96a22afc86.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="icon" href="../IMG/icono.ico" />
     <title>SIGC-login</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="contenedor">
+      <div class="regresar"><a href="../index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg></a>
+      </div>
 
-    <div class="gradient">
-        
-        <div class="contenedor">
-    
-            <ul class="tabs">
-                  <li><a href="#tab1"><span class="rol"><i class="fas fa-chalkboard-teacher"></i>DOCENTE</span></a></li>
-                  <li><a href="#tab2"><span class="rol"><i class="fas fa-user-graduate"></i>ESTUDIANTE</span></a></li>
-                  <li><a href="#tab3"><span class="rol"><i class="fas fa-user-cog"></i>ADMINISTRADOR</span></a></li>
-            </ul>
-    
-            <div class="secciones">
-                
-                <!-- ARTICULOS PARA EL INGRESO DE LOS DOCENTES -->
-                <article id="tab1">  
-                    <div class="titulo">
-                         <h3>Iniciar Sesión Como Docente</h3>
-                         <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-    
-                    <form action="../PHP/login_registro.php" method="POST">
-                    <label for="userName">
-                        <span>Nombre de Usuario</span>
-                        <input type="text" name="userName" id="userName" autocomplete="name" required>
-                    </label>
-                    <label for="email">
-                        <span>Correo Electronico</span>
-                        <input type="email" name="email" id="email" autocomplete="email" required>
-                    </label>
-                    <label for="password">
-                        <span>Contraseña</span>
-                        <input type="password" name="password" id="password" required>
-                    </label>
-                    <div class="boton_envio">
-                        <input type="submit" name="form_docente" id="ingresar" value="Enviar">
-                    </div>
-    
-                    </form>
-    
-                    <div class="forget">
-                        <a href="#">Olvide mi Contraseña</a>
-                    </div>
-    
-                    <div class="back">
-                        
-                        <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
-                    </div>
-                    
-                </article>
-    
-                <!-- ARTICULOS PARA EL INGRESO DE LOS ESTUDIANTES -->
-                <article id="tab2">  
-                    <div class="titulo">
-                         <h3>Iniciar sesión como Estudiante</h3>
-                         <i class="fas fa-user-graduate"></i>
-                    </div>
-    
-                    <form action="../PHP/login_registro.php" method="POST">
-                    <label for="userName">
-                        <span>Nombre de Usuario</span>
-                        <input type="text" name="userName" id="userName" autocomplete="name" required>
-                    </label>
-                    <label for="email">
-                        <span>Correo Electronico</span>
-                        <input type="email" name="email" id="email" autocomplete="email" required>
-                    </label>
-                    <label for="password">
-                        <span>Contraseña</span>
-                        <input type="password" name="password" id="password" required>
-                    </label>
-                    <div class="boton_envio">
-                        <input type="submit" name="form_estudiante" id="enviar">
-                    </div>
-    
-                    </form>
-    
-                    <div class="forget">
-                        <a href="#">Olvide mi Contraseña</a>
-                    </div>
-    
-                    <div class="back">
-                        
-                        <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
-                    </div>
-                    
-                </article>
-    
-                <!-- ARTICULOS PARA EL INGRESO DEL ADMINISTRADOR -->
-                <article id="tab3">  
-                    <div class="titulo">
-                         <h3>Iniciar Sesión Como Administrador</h3>
-                         <i class="fas fa-user-cog"></i>
-                    </div>
-    
-                    <form action="../PHP/login_registro.php" method="POST">
-                    <label for="userName">
-                        <span>Nombre de Usuario</span>
-                        <input type="text" name="userName" id="userName" autocomplete="name" required>
-                    </label>
-                    <label for="email">
-                        <span>Correo Electronico</span>
-                        <input type="email" name="email" id="email" autocomplete="email" required>
-                    </label>
-                    <label for="codigo">
-                        <span>Código</span>
-                        <input type="text" name="codigo" id="codigo" autocomplete="text" required>
-                    </label>
-                    <label for="password">
-                        <span>Contraseña</span>
-                        <input type="password" name="password" id="password" required>
-                    </label>
-                    <div class="boton_envio">
-                        <input type="submit" name="form_administrador" id="entrar">
-                    </div>
-    
-                    </form>
-    
-                    <div class="forget">
-                        <a href="#">Olvide mi Contraseña</a>
-                    </div>
-    
-                    <div class="back">
-                        
-                        <a href="../index.html"><i class="fas fa-arrow-circle-left"></i>Regresar </a>
-                    </div>
-                    
-                </article>
-                
-                
-            </div>
-    
-        </div>
-        
+      <ul class="tabs">
+        <li>
+          <a href="#tab1">
+              <i class="fas fa-chalkboard-teacher"></i>
+            <span class="rol">DOCENTE</span>
+            </a>
+        </li>
+        <li>
+          <a href="#tab2">
+              <i class="fas fa-user-graduate"></i>
+            <span class="rol">ESTUDIANTE</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab3">
+                <i class="fas fa-user-cog"></i>
+              <span class="rol">ADMINISTRADOR</span>
+              </a>
+        </li>
+      </ul>
+
+      <section class="seccion-login">
+
+        <article id="tab1" class="articulo-login">
+          <div class="login-titulo">
+            <h3>Iniciar Sesión Como Docente</h3>
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+
+          <form action="../PHP/login_registro.php" method="POST" class="form-login">
+            <label for="userName" class="short short-1">
+              <span>Nombre de Usuario</span>
+              <input
+                type="text"
+                name="userName"
+                id="userName"
+                placeholder="UserName"
+                autocomplete="name"
+                required
+              />
+            </label>
+            <label for="email" class="short short-2">
+              <span>Correo Electronico</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="user@email.com"
+                id="email"
+                autocomplete="email"
+                required
+              />
+            </label>
+            <label for="password">
+              <span>Contraseña</span>
+              <input 
+                type="password" 
+                name="password" placeholder="password" id="password" required />
+            </label>
+
+            <div class="acciones">
+                <input type="submit" class="boton_envio" name="form_docente" id="entrar" value="Ingresar"/>
+                <div><a href="#" >Olvide mi Contraseña</a></div>
+              </div>
+
+          </form>
+            
+          
+        </article>
+
+        <article id="tab2" class="articulo-login">
+          <div class="login-titulo">
+            <h3>Iniciar Sesión Como Estudiante</h3>
+            <i class="fas fa-user-graduate"></i>
+          </div>
+
+          <form action="../PHP/login_registro.php" method="POST" class="form-login">
+            <label for="userName" class="short short-1">
+              <span>Nombre de Usuario</span>
+              <input
+                type="text"
+                name="userName"
+                id="userName"
+                placeholder="UserName"
+                autocomplete="name"
+                required
+              />
+            </label>
+            <label for="email" class="short short-2">
+              <span>Correo Electronico</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="user@email.com"
+                id="email"
+                autocomplete="email"
+                required
+              />
+            </label>
+            <label for="password">
+              <span>Contraseña</span>
+              <input 
+                type="password" 
+                name="password" placeholder="password" id="password" required />
+            </label>
+
+            <div class="acciones">
+                <input type="submit" class="boton_envio" name="form_estudiante" id="entrar" value="Ingresar"/>
+                <div><a href="#" >Olvide mi Contraseña</a></div>
+              </div>
+
+          </form>
+          
+        </article>
+
+        <article id="tab3" class="articulo-login">
+          <div class="login-titulo">
+            <h3>Iniciar Sesión Como Administrador</h3>
+            <i class="fas fa-user-cog"></i>
+          </div>
+
+          <form action="../PHP/login_registro.php" method="POST" class="form-login">
+            <label for="userName" class="short short-1">
+              <span>Nombre de Usuario</span>
+              <input
+                type="text"
+                name="userName"
+                id="userName"
+                placeholder="UserName"
+                autocomplete="name"
+                required
+              />
+            </label>
+            <label for="email" class="short short-2">
+              <span>Correo Electronico</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="user@email.com"
+                id="email"
+                autocomplete="email"
+                required
+              />
+            </label>
+            <label for="codigo">
+              <span>Código</span>
+              <input
+                type="text"
+                name="codigo"
+                placeholder="code number"
+                id="codigo"
+                autocomplete="text"
+                required
+              />
+            </label>
+            <label for="password">
+              <span>Contraseña</span>
+              <input 
+                type="password" 
+                name="password" placeholder="password" id="password" required />
+            </label>
+
+            <div class="acciones">
+                <input type="submit" class="boton_envio" name="form_administrador" id="entrar" value="Ingresar"/>
+                <div><a href="#" >Olvide mi Contraseña</a></div>
+              </div>
+
+          </form>
+            
+          
+        </article>
+
+      </section>
     </div>
 
-  <script src="../js/main.js"></script>
-
-</body>
+    <script src="../js/main.js"></script>
+  </body>
 </html>
