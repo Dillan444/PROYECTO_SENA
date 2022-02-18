@@ -5,6 +5,7 @@
     --vende-suave: #c6ffc6;
     --blanco-grisaceso: #f1f1f1;
     --blanco: white;
+    --gris-suave: #d3d3d3;
     --negro: black;
 }
 
@@ -17,4 +18,8 @@
 html{
     font-size: 62.5%;
     font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
 }
