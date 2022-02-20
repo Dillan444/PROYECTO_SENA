@@ -119,7 +119,7 @@ function buscarNombreUsuario($usuario, $conx, $rol){
     $name = $fullName -> fetch_array();
 
     if ($name) {
-        echo $name['p_nombre'] .' '. $name['s_nombre'] .' '. $name['p_apellido'] .' '. $name['s_apellido'];
+        return $name['p_nombre'] .' '. $name['s_nombre'] .' '. $name['p_apellido'] .' '. $name['s_apellido'];
     }else{
 
         // echo "No hay resultados";

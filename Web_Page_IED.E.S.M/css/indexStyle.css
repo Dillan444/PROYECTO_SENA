@@ -173,9 +173,11 @@
 }
 
 .Pie_pagina{
+    color: white;
     height: 50px;
     background-color: black;
-    
+    text-align: center;
+    padding-top: 10px;
 }
 
 @media (min-width: 900px){

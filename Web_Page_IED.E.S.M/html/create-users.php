@@ -5,7 +5,7 @@
 
     session_start();
     $usuario = $_SESSION["usuario"];
-    $rol = 'Administrador';
+    $rol = array('Administrador');
 
     if (!isset($_SESSION["usuario"])) {
         header("Location: login.html");
@@ -20,55 +20,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/96a22afc86.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/cabecera.css">
+    <link rel="icon" href="../IMG/icono.ico">
+    <link rel="stylesheet" href="../css/generalStyles.css">
+    <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/form-create.css">
     <title>Creación de perfiles</title>
 </head>
 
 <body>
-    <header style="background: linear-gradient(to right, gray, white, gray);">
 
-            <div>
-                <h2>SIGC</h2>
-                <h3>Administrador</h3>
-            </div>
-
-
-            <div id="menu">
-
-                <ul>
-
-                    <li>
-                        <h3>  <?php buscarNombreUsuario($usuario, $conx, $rol); ?> </h3>
-                    </li>
-
-                    <li id="item">
-                        <div id="icon_perfil">
-                            <i class="fas fa-user"></i>
-                        </div>
-
-                        <ul id="despliegue" class="despliegue">
-                            <div class="opciones_mi-perfil">
-                                <div class="perfil">
-                                    <div><img src="" alt=""></div>
-                                    <span><?php echo $usuario ?></span>
-                                </div>
-                                <hr>
-                                <nav class="opciones">
-                                    <li><a href="#">Actualizar mis datos</a> </li>
-                                    <li><?php echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol\">Cambiar Contraseña</a>";?></li>
-                                    <li><a href="#">Configuración</a> </li>
-                                    <li><a href="../PHP/cerrarSesion.php">Cerrar Sesión</a> </li>
-                                </nav>
-
-                            </div>
-
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-    </header>
+    <?PHP include "./header.php" ?>
 
     <main class="contnedor-in">
         
@@ -186,6 +147,9 @@
                 </ul>
             </nav>
     </footer>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
+    <script src="../js/menu.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 
     $usuario = $_SESSION["usuario"];
 
-    $rol = array('estudiante', 'n_matricula');
+    $rol = array('Estudiante', 'n_matricula');
 
     if (!isset($usuario)) {
         header("Location: ./login.html");
@@ -19,13 +19,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/96a22afc86.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../IMG/icono.ico">
-    <link rel="stylesheet" href="../css/cabecera.css">
-    <link rel="stylesheet" href="../css/cuerpo-admi.css">
+    <link rel="stylesheet" href="../css/generalStyles.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <!-- <link rel="stylesheet" href="../css/cuerpo-admi.css"> -->
     <link rel="stylesheet" href="../css/table.css">
     <title>Estudiante</title>
 </head>
 <body>
-    <header style="background: linear-gradient(to right, red, white, red);">
+
+    <?PHP include "./header.php" ?>
+
+    <!-- <header style="background: linear-gradient(to right, red, white, red);">
 
         <div>
             <h2>SIGC</h2>
@@ -67,7 +71,7 @@
 
         </ul>
         </div>
-    </header>
+    </header> -->
 
     <main>
         <center>
@@ -87,5 +91,8 @@
             </table>
         </center>
     </main>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
+    <script src="../js/menu.js"></script>
 </body>
 </html>
