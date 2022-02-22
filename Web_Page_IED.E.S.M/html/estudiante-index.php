@@ -21,57 +21,12 @@
     <link rel="icon" href="../IMG/icono.ico">
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
-    <!-- <link rel="stylesheet" href="../css/cuerpo-admi.css"> -->
     <link rel="stylesheet" href="../css/table.css">
     <title>Estudiante</title>
 </head>
 <body>
 
     <?PHP include "./header.php" ?>
-
-    <!-- <header style="background: linear-gradient(to right, red, white, red);">
-
-        <div>
-            <h2>SIGC</h2>
-            <h3>Estudiante</h3>
-        </div>
-
-
-        <div id="menu">
-            
-            <ul>
-
-                <li>
-                    <h3> <?php buscarNombreUsuario($usuario, $conx, $rol[0]);?> </h3>                     
-                </li>
-                
-                <li id="item">
-                    <div id="icon_perfil">
-                        <i class="fas fa-user"></i>
-                    </div>
-
-                    <ul id="despliegue" class="despliegue">
-                        <div class="opciones_mi-perfil">
-                            <div class="perfil">
-                                <div><img src="" alt=""></div>
-                                <span><?php echo $usuario; ?></span>
-                            </div>
-                            <hr>
-                            <nav class="opciones">
-                                <li><a href="./create-users.php">Actualizar mis datos</a> </li>
-                                <li><?php  echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol[0]\">Cambiar Contraseña</a>"; ?></li>
-                                <li><a href="#">Configuración</a> </li>
-                                <li><a href="../PHP/cerrarSesion.php">Cerrar Sesión</a> </li>
-                            </nav>
-                                
-                        </div>
-                        
-                    </ul>
-                </li>
-
-        </ul>
-        </div>
-    </header> -->
 
     <main>
         <center>

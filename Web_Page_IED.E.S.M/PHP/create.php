@@ -1,22 +1,43 @@
-<?php 
+<?php include('conexion.php');
+
+if (isset($_POST['crear'])){
+            
+    $datosRegistro = array(
+        
+        // Datos de la tabla usuario
+        "rol_in" => $_POST['rol_in'],
+        "fst_name" => $_POST['P_nombre'],
+        "scd_name" => $_POST['S_nombre'],
+        "fst_lastName" => $_POST['P_apellido'],
+        "scd_lastName" => $_POST['S_apellido'],
+        "age" => $_POST['edad'],
+        
+        // Datos de la tabla Datos Adicionales
+        "number" => $_POST['telefono'],
+        "email" => $_POST['correo'],
+        "sex" => $_POST['sexo']
+    );
+    
+    crearUsuarios($conx, $datosRegistro);
+}
     
     /*CREANDO NUEVOS USUARIOS EN LA BASE DE DATOS
         En esta función se crea un usuario llenado dos tablas que contienen sus datos
         Utiliza funciones anidadas para generar dos datos la contraseña y el nombre de usuario*/
-function crearUsuarios($conx, $rol_in, $fst_name, $scd_name, $fst_lastName, $scd_lastName, $age, $number, $email, $sex, $user, $rol){
-    $d_adicionales = "INSERT INTO  datos_adicionales(id_datos_adicionales, correo, Telefono, sexo) 
-    VALUES (NULL, '$email', '$number','$sex')";
+function crearUsuarios($conx, $dR){
+    $sqlInsert = "INSERT INTO  datos_adicionales(id_datos_adicionales, correo, Telefono, sexo) 
+    VALUES (NULL, '$dR[email]', '$dR[number]','$dR[sex]')";
 
-    if (mysqli_query($conx, $d_adicionales)){
-            /*echo "<script>alert ('Se ha creado la cuenta de manera exitosa');</script>";*/
+    if ($conx -> query($sqlInsert)){
 
-            $consulta = "SELECT id_datos_adicionales FROM datos_adicionales WHERE correo =  '$email' AND Telefono = $number AND sexo = '$sex'";
-            $resultado = mysqli_query($conx, $consulta);
-            $id = mysqli_fetch_array($resultado);
-            $userName = generarUserName($fst_name, $scd_name, $fst_lastName, $scd_lastName);
+            $sqlConsulta = "SELECT id_datos_adicionales FROM datos_adicionales WHERE correo =  '$dR[email]'";
+            $resultado = mysqli_query($conx, $sqlConsulta);
+            
+            $id = $resultado -> fetch_array();
+            $userName = generarUserName($conx, $dR['fst_name'], $dR['scd_name'], $dR['fst_lastName'], $dR['scd_lastName']);
             $password = generarPassword();
 
-            insertUsuer($conx, $userName, $rol_in, $fst_name, $scd_name, $fst_lastName, $scd_lastName, $age, $password, $id, $user, $rol);
+            insertUsuer($conx, $userName, $dR, $password, $id);
     }else{
 
         echo "Error: " . mysqli_error($conx);    
@@ -45,34 +66,52 @@ function generarPassword(){
         Se almacenan sus nombres en un arreglo para escoger uno al azar
         Con un bucle se le agrega de uno a cutro número para generar un user name
         Y finalmente se retorna el string*/
-function generarUserName($fn, $sn, $fln, $sln){
+function generarUserName($conx, $fn, $sn, $fln, $sln){
 
     $u = array($fn, $sn, $fln, $sln);
     $caracteres = '1234567890';
-    $userName = $u[rand(0, strlen('$u'))]; 
+    do {
+        $userName = $u[rand(0, strlen('$u'))]; 
+    } while (!$userName);
 
     for ($i = 0; $i < rand(1, 4); $i++) { 
         $userName .= $caracteres[rand(0, strlen($caracteres))];
     }
 
-    return $userName;        
+    # Verificar si nombre_perfil ya existe
+
+    $sqlConsulta = $conx -> query("SELECT * FROM usuario WHERE 'nombre_perfil' = $userName");
+    $resultados = mysqli_num_rows($sqlConsulta);
+
+    if(!$resultados){ return $userName; }
+    generarUserName($conx, $fn, $sn, $fln, $sln);
 }
 
     /*INSERCIÓN EN LA TABLA USUARIO
         Se insertan los datos faltante en la tabla usuario con un insert into
         Se muestra un alert si se creo con exito o vicebersa*/
-function insertUsuer($conx, $userName, $rol_in, $fst_name, $scd_name, $fst_lastName, $scd_lastName, $age, $password, $id, $user, $rol){
-    $insert = "INSERT INTO usuario(id_usuario, nombre_perfil ,id_rol, p_nombre, s_nombre, p_apellido, s_apellido ,edad, contraseña, id_datos_adicionales)
-    VALUES (NULL, '$userName', '$rol_in', '$fst_name', '$scd_name','$fst_lastName','$scd_lastName', $age, '$password', $id[id_datos_adicionales])";
+function insertUsuer($conx, $userName, $dR, $password, $id){
+    $sqlInsert = "INSERT INTO usuario(id_usuario, nombre_perfil ,id_rol, p_nombre, s_nombre, p_apellido, s_apellido ,edad, contraseña, id_datos_adicionales)
+    VALUES (NULL, '$userName', '$dR[rol_in]', '$dR[fst_name]', '$dR[scd_name]', '$dR[fst_lastName]', '$dR[scd_lastName]', $dR[age], '$password', $id[id_datos_adicionales])";
 
-    if (mysqli_query($conx, $insert)){
-        echo "<script>alert('Se ha creado la cuenta de manera exitosa'); window.location='../html/create-users.php?user=$user&rol=$rol'</script>";
+    if ($conx -> query($sqlInsert)){
+        echo "<script>alert('Se ha creado la cuenta de manera exitosa');</script>";
+        header("Location: ../html/create-users.php");
     }else{
-        echo "<script>alert ('No se ha creado la cuenta en el sistema');</script>";
+        echo "<script>alert('Fallo al crear la cuenta');</script>";
         echo "Error: " . mysqli_error($conx);
     }
     
     mysqli_close($conx);
+}
+
+function añadirTablaRolCorrespondiente($conx, $userName, $rol){
+    $sql = "SELECT id_Usuario FROM usuario WHERE nombre_perfil = '$userName'";
+    
+    if ($id = $conx -> query($sql)) {
+        $sqlInsert = "INSERT INTO $rol (n_matricula, id_usuario) VALUES (null, $id)";
+    }
+    
 }
 
 ?>

@@ -113,7 +113,8 @@ function cargarLista($conx, $materia, $user, $curso){
         3.Se almacenan en un arreglo los resultados
         4.Luego se imprimen los datos en pantalla*/
 function buscarNombreUsuario($usuario, $conx, $rol){
-    $nombreUsuario =  "SELECT * FROM $rol d INNER JOIN usuario u ON d.id_usuario = u.id_usuario AND u.nombre_perfil = '$usuario';";
+    $nombreUsuario =  "SELECT * FROM usuario u WHERE u.nombre_perfil = '$usuario'";
+    
     $fullName = $conx -> query($nombreUsuario);
 
     $name = $fullName -> fetch_array();

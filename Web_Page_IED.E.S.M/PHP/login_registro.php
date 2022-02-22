@@ -19,13 +19,16 @@ $datos = array(
  */
 function validar($d){
 
-    $resultado = " ";
+    $trozoConsulta = array(" ", " ", " ");
     if ($d['cod']) {
-        $resulCod = "AND codigo = '$d[cod]'";
+        
+        $trozoConsulta[0] = "INNER JOIN $d[rol] a ";
+        $trozoConsulta[1] = "u.id_Usuario = a.id_usuario AND";
+        $trozoConsulta[2] = "AND codigo = '$d[cod]'";
     }
 
     $sql = $d['conx']->query("SELECT u.nombre_perfil 
-        FROM usuario u INNER JOIN $d[rol] a INNER JOIN datos_adicionales ad ON u.id_Usuario = a.id_usuario AND u.id_datos_adicionales = ad.id_datos_adicionales AND nombre_perfil = '$d[user]' AND id_rol = '$d[id_rol]' AND contraseña = '$d[pass]' " . $resulCod . "  AND correo = '$d[email]';");
+        FROM usuario u " . $trozoConsulta[0] . " INNER JOIN datos_adicionales ad ON " .$trozoConsulta[1] . " u.id_datos_adicionales = ad.id_datos_adicionales AND nombre_perfil = '$d[user]' AND id_rol = '$d[id_rol]' AND contraseña = '$d[pass]' " . $trozoConsulta[2] . "  AND correo = '$d[email]';");
 
     $resultado =  mysqli_num_rows($sql);
 
@@ -37,7 +40,7 @@ function validar($d){
 
         header("Location: ../html/$d[rol]-index.php");
     } else {
-        header("Location: ../index.html");
+        header("Location: ../html/login.html");
     }
 }
 

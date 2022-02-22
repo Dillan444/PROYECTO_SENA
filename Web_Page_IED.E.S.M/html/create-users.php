@@ -35,7 +35,7 @@
         
         <center><h2>Crear cuenta</h2>
                 
-        <form action="" method="POST" class="formulario-in"> 
+        <form action="../PHP/create.php" method="POST" class="formulario-in"> 
        
             <div class="inputs">
 
@@ -57,18 +57,18 @@
                 </label>
                 <label for="S_apellido" class="text-in">
                     <span>Segundo Apellido:</span><br>
-                    <input type="text" name="S_apellido" id="S_apellido" placeholder="S apellido"> 
+                    <input type="text" name="S_apellido" id="S_apellido" placeholder="S apellido">  
                 </label>
                 
                 <label for="edad" class="text-in">
                     <span>Edad:</span><br>
-                    <input type="number" name="Edad" id=" edad" placeholder="edad" required> 
+                    <input type="number" name="edad" id=" edad" placeholder="edad" required> 
                 </label>
 
                 <label for="Genero">
                     <span>Sexo:</span>
-                    <span>M</span> <input type="radio" name="Sexo" id="sexo" value="M"> 
-                    <span>F</span> <input type="radio" name="Sexo" id="sexo" value="F"> 
+                    <span>M</span> <input type="radio" name="sexo" id="sexo" value="M"> 
+                    <span>F</span> <input type="radio" name="sexo" id="sexo" value="F"> 
                 </label>
 
             </fieldset>
@@ -81,12 +81,12 @@
                 </label>
                 <label for="Correo" class="text-in">
                     <span>Correo electronico:</span><br>
-                    <input type="email" name="Correo" id="Correo" placeholder="usuario@example.com" required> 
+                    <input type="email" name="correo" id="correo" placeholder="usuario@example.com" required> 
                 </label>
                 
                 <label for="rol">
                     <span>Rol:</span>
-                    <select name="rol" id="rol">
+                    <select name="rol_in" id="rol_in">
                         <option value="D">Docente</option>
                         <option value="E">Estudiante</option>
                     </select>
@@ -104,27 +104,6 @@
                 
             </form>
         </center>
-
-        <?php
-
-        if (isset($_POST['crear'])){
-            // Datos de la tabla usuario
-            $rol_in = $_POST['rol'];
-            $fst_name = $_POST['P_nombre'];
-            $scd_name = $_POST['S_nombre'];
-            $fst_lastName = $_POST['P_apellido'];
-            $scd_lastName = $_POST['S_apellido'];
-            $age = $_POST['Edad'];
-
-            // Datos de la tabla Datos Adicionales
-            $number = $_POST['telefono'];
-            $email = $_POST['Correo'];
-            $sex = $_POST['Sexo'];
-            
-            crearUsuarios($conx, $rol_in, $fst_name, $scd_name, $fst_lastName, $scd_lastName, $age, $number, $email, $sex, $user, $rol);
-        }
-        
-        ?>
 
 
     </main>
