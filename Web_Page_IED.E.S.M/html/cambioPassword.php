@@ -1,9 +1,15 @@
 <?php 
     include('../PHP/conexion.php');
     include('../PHP/actualizar.php');
-    
-    $user = $_GET['user'];
-    $rol = $_GET['rol'];
+
+    session_start();
+    $usuario = $_SESSION["usuario"];
+
+    $rol = array('Administrador');
+
+    if (!isset($usuario)) {
+        header("Location: ./login.html");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +51,7 @@
             <div class="botones">
             <input type="submit" name="enviar" value="Enviar">
             <?php 
-            echo "<a href=\"./$rol-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Cancelar\"></a>";            
+            echo "<a href=\"./$rol[0]-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
             ?>
 
         </div>
@@ -58,7 +64,7 @@
             $newpw = $_POST['newPassword'];
             $confpw = $_POST['confirmPassword'];
             
-            cambioContraseña($lastpw, $newpw, $confpw, $user, $conx, $rol);
+            cambioContraseña($lastpw, $newpw, $confpw, $usuario, $conx);
         }
     ?>
 

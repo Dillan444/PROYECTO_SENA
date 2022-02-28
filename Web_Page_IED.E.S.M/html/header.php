@@ -16,7 +16,7 @@
         </div><hr>
         <ul class="opciones--cuenta">
             <a href="#"><li>Actualizar mis Datos</li></a>
-            <?php echo "<a href=\"./cambioPassword.php?user=$usuario&rol=$rol[0]\"><li>Cambiar Contraseña</li></a>"; ?>
+            <?php echo "<a href=\"./cambioPassword.php\"><li>Cambiar Contraseña</li></a>"; ?>
             <a href="#"><li>Configuración</li></a>
             <a href="../PHP/cerrarSesion.php"><li>Cerrar Sesión</li></a>
         </ul>
