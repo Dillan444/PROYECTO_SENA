@@ -37,7 +37,17 @@ function crearUsuarios($conx, $dR){
             $userName = generarUserName($conx, $dR['fst_name'], $dR['scd_name'], $dR['fst_lastName'], $dR['scd_lastName']);
             $password = generarPassword();
 
-            insertUsuer($conx, $userName, $dR, $password, $id);
+            if (insertUsuer($conx, $userName, $dR, $password, $id)) {
+                
+                añadirTablaRolCorrespondiente($conx, $id, $dR['rol_in']);
+
+            }else{
+
+                $conx -> query("DELETE * FROM datos_adicionales WHERE correo = '$dR[email]'");
+            }
+
+
+            header("Location: ../html/create-users.php");
     }else{
 
         echo "Error: " . mysqli_error($conx);    
@@ -80,8 +90,8 @@ function generarUserName($conx, $fn, $sn, $fln, $sln){
 
     # Verificar si nombre_perfil ya existe
 
-    $sqlConsulta = $conx -> query("SELECT * FROM usuario WHERE 'nombre_perfil' = $userName");
-    $resultados = mysqli_num_rows($sqlConsulta);
+    $sqlConsulta = $conx -> query("SELECT * FROM usuario WHERE nombre_perfil = '$userName'");
+    $resultados = mysqli_num_rows($sqlConsulta) ;
 
     if(!$resultados){ return $userName; }
     generarUserName($conx, $fn, $sn, $fln, $sln);
@@ -95,22 +105,41 @@ function insertUsuer($conx, $userName, $dR, $password, $id){
     VALUES (NULL, '$userName', '$dR[rol_in]', '$dR[fst_name]', '$dR[scd_name]', '$dR[fst_lastName]', '$dR[scd_lastName]', $dR[age], '$password', $id[id_datos_adicionales])";
 
     if ($conx -> query($sqlInsert)){
-        echo "<script>alert('Se ha creado la cuenta de manera exitosa');</script>";
-        header("Location: ../html/create-users.php");
+        // echo "<script>alert('Se ha creado la cuenta de manera exitosa');</script>";
+        // header("Location: ../html/create-users.php");
+        return true;
     }else{
-        echo "<script>alert('Fallo al crear la cuenta');</script>";
+        // echo "<script>alert('Fallo al crear la cuenta');</script>";
         echo "Error: " . mysqli_error($conx);
+        return false;
     }
     
     mysqli_close($conx);
 }
 
-function añadirTablaRolCorrespondiente($conx, $userName, $rol){
-    $sql = "SELECT id_Usuario FROM usuario WHERE nombre_perfil = '$userName'";
+function añadirTablaRolCorrespondiente($conx, $idDA, $rol){
+    $sql = "SELECT id_Usuario FROM usuario WHERE id_datos_adicionales = $idDA";
     
-    if ($id = $conx -> query($sql)) {
-        $sqlInsert = "INSERT INTO $rol (n_matricula, id_usuario) VALUES (null, $id)";
+    // $rol = ($rol === 'D') ? 'docente' : 'estudiante';
+    if ($rol === 'D') {
+        
+        $rol = 'docente';
+    }else{
+
+        $rol = 'estudiante';
     }
+
+    $result = $conx -> query($sql);
+    if ($result){
+
+        $id = $result -> fetch_array();
+        $sqlInsert = "INSERT INTO $rol (id_$rol, id_usuario) VALUES (null, $id[id_Usuario])";
+
+        $conx -> query($sqlInsert);
+
+        return true;
+    }else{ 
+        return false;}
     
 }
 
