@@ -31,7 +31,7 @@
         <nav>
             <ul>
                 <?php echo "<a href=\"../html/create-users.php?user=$usuario&rol=$rol[0]\"><li><strong>Crea Cuentas</strong></li></a>"; ?>
-                <a href="#">
+                <a href="./verDatosUsuario.php">
                     <li><strong>Modificas</strong></li>
                 </a>
                 <a href="#">

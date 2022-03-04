@@ -161,6 +161,26 @@ function cargarMisNotas($conx, $usuario){
     }    
     mysqli_close($conx);
 }    
-    
+
+function mostrarDatosUsuario($conx){
+    $sql = "
+        SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo FROM usuario u LEFT JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
+        UNION SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo FROM usuario u right JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
+    ";
+
+    if ($result = $conx -> query($sql)) {
+        while ($fila = $result -> fetch_row()) {
+            echo "<tr>";
+                foreach ($fila as $value) {
+                    echo "<td>$value</td>";
+                }
+                echo "<td>
+                    <a href='modificarDatosUsuario.php?user=$fila[2]'>Modificar</a>
+                </td>";                             
+                echo "<td></td>";                             
+            echo"</tr>";
+        }
+    }
+}
 
 ?>

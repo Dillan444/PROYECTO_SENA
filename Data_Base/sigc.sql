@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2022 a las 03:43:24
+-- Tiempo de generación: 04-03-2022 a las 04:44:57
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -689,7 +689,18 @@ INSERT INTO `datos_adicionales` (`id_datos_adicionales`, `correo`, `Telefono`, `
 (169, 'E', '3181283823', 'F'),
 (181, 'natavelazquez@gmail.com', '3198762837', 'F'),
 (182, 'darioramires@outlook.com', '3129837837', 'M'),
-(183, 'verotoro16@gmail.com', '3129834992', 'F');
+(183, 'verotoro16@gmail.com', '3129834992', 'F'),
+(184, 'lisacespeces@hotmail.com', '3238736733', 'F'),
+(185, 'lorecarrillo@gmail.com', '3123894837', 'F'),
+(190, 'guerratom@gmail.com', '31238948347', 'M'),
+(191, 'dmgutierrez@hotmail.com', '3158973723', 'M'),
+(193, 'castromari@gmail.com', '3238736766', 'F'),
+(195, 'sanwilly@gmail.com', '3238792837', 'M'),
+(197, 'rafa@gmail.com', '3238704985', 'M'),
+(198, 'gsantifael@gmail.com', '3484733748', 'M'),
+(200, 'maririveros@gmail.com', '31238948337', 'F'),
+(201, 'jeremias@gmail.com', '31238948826', 'M'),
+(202, 'andresguerra@gmail.com', '3229837362', 'M');
 
 -- --------------------------------------------------------
 
@@ -831,7 +842,8 @@ INSERT INTO `docente` (`id_docente`, `id_Usuario`) VALUES
 (215, 75),
 (216, 76),
 (217, 77),
-(218, 78);
+(218, 78),
+(219, 95);
 
 -- --------------------------------------------------------
 
@@ -876,25 +888,17 @@ INSERT INTO `documento` (`id_documento`, `descripcion`, `id_Usuario`) VALUES
 --
 
 CREATE TABLE `estudiante` (
-  `n_matricula` int(15) NOT NULL,
-  `id_Usuario` int(8) DEFAULT NULL
+  `id_estudiante` int(15) NOT NULL,
+  `id_Usuario` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `estudiante`
 --
 
-INSERT INTO `estudiante` (`n_matricula`, `id_Usuario`) VALUES
-(1000, 1),
-(1001, 6),
-(1002, 7),
-(1003, 8),
-(1004, 9),
-(1005, 10),
-(1006, 11),
-(1007, 12),
-(1008, 14),
-(1009, 15);
+INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
+(1, 93),
+(2, 94);
 
 -- --------------------------------------------------------
 
@@ -1046,7 +1050,18 @@ INSERT INTO `usuario` (`id_Usuario`, `nombre_perfil`, `perfil`, `id_rol`, `p_nom
 (78, 'Jorsh', '', 'D', 'Jorge ', 'Luis', 'Baron', 'Benavidez', 33, 'mcskfhnu49', NULL),
 (79, 'Natalia226', '', 'E', 'Natalia', '', 'Velasquez', '', 17, 'qhg8xeybeq', 181),
 (80, 'Alejandro2', '', 'D', 'Dario', 'Alejandro', 'Ramirez', '', 24, 'k5gqct5obw', 182),
-(81, 'Gómez1', '', 'E', 'Veronica', '', 'Gómez', 'Toro', 16, 'wy7j?rq0ws', 183);
+(81, 'Gómez1', '', 'E', 'Veronica', '', 'Gómez', 'Toro', 16, 'wy7j?rq0ws', 183),
+(82, 'Torres77', '', 'E', 'Lisa', '', 'Torres', 'Cespedes', 18, '3a983ohixo', 184),
+(83, 'Carrillo6074', '', 'E', 'Luisa', 'Lorena', 'Carrillo', 'Martines', 13, 'wqaltmfhbc', 185),
+(87, 'Carrillo1', '', 'E', 'Tom', 'Steven', 'Carrillo', 'Guerra', 17, 'h107xlpuhz', 190),
+(88, 'Gutierrez0840', '', 'E', 'Diego', 'Martin', 'Gutierrez', '', 18, 'kewy6bne2y', 191),
+(89, 'Luisa42', '', 'E', 'Luisa', 'Maria', 'Castro', '', 17, '4221ao0hd2', 193),
+(90, 'Sanchez1', '', 'E', 'Willy', '', 'Sanchez', '', 15, '3q7pc4vr?a', 195),
+(91, 'Rafael6', '', 'E', 'Rafael', '', 'Peréz', '', 13, '3kck??mtz?', 197),
+(92, 'Rafael59', '', 'E', 'Rafael', 'Santiago', 'Gonzales', '', 19, 'myus9hu1up', 198),
+(93, 'Jose62', '', 'E', 'Maria', 'Jose', 'Riveros', '', 15, '5sjs35n29d', 200),
+(94, 'Jeremias487', '', 'E', 'Jeremias', '', 'Gastanvide', '', 14, 'a9fvukm7dn', 201),
+(95, 'Carlos5', '', 'D', 'Carlos', 'Andres', 'Guerra', '', 28, 'wgfkwu492f', 202);
 
 --
 -- Índices para tablas volcadas
@@ -1127,8 +1142,7 @@ ALTER TABLE `documento`
 -- Indices de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  ADD PRIMARY KEY (`n_matricula`),
-  ADD UNIQUE KEY `id_Usuario_2` (`id_Usuario`),
+  ADD PRIMARY KEY (`id_estudiante`),
   ADD KEY `id_Usuario` (`id_Usuario`);
 
 --
@@ -1174,7 +1188,7 @@ ALTER TABLE `asignatura`
 -- AUTO_INCREMENT de la tabla `datos_adicionales`
 --
 ALTER TABLE `datos_adicionales`
-  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
 -- AUTO_INCREMENT de la tabla `definitivas`
@@ -1186,13 +1200,19 @@ ALTER TABLE `definitivas`
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+
+--
+-- AUTO_INCREMENT de la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_Usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- Restricciones para tablas volcadas
@@ -1218,8 +1238,6 @@ ALTER TABLE `clases`
 ALTER TABLE `definitivas`
   ADD CONSTRAINT `definitivas_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
   ADD CONSTRAINT `definitivas_ibfk_2` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
-  ADD CONSTRAINT `definitivas_ibfk_3` FOREIGN KEY (`n_matricula`) REFERENCES `estudiante` (`n_matricula`),
-  ADD CONSTRAINT `definitivas_ibfk_4` FOREIGN KEY (`n_matricula`) REFERENCES `estudiante` (`n_matricula`),
   ADD CONSTRAINT `definitivas_ibfk_5` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`);
 
 --
@@ -1251,7 +1269,6 @@ ALTER TABLE `estudiante`
 -- Filtros para la tabla `integrantescurso`
 --
 ALTER TABLE `integrantescurso`
-  ADD CONSTRAINT `integrantescurso_ibfk_5` FOREIGN KEY (`n_matricula`) REFERENCES `estudiante` (`n_matricula`),
   ADD CONSTRAINT `integrantescurso_ibfk_6` FOREIGN KEY (`numero_curso`) REFERENCES `curso` (`numero_curso`);
 
 --

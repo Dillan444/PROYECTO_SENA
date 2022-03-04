@@ -112,10 +112,7 @@ function insertUsuer($conx, $userName, $dR, $password, $id){
     VALUES (NULL, '$userName', '$dR[rol_in]', '$dR[fst_name]', '$dR[scd_name]', '$dR[fst_lastName]', '$dR[scd_lastName]', $dR[age], '$password', $id[id_datos_adicionales])";
 
     if ($conx->query($sqlInsert)) {
-        // echo "<script>alert('Se ha creado la cuenta de manera exitosa');</script>";
-        // header("Location: ../html/create-users.php");
     } else {
-        // echo "<script>alert('Fallo al crear la cuenta');</script>";
         echo "Error: " . mysqli_error($conx);
         return false;
     }
@@ -133,7 +130,7 @@ function añadirUsuarioTablaRolCorrespondiente($conx, $userName, $rol){
     $sql = "INSERT INTO $rolResult (id_$rolResult, id_Usuario) VALUES (null, '$id[id_Usuario]')";
 
     if ($conx->query($sql)) {
-        echo "Insertado";
+        header("Location: ../html/create-users.php");
     } else {
         echo "Error: " . mysqli_error($conx);
     }
