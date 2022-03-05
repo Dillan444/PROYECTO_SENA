@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 
 /*CAMBIAR LA CONTRASEÑA
         Se realiza la consulta para saber si la contraseña antigua que ingreso es igual al de la base de datos
@@ -13,6 +12,7 @@ function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx)
     if ($newpw !== $confpw) {
 
         echo "<p class = 'mensaje'>La nueva contraseña no coincide con la confimación</p>";
+
     } else {
 
         $sql = "SELECT contraseña FROM usuario WHERE nombre_perfil = '$user'";
@@ -34,4 +34,46 @@ function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx)
             echo "<p class = 'mensaje'>La contraseña es incorrecta</p>";
         }
     }
+}
+
+function modificarDatosUsuario($d, $conx, $u){
+    $sqlConsulta = "SELECT u.id_datos_adicionales FROM usuario u INNER JOIN  datos_adicionales da
+    ON u.id_datos_adicionales = da.id_datos_adicionales AND u.nombre_perfil = '$u'";
+
+    if ($result = $conx -> query($sqlConsulta)) {
+        
+        $result = $result -> fetch_row();
+
+        $sqlUpdateDA = "UPDATE datos_adicionales SET 
+            correo =  '$d[email]',
+            telefono =  '$d[telefono]',
+            sexo =  '$d[sexo]'
+        WHERE id_datos_adicionales = '$result[0]'";
+
+        $sqlUpdateU = "UPDATE usuario SET 
+            nombre_perfil =  '$d[userName]',
+            p_nombre =  '$d[p_nombre]',
+            s_nombre =  '$d[s_nombre]',
+            p_apellido =  '$d[p_apellido]',
+            s_apellido =  '$d[s_apellido]',
+            id_rol =  '$d[id_rol]',
+            edad =  '$d[edad]'
+    WHERE id_datos_adicionales = '$result[0]';";
+
+        if(!$conx -> query($sqlUpdateU)){
+
+            echo "Error: " . mysqli_error($conx);
+        }
+
+        if(!$conx -> query($sqlUpdateDA)){
+
+            echo "Error: " . mysqli_error($conx);
+        }
+
+        header("Location: ../html/modificarDatosUsuario.php?user=$d[userName]");
+
+    }
+
+    
+
 }

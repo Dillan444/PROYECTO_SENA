@@ -1,0 +1,143 @@
+.articulo-login{
+    width: 317px;
+    min-height: 436px;
+    max-height: 100%;
+    background: var(--blanco-grisaceso);
+    padding: 20px 3px;
+    margin: 0 auto;
+    /* margin-top: 20px; */
+    box-shadow: 3px 3px 12px 3px;
+    border-radius: 3px;
+}
+
+.articulo-login .login-titulo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    /* gap: 6px; */
+
+    margin-bottom: 30px;
+    padding: 5px 6px;
+    background-color: var(--azul-intenso);
+    font-size: 1.4rem;
+    border-radius: 3px;
+    color: var(--blanco);
+}
+
+.articulo-login .login-titulo i{
+    font-size: 20px;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-login label{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login label span{
+    font-size: 1.3rem;
+    margin-bottom: 3px;
+    padding-left: 6px;
+}
+
+.form-login label input{
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding-left: 6px;
+    border-radius: 3px;
+}
+
+.form-login .acciones{
+    width: 100%;
+
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-login .acciones a{
+    text-align: center;
+    vertical-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #0000EE;
+}
+
+.form-login .boton_envio{
+    width: 100%;
+    max-width: 370px;
+    margin: 12px auto;;
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 3px;
+    height: 25px;
+    background-color: var(--verde-intenso);
+}
+
+@media (min-width: 500px){
+    .contenedor{
+        display: flex;
+        gap: 20px;
+    }
+
+    .tabs{
+        order: 0;
+        position: static;
+        flex-direction: column;
+        justify-content: space-evenly;
+        max-width: 150px;
+        height: 500px;
+    }
+
+    .tabs li{
+        max-height: 75px;
+    }
+
+    .tabs li a span{
+        display: block;
+    }
+} 
+
+@media (min-width: 700px){
+    .contenedor{
+        gap: 100px;
+    }
+}
+
+@media (max-height: 400px){
+
+    .tabs{
+        max-height: 100vh;
+    }
+
+    .articulo-login{
+        padding-bottom: 0px;
+        width: 100%;
+        height: auto;
+    }
+
+    .form-login{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .form-login .short{
+        width: 100%;
+    }
+
+    .acciones .boton_envio{
+        width: 40%;
+        align-items: center;
+        justify-content: space-around;
+        /* margin: 12px 20px; */
+    }
+}
