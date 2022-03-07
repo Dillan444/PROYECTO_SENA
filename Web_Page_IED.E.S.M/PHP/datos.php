@@ -113,7 +113,7 @@ function cargarLista($conx, $materia, $user, $curso){
         3.Se almacenan en un arreglo los resultados
         4.Luego se imprimen los datos en pantalla*/
 function buscarNombreUsuario($usuario, $conx, $rol){
-    $nombreUsuario =  "SELECT * FROM usuario u WHERE u.nombre_perfil = '$usuario'";
+    $nombreUsuario =  "SELECT * FROM usuario u WHERE u.nombre_perfil = '$usuario' AND id_rol = '$rol[0]'";
     
     $fullName = $conx -> query($nombreUsuario);
 
@@ -177,7 +177,8 @@ function mostrarDatosUsuario($conx){
                 echo "<td>
                     <a href='modificarDatosUsuario.php?user=$fila[2]'>Modificar</a>
                 </td>";                             
-                echo "<td></td>";                             
+                echo "<td> <input type='button' name='estado' value='Deshabilitar' id='on-off' 
+                /> </td>";                             
             echo"</tr>";
         }
     }

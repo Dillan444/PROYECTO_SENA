@@ -5,7 +5,7 @@
     session_start();
     $usuario = $_SESSION["usuario"];
 
-    $rol = array('Administrador');
+    $rol = $_GET['r'];
 
     if (!isset($usuario)) {
         header("Location: ./login.html");
@@ -51,7 +51,7 @@
             <div class="botones">
             <input type="submit" name="enviar" value="Enviar">
             <?php 
-            echo "<a href=\"./$rol[0]-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
+            echo "<a href=\"./$rol-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
             ?>
 
         </div>
