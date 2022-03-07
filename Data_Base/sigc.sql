@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2022 a las 04:44:57
+-- Tiempo de generación: 07-03-2022 a las 01:50:23
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -89,9 +89,9 @@ INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `Tipo_asignatura
 --
 
 CREATE TABLE `clases` (
-  `id_asignatura` int(4) DEFAULT NULL,
-  `numero_curso` int(4) DEFAULT NULL,
-  `docente` int(11) DEFAULT NULL,
+  `id_asignatura` int(4) NOT NULL,
+  `id_curso` char(2) NOT NULL,
+  `id_docente` int(11) NOT NULL,
   `año` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -99,473 +99,22 @@ CREATE TABLE `clases` (
 -- Volcado de datos para la tabla `clases`
 --
 
-INSERT INTO `clases` (`id_asignatura`, `numero_curso`, `docente`, `año`) VALUES
-(202, 801, NULL, 0000),
-(202, 802, NULL, 0000),
-(202, 803, NULL, 0000),
-(202, 901, NULL, 0000),
-(202, 902, NULL, 0000),
-(202, 903, NULL, 0000),
-(202, 1001, NULL, 0000),
-(202, 1002, NULL, 0000),
-(202, 1101, NULL, 0000),
-(202, 1102, NULL, 0000),
-(202, 1103, NULL, 0000),
-(201, 601, NULL, 0000),
-(201, 602, NULL, 0000),
-(201, 603, NULL, 0000),
-(201, 604, NULL, 0000),
-(201, 701, NULL, 0000),
-(201, 702, NULL, 0000),
-(201, 801, NULL, 0000),
-(201, 802, NULL, 0000),
-(201, 803, NULL, 0000),
-(201, 901, NULL, 0000),
-(201, 902, NULL, 0000),
-(201, 903, NULL, 0000),
-(200, 601, NULL, 0000),
-(200, 602, NULL, 0000),
-(200, 603, NULL, 0000),
-(200, 604, NULL, 0000),
-(200, 701, NULL, 0000),
-(200, 702, NULL, 0000),
-(200, 801, NULL, 0000),
-(200, 802, NULL, 0000),
-(200, 803, NULL, 0000),
-(200, 901, NULL, 0000),
-(200, 902, NULL, 0000),
-(200, 903, NULL, 0000),
-(200, 1001, NULL, 0000),
-(200, 1002, NULL, 0000),
-(200, 1101, NULL, 0000),
-(200, 1102, NULL, 0000),
-(200, 1103, NULL, 0000),
-(203, 601, NULL, 0000),
-(203, 602, NULL, 0000),
-(203, 603, NULL, 0000),
-(203, 604, NULL, 0000),
-(203, 701, NULL, 0000),
-(203, 702, NULL, 0000),
-(203, 801, NULL, 0000),
-(203, 802, NULL, 0000),
-(203, 803, NULL, 0000),
-(203, 901, NULL, 0000),
-(203, 902, NULL, 0000),
-(203, 903, NULL, 0000),
-(203, 1001, NULL, 0000),
-(203, 1002, NULL, 0000),
-(203, 1101, NULL, 0000),
-(203, 1102, NULL, 0000),
-(203, 1103, NULL, 0000),
-(204, 1001, NULL, 0000),
-(204, 1002, NULL, 0000),
-(204, 1101, NULL, 0000),
-(204, 1102, NULL, 0000),
-(204, 1103, NULL, 0000),
-(205, 1001, NULL, 0000),
-(205, 1002, NULL, 0000),
-(205, 1101, NULL, 0000),
-(205, 1102, NULL, 0000),
-(205, 1103, NULL, 0000),
-(206, 601, NULL, 0000),
-(206, 602, NULL, 0000),
-(206, 603, NULL, 0000),
-(206, 604, NULL, 0000),
-(206, 701, NULL, 0000),
-(206, 702, NULL, 0000),
-(206, 801, NULL, 0000),
-(206, 802, NULL, 0000),
-(206, 803, NULL, 0000),
-(206, 901, NULL, 0000),
-(206, 902, NULL, 0000),
-(206, 903, NULL, 0000),
-(206, 1001, NULL, 0000),
-(206, 1002, NULL, 0000),
-(206, 1101, NULL, 0000),
-(206, 1102, NULL, 0000),
-(206, 1103, NULL, 0000),
-(207, 601, NULL, 0000),
-(207, 602, NULL, 0000),
-(207, 603, NULL, 0000),
-(207, 604, NULL, 0000),
-(207, 701, NULL, 0000),
-(207, 702, NULL, 0000),
-(207, 801, NULL, 0000),
-(207, 802, NULL, 0000),
-(207, 803, NULL, 0000),
-(207, 901, NULL, 0000),
-(207, 902, NULL, 0000),
-(207, 903, NULL, 0000),
-(207, 1001, NULL, 0000),
-(207, 1002, NULL, 0000),
-(207, 1101, NULL, 0000),
-(207, 1102, NULL, 0000),
-(207, 1103, NULL, 0000),
-(208, 601, NULL, 0000),
-(208, 602, NULL, 0000),
-(208, 603, NULL, 0000),
-(208, 604, NULL, 0000),
-(208, 701, NULL, 0000),
-(208, 702, NULL, 0000),
-(208, 801, NULL, 0000),
-(208, 802, NULL, 0000),
-(208, 803, NULL, 0000),
-(208, 901, NULL, 0000),
-(208, 902, NULL, 0000),
-(208, 903, NULL, 0000),
-(208, 1001, NULL, 0000),
-(208, 1002, NULL, 0000),
-(208, 1101, NULL, 0000),
-(208, 1102, NULL, 0000),
-(208, 1103, NULL, 0000),
-(209, 601, NULL, 0000),
-(209, 602, NULL, 0000),
-(209, 603, NULL, 0000),
-(209, 604, NULL, 0000),
-(209, 701, NULL, 0000),
-(209, 702, NULL, 0000),
-(209, 801, NULL, 0000),
-(209, 802, NULL, 0000),
-(209, 803, NULL, 0000),
-(209, 901, NULL, 0000),
-(209, 902, NULL, 0000),
-(209, 903, NULL, 0000),
-(209, 1001, NULL, 0000),
-(209, 1002, NULL, 0000),
-(209, 1101, NULL, 0000),
-(209, 1102, NULL, 0000),
-(209, 1103, NULL, 0000),
-(210, 901, NULL, 0000),
-(210, 902, NULL, 0000),
-(210, 903, NULL, 0000),
-(210, 1001, NULL, 0000),
-(210, 1002, NULL, 0000),
-(210, 1101, NULL, 0000),
-(210, 1102, NULL, 0000),
-(210, 1103, NULL, 0000),
-(211, 601, NULL, 0000),
-(211, 602, NULL, 0000),
-(211, 603, NULL, 0000),
-(211, 604, NULL, 0000),
-(211, 701, NULL, 0000),
-(211, 702, NULL, 0000),
-(211, 801, NULL, 0000),
-(211, 802, NULL, 0000),
-(211, 803, NULL, 0000),
-(211, 901, NULL, 0000),
-(211, 902, NULL, 0000),
-(211, 903, NULL, 0000),
-(211, 1001, NULL, 0000),
-(211, 1002, NULL, 0000),
-(211, 1101, NULL, 0000),
-(211, 1102, NULL, 0000),
-(211, 1103, NULL, 0000),
-(212, 1001, NULL, 0000),
-(212, 1002, NULL, 0000),
-(212, 1101, NULL, 0000),
-(212, 1102, NULL, 0000),
-(212, 1103, NULL, 0000),
-(213, 601, NULL, 0000),
-(213, 602, NULL, 0000),
-(213, 603, NULL, 0000),
-(213, 604, NULL, 0000),
-(213, 701, NULL, 0000),
-(213, 702, NULL, 0000),
-(213, 801, NULL, 0000),
-(213, 802, NULL, 0000),
-(213, 803, NULL, 0000),
-(213, 901, NULL, 0000),
-(213, 902, NULL, 0000),
-(213, 903, NULL, 0000),
-(213, 1001, NULL, 0000),
-(213, 1002, NULL, 0000),
-(213, 1101, NULL, 0000),
-(213, 1102, NULL, 0000),
-(213, 1103, NULL, 0000),
-(214, 601, NULL, 0000),
-(214, 602, NULL, 0000),
-(214, 603, NULL, 0000),
-(214, 604, NULL, 0000),
-(214, 701, NULL, 0000),
-(214, 702, NULL, 0000),
-(214, 801, NULL, 0000),
-(214, 802, NULL, 0000),
-(214, 803, NULL, 0000),
-(214, 901, NULL, 0000),
-(214, 902, NULL, 0000),
-(214, 903, NULL, 0000),
-(214, 1001, NULL, 0000),
-(214, 1002, NULL, 0000),
-(214, 1101, NULL, 0000),
-(214, 1102, NULL, 0000),
-(214, 1103, NULL, 0000),
-(215, 601, NULL, 0000),
-(215, 602, NULL, 0000),
-(215, 603, NULL, 0000),
-(215, 604, NULL, 0000),
-(215, 701, NULL, 0000),
-(215, 702, NULL, 0000),
-(215, 801, NULL, 0000),
-(215, 802, NULL, 0000),
-(215, 803, NULL, 0000),
-(215, 901, NULL, 0000),
-(215, 902, NULL, 0000),
-(215, 903, NULL, 0000),
-(215, 1001, NULL, 0000),
-(215, 1002, NULL, 0000),
-(215, 1101, NULL, 0000),
-(215, 1102, NULL, 0000),
-(215, 1103, NULL, 0000),
-(216, 601, NULL, 0000),
-(216, 602, NULL, 0000),
-(216, 603, NULL, 0000),
-(216, 604, NULL, 0000),
-(216, 701, NULL, 0000),
-(216, 702, NULL, 0000),
-(216, 801, NULL, 0000),
-(216, 802, NULL, 0000),
-(216, 803, NULL, 0000),
-(216, 901, NULL, 0000),
-(216, 902, NULL, 0000),
-(216, 903, NULL, 0000),
-(216, 1001, NULL, 0000),
-(216, 1002, NULL, 0000),
-(216, 1101, NULL, 0000),
-(216, 1102, NULL, 0000),
-(216, 1103, NULL, 0000),
-(202, 801, NULL, 0000),
-(202, 802, NULL, 0000),
-(202, 803, NULL, 0000),
-(202, 901, NULL, 0000),
-(202, 902, NULL, 0000),
-(202, 903, NULL, 0000),
-(202, 1001, NULL, 0000),
-(202, 1002, NULL, 0000),
-(202, 1101, NULL, 0000),
-(202, 1102, NULL, 0000),
-(202, 1103, NULL, 0000),
-(201, 601, NULL, 0000),
-(201, 602, NULL, 0000),
-(201, 603, NULL, 0000),
-(201, 604, NULL, 0000),
-(201, 701, NULL, 0000),
-(201, 702, NULL, 0000),
-(201, 801, NULL, 0000),
-(201, 802, NULL, 0000),
-(201, 803, NULL, 0000),
-(201, 901, NULL, 0000),
-(201, 902, NULL, 0000),
-(201, 903, NULL, 0000),
-(200, 601, NULL, 0000),
-(200, 602, NULL, 0000),
-(200, 603, NULL, 0000),
-(200, 604, NULL, 0000),
-(200, 701, NULL, 0000),
-(200, 702, NULL, 0000),
-(200, 801, NULL, 0000),
-(200, 802, NULL, 0000),
-(200, 803, NULL, 0000),
-(200, 901, NULL, 0000),
-(200, 902, NULL, 0000),
-(200, 903, NULL, 0000),
-(200, 1001, NULL, 0000),
-(200, 1002, NULL, 0000),
-(200, 1101, NULL, 0000),
-(200, 1102, NULL, 0000),
-(200, 1103, NULL, 0000),
-(203, 601, NULL, 0000),
-(203, 602, NULL, 0000),
-(203, 603, NULL, 0000),
-(203, 604, NULL, 0000),
-(203, 701, NULL, 0000),
-(203, 702, NULL, 0000),
-(203, 801, NULL, 0000),
-(203, 802, NULL, 0000),
-(203, 803, NULL, 0000),
-(203, 901, NULL, 0000),
-(203, 902, NULL, 0000),
-(203, 903, NULL, 0000),
-(203, 1001, NULL, 0000),
-(203, 1002, NULL, 0000),
-(203, 1101, NULL, 0000),
-(203, 1102, NULL, 0000),
-(203, 1103, NULL, 0000),
-(204, 1001, NULL, 0000),
-(204, 1002, NULL, 0000),
-(204, 1101, NULL, 0000),
-(204, 1102, NULL, 0000),
-(204, 1103, NULL, 0000),
-(205, 1001, NULL, 0000),
-(205, 1002, NULL, 0000),
-(205, 1101, NULL, 0000),
-(205, 1102, NULL, 0000),
-(205, 1103, NULL, 0000),
-(206, 601, NULL, 0000),
-(206, 602, NULL, 0000),
-(206, 603, NULL, 0000),
-(206, 604, NULL, 0000),
-(206, 701, NULL, 0000),
-(206, 702, NULL, 0000),
-(206, 801, NULL, 0000),
-(206, 802, NULL, 0000),
-(206, 803, NULL, 0000),
-(206, 901, NULL, 0000),
-(206, 902, NULL, 0000),
-(206, 903, NULL, 0000),
-(206, 1001, NULL, 0000),
-(206, 1002, NULL, 0000),
-(206, 1101, NULL, 0000),
-(206, 1102, NULL, 0000),
-(206, 1103, NULL, 0000),
-(207, 601, NULL, 0000),
-(207, 602, NULL, 0000),
-(207, 603, NULL, 0000),
-(207, 604, NULL, 0000),
-(207, 701, NULL, 0000),
-(207, 702, NULL, 0000),
-(207, 801, NULL, 0000),
-(207, 802, NULL, 0000),
-(207, 803, NULL, 0000),
-(207, 901, NULL, 0000),
-(207, 902, NULL, 0000),
-(207, 903, NULL, 0000),
-(207, 1001, NULL, 0000),
-(207, 1002, NULL, 0000),
-(207, 1101, NULL, 0000),
-(207, 1102, NULL, 0000),
-(207, 1103, NULL, 0000),
-(208, 601, NULL, 0000),
-(208, 602, NULL, 0000),
-(208, 603, NULL, 0000),
-(208, 604, NULL, 0000),
-(208, 701, NULL, 0000),
-(208, 702, NULL, 0000),
-(208, 801, NULL, 0000),
-(208, 802, NULL, 0000),
-(208, 803, NULL, 0000),
-(208, 901, NULL, 0000),
-(208, 902, NULL, 0000),
-(208, 903, NULL, 0000),
-(208, 1001, NULL, 0000),
-(208, 1002, NULL, 0000),
-(208, 1101, NULL, 0000),
-(208, 1102, NULL, 0000),
-(208, 1103, NULL, 0000),
-(209, 601, NULL, 0000),
-(209, 602, NULL, 0000),
-(209, 603, NULL, 0000),
-(209, 604, NULL, 0000),
-(209, 701, NULL, 0000),
-(209, 702, NULL, 0000),
-(209, 801, NULL, 0000),
-(209, 802, NULL, 0000),
-(209, 803, NULL, 0000),
-(209, 901, NULL, 0000),
-(209, 902, NULL, 0000),
-(209, 903, NULL, 0000),
-(209, 1001, NULL, 0000),
-(209, 1002, NULL, 0000),
-(209, 1101, NULL, 0000),
-(209, 1102, NULL, 0000),
-(209, 1103, NULL, 0000),
-(210, 901, NULL, 0000),
-(210, 902, NULL, 0000),
-(210, 903, NULL, 0000),
-(210, 1001, NULL, 0000),
-(210, 1002, NULL, 0000),
-(210, 1101, NULL, 0000),
-(210, 1102, NULL, 0000),
-(210, 1103, NULL, 0000),
-(211, 601, NULL, 0000),
-(211, 602, NULL, 0000),
-(211, 603, NULL, 0000),
-(211, 604, NULL, 0000),
-(211, 701, NULL, 0000),
-(211, 702, NULL, 0000),
-(211, 801, NULL, 0000),
-(211, 802, NULL, 0000),
-(211, 803, NULL, 0000),
-(211, 901, NULL, 0000),
-(211, 902, NULL, 0000),
-(211, 903, NULL, 0000),
-(211, 1001, NULL, 0000),
-(211, 1002, NULL, 0000),
-(211, 1101, NULL, 0000),
-(211, 1102, NULL, 0000),
-(211, 1103, NULL, 0000),
-(212, 1001, NULL, 0000),
-(212, 1002, NULL, 0000),
-(212, 1101, NULL, 0000),
-(212, 1102, NULL, 0000),
-(212, 1103, NULL, 0000),
-(213, 601, NULL, 0000),
-(213, 602, NULL, 0000),
-(213, 603, NULL, 0000),
-(213, 604, NULL, 0000),
-(213, 701, NULL, 0000),
-(213, 702, NULL, 0000),
-(213, 801, NULL, 0000),
-(213, 802, NULL, 0000),
-(213, 803, NULL, 0000),
-(213, 901, NULL, 0000),
-(213, 902, NULL, 0000),
-(213, 903, NULL, 0000),
-(213, 1001, NULL, 0000),
-(213, 1002, NULL, 0000),
-(213, 1101, NULL, 0000),
-(213, 1102, NULL, 0000),
-(213, 1103, NULL, 0000),
-(214, 601, NULL, 0000),
-(214, 602, NULL, 0000),
-(214, 603, NULL, 0000),
-(214, 604, NULL, 0000),
-(214, 701, NULL, 0000),
-(214, 702, NULL, 0000),
-(214, 801, NULL, 0000),
-(214, 802, NULL, 0000),
-(214, 803, NULL, 0000),
-(214, 901, NULL, 0000),
-(214, 902, NULL, 0000),
-(214, 903, NULL, 0000),
-(214, 1001, NULL, 0000),
-(214, 1002, NULL, 0000),
-(214, 1101, NULL, 0000),
-(214, 1102, NULL, 0000),
-(214, 1103, NULL, 0000),
-(215, 601, NULL, 0000),
-(215, 602, NULL, 0000),
-(215, 603, NULL, 0000),
-(215, 604, NULL, 0000),
-(215, 701, NULL, 0000),
-(215, 702, NULL, 0000),
-(215, 801, NULL, 0000),
-(215, 802, NULL, 0000),
-(215, 803, NULL, 0000),
-(215, 901, NULL, 0000),
-(215, 902, NULL, 0000),
-(215, 903, NULL, 0000),
-(215, 1001, NULL, 0000),
-(215, 1002, NULL, 0000),
-(215, 1101, NULL, 0000),
-(215, 1102, NULL, 0000),
-(215, 1103, NULL, 0000),
-(216, 601, NULL, 0000),
-(216, 602, NULL, 0000),
-(216, 603, NULL, 0000),
-(216, 604, NULL, 0000),
-(216, 701, NULL, 0000),
-(216, 702, NULL, 0000),
-(216, 801, NULL, 0000),
-(216, 802, NULL, 0000),
-(216, 803, NULL, 0000),
-(216, 901, NULL, 0000),
-(216, 902, NULL, 0000),
-(216, 903, NULL, 0000),
-(216, 1001, NULL, 0000),
-(216, 1002, NULL, 0000),
-(216, 1101, NULL, 0000),
-(216, 1102, NULL, 0000),
-(216, 1103, NULL, 0000);
+INSERT INTO `clases` (`id_asignatura`, `id_curso`, `id_docente`, `año`) VALUES
+(206, 'n2', 204, 2022),
+(206, 'o1', 201, 2022),
+(206, 's1', 204, 2022),
+(206, 's3', 204, 2022),
+(206, 't2', 201, 2022),
+(214, 'n2', 205, 2022),
+(214, 'o1', 200, 2022),
+(214, 's1', 200, 2022),
+(214, 's3', 205, 2022),
+(214, 't2', 200, 2022),
+(217, 'n2', 201, 2022),
+(217, 'o1', 201, 2022),
+(217, 's1', 201, 2022),
+(217, 's3', 201, 2022),
+(217, 't2', 203, 2022);
 
 -- --------------------------------------------------------
 
@@ -574,31 +123,34 @@ INSERT INTO `clases` (`id_asignatura`, `numero_curso`, `docente`, `año`) VALUES
 --
 
 CREATE TABLE `curso` (
-  `numero_curso` int(4) NOT NULL
+  `id_curso` char(2) NOT NULL,
+  `curso` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `curso`
 --
 
-INSERT INTO `curso` (`numero_curso`) VALUES
-(601),
-(602),
-(603),
-(604),
-(701),
-(702),
-(801),
-(802),
-(803),
-(901),
-(902),
-(903),
-(1001),
-(1002),
-(1101),
-(1102),
-(1103);
+INSERT INTO `curso` (`id_curso`, `curso`) VALUES
+('s1', 601),
+('s2', 602),
+('s3', 603),
+('s4', 604),
+('t1', 701),
+('t2', 702),
+('t3', 703),
+('o1', 801),
+('o2', 802),
+('o3', 803),
+('n1', 901),
+('n2', 902),
+('n3', 903),
+('d1', 1001),
+('d2', 1002),
+('d3', 1003),
+('c1', 1101),
+('c2', 1102),
+('c3', 1103);
 
 -- --------------------------------------------------------
 
@@ -780,33 +332,21 @@ INSERT INTO `definitivas` (`id_notas`, `definitiva_B1`, `definitiva_B2`, `defini
 --
 
 CREATE TABLE `direccion` (
-  `id_docente` int(11) DEFAULT NULL,
-  `numero_curso` int(4) DEFAULT NULL,
-  `año` year(4) DEFAULT NULL
+  `id_docente` int(11) NOT NULL,
+  `id_curso` char(2) NOT NULL,
+  `año` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `direccion`
 --
 
-INSERT INTO `direccion` (`id_docente`, `numero_curso`, `año`) VALUES
-(200, 601, 2020),
-(201, 602, 2020),
-(202, 603, 2020),
-(203, 604, 2020),
-(204, 701, 2020),
-(205, 702, 2020),
-(206, 801, 2020),
-(207, 802, 2020),
-(208, 803, 2020),
-(209, 901, 2020),
-(210, 902, 2020),
-(211, 903, 2020),
-(212, 1001, 2020),
-(213, 1002, 2020),
-(214, 1101, 2020),
-(215, 1102, 2020),
-(216, 1103, 2020);
+INSERT INTO `direccion` (`id_docente`, `id_curso`, `año`) VALUES
+(200, 's1', 2022),
+(201, 's3', 2022),
+(203, 'o1', 2022),
+(204, 'n2', 2022),
+(205, 't2', 2022);
 
 -- --------------------------------------------------------
 
@@ -897,6 +437,14 @@ CREATE TABLE `estudiante` (
 --
 
 INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
+(3, 1),
+(4, 6),
+(5, 7),
+(6, 8),
+(7, 9),
+(8, 10),
+(9, 11),
+(10, 12),
 (1, 93),
 (2, 94);
 
@@ -907,8 +455,8 @@ INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
 --
 
 CREATE TABLE `integrantescurso` (
-  `n_matricula` int(15) DEFAULT NULL,
-  `numero_curso` int(4) DEFAULT NULL,
+  `id_estudiante` int(15) NOT NULL,
+  `id_curso` char(2) NOT NULL,
   `año` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -916,27 +464,17 @@ CREATE TABLE `integrantescurso` (
 -- Volcado de datos para la tabla `integrantescurso`
 --
 
-INSERT INTO `integrantescurso` (`n_matricula`, `numero_curso`, `año`) VALUES
-(1000, 603, 0000),
-(1001, 801, 0000),
-(1002, 603, 0000),
-(1003, 1002, 0000),
-(1004, 603, 0000),
-(1005, 802, 0000),
-(1006, 1002, 0000),
-(1007, 802, 0000),
-(1008, 801, 0000),
-(1009, 1002, 0000),
-(1000, 603, 0000),
-(1001, 801, 0000),
-(1002, 603, 0000),
-(1003, 1002, 0000),
-(1004, 603, 0000),
-(1005, 802, 0000),
-(1006, 1002, 0000),
-(1007, 802, 0000),
-(1008, 801, 0000),
-(1009, 1002, 0000);
+INSERT INTO `integrantescurso` (`id_estudiante`, `id_curso`, `año`) VALUES
+(1, 's1', 2022),
+(2, 's1', 2022),
+(3, 's3', 2022),
+(4, 's3', 2022),
+(5, 't2', 2022),
+(6, 't2', 2022),
+(7, 'o1', 2022),
+(8, 'o1', 2022),
+(9, 'n2', 2022),
+(10, 'n2', 2022);
 
 -- --------------------------------------------------------
 
@@ -1087,16 +625,17 @@ ALTER TABLE `asignatura`
 -- Indices de la tabla `clases`
 --
 ALTER TABLE `clases`
-  ADD UNIQUE KEY `UC_clase` (`id_asignatura`,`numero_curso`,`docente`),
-  ADD KEY `numero_curso` (`numero_curso`),
+  ADD UNIQUE KEY `UC_clases` (`id_asignatura`,`id_curso`,`id_docente`,`año`),
   ADD KEY `id_asignatura` (`id_asignatura`),
-  ADD KEY `docente` (`docente`);
+  ADD KEY `id_curso` (`id_curso`),
+  ADD KEY `id_docente` (`id_docente`);
 
 --
 -- Indices de la tabla `curso`
 --
 ALTER TABLE `curso`
-  ADD PRIMARY KEY (`numero_curso`);
+  ADD PRIMARY KEY (`id_curso`),
+  ADD UNIQUE KEY `curso` (`curso`);
 
 --
 -- Indices de la tabla `datos_adicionales`
@@ -1119,9 +658,9 @@ ALTER TABLE `definitivas`
 -- Indices de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  ADD UNIQUE KEY `UC_direccion` (`id_docente`,`numero_curso`,`año`),
-  ADD KEY `id_asignatura` (`numero_curso`),
-  ADD KEY `id_docente` (`id_docente`);
+  ADD UNIQUE KEY `UC_direccion` (`id_docente`,`id_curso`,`año`),
+  ADD KEY `id_docente` (`id_docente`),
+  ADD KEY `id_curso` (`id_curso`);
 
 --
 -- Indices de la tabla `docente`
@@ -1143,14 +682,16 @@ ALTER TABLE `documento`
 --
 ALTER TABLE `estudiante`
   ADD PRIMARY KEY (`id_estudiante`),
+  ADD UNIQUE KEY `UC_estudiante` (`id_estudiante`,`id_Usuario`),
   ADD KEY `id_Usuario` (`id_Usuario`);
 
 --
 -- Indices de la tabla `integrantescurso`
 --
 ALTER TABLE `integrantescurso`
-  ADD KEY `n_matricula` (`n_matricula`),
-  ADD KEY `numero_curso` (`numero_curso`);
+  ADD UNIQUE KEY `UC_integrantescurso` (`id_estudiante`,`id_curso`,`año`),
+  ADD KEY `id_estudiante` (`id_estudiante`),
+  ADD KEY `id_curso` (`id_curso`);
 
 --
 -- Indices de la tabla `rol`
@@ -1206,7 +747,7 @@ ALTER TABLE `docente`
 -- AUTO_INCREMENT de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -1228,9 +769,9 @@ ALTER TABLE `administrador`
 -- Filtros para la tabla `clases`
 --
 ALTER TABLE `clases`
-  ADD CONSTRAINT `clases_ibfk_1` FOREIGN KEY (`numero_curso`) REFERENCES `curso` (`numero_curso`),
-  ADD CONSTRAINT `clases_ibfk_2` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
-  ADD CONSTRAINT `clases_ibfk_3` FOREIGN KEY (`docente`) REFERENCES `docente` (`id_docente`);
+  ADD CONSTRAINT `clases_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
+  ADD CONSTRAINT `clases_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
+  ADD CONSTRAINT `clases_ibfk_3` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`);
 
 --
 -- Filtros para la tabla `definitivas`
@@ -1244,8 +785,8 @@ ALTER TABLE `definitivas`
 -- Filtros para la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
-  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`numero_curso`) REFERENCES `curso` (`numero_curso`);
+  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
+  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`);
 
 --
 -- Filtros para la tabla `docente`
@@ -1269,7 +810,8 @@ ALTER TABLE `estudiante`
 -- Filtros para la tabla `integrantescurso`
 --
 ALTER TABLE `integrantescurso`
-  ADD CONSTRAINT `integrantescurso_ibfk_6` FOREIGN KEY (`numero_curso`) REFERENCES `curso` (`numero_curso`);
+  ADD CONSTRAINT `integrantescurso_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id_estudiante`),
+  ADD CONSTRAINT `integrantescurso_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
 
 --
 -- Filtros para la tabla `usuario`
