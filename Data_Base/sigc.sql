@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2022 a las 01:50:23
+-- Tiempo de generación: 08-03-2022 a las 03:29:31
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -261,69 +261,49 @@ INSERT INTO `datos_adicionales` (`id_datos_adicionales`, `correo`, `Telefono`, `
 --
 
 CREATE TABLE `definitivas` (
-  `id_notas` int(15) NOT NULL,
   `definitiva_B1` int(3) DEFAULT NULL,
   `definitiva_B2` int(3) DEFAULT NULL,
   `definitiva_B3` int(3) DEFAULT NULL,
   `definitiva_B4` int(3) DEFAULT NULL,
   `id_asignatura` int(4) DEFAULT NULL,
-  `n_matricula` int(15) DEFAULT NULL
+  `estudiante` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `definitivas`
 --
 
-INSERT INTO `definitivas` (`id_notas`, `definitiva_B1`, `definitiva_B2`, `definitiva_B3`, `definitiva_B4`, `id_asignatura`, `n_matricula`) VALUES
-(2010, 72, 85, NULL, NULL, 200, 1000),
-(2011, 78, 80, NULL, NULL, 201, 1000),
-(2012, 80, 84, NULL, NULL, 203, 1000),
-(2013, 77, 77, NULL, NULL, 206, 1000),
-(2014, 75, 67, NULL, NULL, 200, 1001),
-(2015, 66, 87, NULL, NULL, 201, 1001),
-(2016, 90, 92, NULL, NULL, 202, 1001),
-(2017, 93, 93, NULL, NULL, 203, 1001),
-(2018, 81, 75, NULL, NULL, 206, 1001),
-(2019, 30, 100, NULL, NULL, 200, 1002),
-(2020, 79, 80, NULL, NULL, 201, 1002),
-(2021, 83, 82, NULL, NULL, 203, 1002),
-(2022, 84, 85, NULL, NULL, 206, 1002),
-(2023, 86, 87, NULL, NULL, 200, 1002),
-(2024, 78, 78, NULL, NULL, 200, 1003),
-(2025, 92, 93, NULL, NULL, 202, 1003),
-(2026, 100, 40, NULL, NULL, 203, 1003),
-(2027, 100, 63, NULL, NULL, 204, 1003),
-(2028, 98, 64, NULL, NULL, 205, 1003),
-(2029, 98, 65, NULL, NULL, 206, 1003),
-(2030, 57, 87, NULL, NULL, 200, 1004),
-(2031, 67, 87, NULL, NULL, 201, 1004),
-(2032, 90, 90, NULL, NULL, 203, 1004),
-(2033, 91, 90, NULL, NULL, 206, 1004),
-(2034, 92, 93, NULL, NULL, 200, 1004),
-(2035, 95, 94, NULL, NULL, 201, 1005),
-(2036, 96, 97, NULL, NULL, 202, 1005),
-(2037, 99, 98, NULL, NULL, 203, 1005),
-(2038, 100, 40, NULL, NULL, 206, 1005),
-(2039, 56, 78, NULL, NULL, 200, 1006),
-(2040, 88, 87, NULL, NULL, 202, 1006),
-(2041, 86, 86, NULL, NULL, 203, 1006),
-(2042, 95, 30, NULL, NULL, 204, 1006),
-(2043, 100, 33, NULL, NULL, 205, 1006),
-(2044, 98, 76, NULL, NULL, 206, 1006),
-(2045, 78, 92, NULL, NULL, 201, 1007),
-(2046, 78, 78, NULL, NULL, 202, 1007),
-(2047, 90, 93, NULL, NULL, 203, 1007),
-(2048, 87, 94, NULL, NULL, 206, 1007),
-(2049, 82, 83, NULL, NULL, 201, 1008),
-(2050, 99, 88, NULL, NULL, 202, 1008),
-(2051, 100, 20, NULL, NULL, 203, 1008),
-(2052, 87, 98, NULL, NULL, 206, 1008),
-(2053, 67, 78, NULL, NULL, 200, 1009),
-(2054, 76, 76, NULL, NULL, 202, 1009),
-(2055, 86, 85, NULL, NULL, 203, 1009),
-(2056, 76, 59, NULL, NULL, 204, 1009),
-(2057, 87, 90, NULL, NULL, 205, 1009),
-(2058, 76, 100, NULL, NULL, 206, 1009);
+INSERT INTO `definitivas` (`definitiva_B1`, `definitiva_B2`, `definitiva_B3`, `definitiva_B4`, `id_asignatura`, `estudiante`) VALUES
+(40, 43, 46, 44, 206, 1),
+(45, 39, 46, 48, 214, 1),
+(44, 37, 40, 41, 217, 1),
+(39, 42, 40, 41, 206, 2),
+(45, 48, 47, 50, 214, 2),
+(43, 44, 46, 41, 217, 2),
+(40, 34, 38, 36, 206, 3),
+(38, 40, 43, 37, 214, 3),
+(44, 20, 35, 32, 217, 3),
+(50, 45, 39, 46, 206, 4),
+(43, 37, 40, 41, 214, 4),
+(40, 34, 38, 40, 217, 4),
+(44, 41, 44, 40, 206, 5),
+(35, 32, 39, 44, 214, 5),
+(40, 43, 24, 39, 217, 5),
+(35, 30, 32, 40, 206, 6),
+(38, 34, 43, 20, 214, 6),
+(32, 17, 36, 40, 217, 6),
+(40, 43, 25, 46, 206, 7),
+(44, 43, 41, 38, 214, 7),
+(40, 44, 44, 45, 217, 7),
+(41, 41, 41, 41, 206, 8),
+(32, 43, 38, 44, 214, 8),
+(38, 40, 41, 37, 217, 8),
+(43, 40, 48, 47, 206, 9),
+(48, 48, 50, 49, 214, 9),
+(40, 48, 45, 47, 217, 9),
+(48, 40, 37, 40, 206, 10),
+(43, 44, 47, 43, 214, 10),
+(42, 45, 23, 40, 217, 10);
 
 -- --------------------------------------------------------
 
@@ -455,6 +435,7 @@ INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
 --
 
 CREATE TABLE `integrantescurso` (
+  `id_integrantecurso` int(10) NOT NULL,
   `id_estudiante` int(15) NOT NULL,
   `id_curso` char(2) NOT NULL,
   `año` year(4) NOT NULL
@@ -464,17 +445,17 @@ CREATE TABLE `integrantescurso` (
 -- Volcado de datos para la tabla `integrantescurso`
 --
 
-INSERT INTO `integrantescurso` (`id_estudiante`, `id_curso`, `año`) VALUES
-(1, 's1', 2022),
-(2, 's1', 2022),
-(3, 's3', 2022),
-(4, 's3', 2022),
-(5, 't2', 2022),
-(6, 't2', 2022),
-(7, 'o1', 2022),
-(8, 'o1', 2022),
-(9, 'n2', 2022),
-(10, 'n2', 2022);
+INSERT INTO `integrantescurso` (`id_integrantecurso`, `id_estudiante`, `id_curso`, `año`) VALUES
+(1, 1, 's1', 2022),
+(2, 2, 's1', 2022),
+(3, 3, 's3', 2022),
+(4, 4, 's3', 2022),
+(5, 5, 't2', 2022),
+(6, 6, 't2', 2022),
+(7, 7, 'o1', 2022),
+(8, 8, 'o1', 2022),
+(9, 9, 'n2', 2022),
+(10, 10, 'n2', 2022);
 
 -- --------------------------------------------------------
 
@@ -650,9 +631,9 @@ ALTER TABLE `datos_adicionales`
 -- Indices de la tabla `definitivas`
 --
 ALTER TABLE `definitivas`
-  ADD PRIMARY KEY (`id_notas`),
-  ADD KEY `n_matricula` (`n_matricula`),
-  ADD KEY `id_asignatura` (`id_asignatura`);
+  ADD UNIQUE KEY `UC_def_estudiante` (`id_asignatura`,`estudiante`),
+  ADD KEY `id_asignatura` (`id_asignatura`),
+  ADD KEY `estudiante` (`estudiante`);
 
 --
 -- Indices de la tabla `direccion`
@@ -689,8 +670,8 @@ ALTER TABLE `estudiante`
 -- Indices de la tabla `integrantescurso`
 --
 ALTER TABLE `integrantescurso`
+  ADD PRIMARY KEY (`id_integrantecurso`),
   ADD UNIQUE KEY `UC_integrantescurso` (`id_estudiante`,`id_curso`,`año`),
-  ADD KEY `id_estudiante` (`id_estudiante`),
   ADD KEY `id_curso` (`id_curso`);
 
 --
@@ -732,12 +713,6 @@ ALTER TABLE `datos_adicionales`
   MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
--- AUTO_INCREMENT de la tabla `definitivas`
---
-ALTER TABLE `definitivas`
-  MODIFY `id_notas` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2059;
-
---
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
@@ -748,6 +723,12 @@ ALTER TABLE `docente`
 --
 ALTER TABLE `estudiante`
   MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `integrantescurso`
+--
+ALTER TABLE `integrantescurso`
+  MODIFY `id_integrantecurso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -779,7 +760,8 @@ ALTER TABLE `clases`
 ALTER TABLE `definitivas`
   ADD CONSTRAINT `definitivas_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
   ADD CONSTRAINT `definitivas_ibfk_2` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
-  ADD CONSTRAINT `definitivas_ibfk_5` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`);
+  ADD CONSTRAINT `definitivas_ibfk_5` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
+  ADD CONSTRAINT `definitivas_ibfk_6` FOREIGN KEY (`estudiante`) REFERENCES `integrantescurso` (`id_integrantecurso`);
 
 --
 -- Filtros para la tabla `direccion`
