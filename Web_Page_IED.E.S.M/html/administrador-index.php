@@ -34,9 +34,7 @@
                 <a href="./verDatosUsuario.php">
                     <li><strong>Modificas</strong></li>
                 </a>
-                <a href="#">
-                    <li><strong>Desabilitalas</strong></li>
-                </a>
+                
                 <a href="#">
                     <li><strong>Habilita el Sistema </strong></li>
                 </a>
