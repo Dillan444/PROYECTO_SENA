@@ -23,17 +23,14 @@ function cargarTabla($conx, $usuario){
             echo "<td data-titulo = 'Curso'>" . $fila['curso'] . "</td>";
             echo "<td data-titulo = 'Grado'> ". buscarGrado($fila['curso']) . "</td>";
             echo "<td data_titulo = 'Cantidad'> " . $fila['nombre_asignatura'] . "</td>"; ?>
-
-            <!-- // echo"<td data-titulo = 'Calificar'> 
-            //         <a href=\"../html/calificar.php?curso=$fila[curso]&materia=$fila[nombre_asignatura]\"><i class=\"far fa-edit\"></i></a>
-            //     </td>";
-                
-            // echo"<td data-titulo = 'Revisar'> 
-            //         <a href='#?curso=$fila[curso]&materia=$fila[nombre_asignatura]&user=$usuario'><i class=\"far fa-eye\"></i></a> 
-            //     </td>"; -->
             
             <td data-titulo = 'Calificar'> 
-                <a href="../html/calificar.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>"><i class="far fa-edit"></i></a>
+                <a href="../html/calificar.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
+                    <button type="button" ><i class="far fa-edit"></i></button>
+                </a>
+                <a href="../html/registros.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
+                    <button type="button"><i class="far fa-eye"></i></button>
+                </a> 
             </td>   
                 
        <?php  echo "</tr>";
@@ -115,6 +112,56 @@ function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
     mysqli_close($conx);
 }
 
+function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
+    $sqlDocente = "SELECT dc.id_docente FROM usuario u INNER JOIN docente dc ON dc.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$docente'";
+    $docente = $conx -> query($sqlDocente) -> fetch_array();
+
+    $consulta = "SELECT *
+        FROM clases cl INNER JOIN curso c ON cl.id_curso = c.id_curso 
+        AND c.curso = $curso AND cl.id_asignatura = $materia AND cl.id_docente = '$docente[id_docente]'
+        INNER JOIN integrantescurso i ON i.id_curso = c.id_curso AND i.año = now()
+        INNER JOIN definitivas d ON d.estudiante = i.id_integrantecurso AND d.id_asignatura = $materia
+        INNER JOIN estudiante e ON i.id_estudiante = e.id_estudiante
+        INNER JOIN usuario u ON u.id_Usuario = e.id_Usuario";
+
+    $notas = $conx -> query($consulta);
+    $indice = 1;
+    $acumulado = array(0, 0, 0, 0);
+
+    while ($fila = $notas -> fetch_array()) {?>
+        <tr>
+            <td> <?php echo $indice; ?> </td>
+            <td> <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
+            <td> <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
+            <td> <?php echo $fila['definitiva_B1'] ?> </td>
+            <td> <?php echo $fila['definitiva_B2'] ?> </td>
+            <td> <?php echo $fila['definitiva_B3'] ?> </td>
+            <td> <?php echo $fila['definitiva_B4'] ?> </td>
+            <td> <?php 
+                $promedio = 0;
+                for ($i=1; $i <= 4; $i++) { 
+                    $promedio += $fila['definitiva_B' . $i];
+                    $acumulado[$i - 1] += $fila['definitiva_B' . $i];
+                    $acumulado[5] = $indice;
+                }
+
+                echo $promedio / 4;
+            ?> </td>
+        </tr>
+
+    <?php $indice++; }?>
+        <tr>
+            <td>Total</td>  
+            <td>Promedio General</td>  
+            <td></td>  
+            <?php foreach ($acumulado as $periodo) { ?>
+                    <td><?php echo $periodo / $acumulado[5]; ?></td>
+            <?php }
+            ?>
+        </tr>
+    <?php 
+}
+
     /*BUSCAR EL NOMBRE DEL QUE INICIO SESIÓN
         1.Se traen tres parametros para identificar quien fue el que entro en su cuenta
         2.Se usan esos datos para realizar una consulta especifica del usuario
@@ -144,29 +191,35 @@ function buscarNombreUsuario($usuario, $conx, $rol){
         
         *La sintaxis del código es la misma que en las anteriores funciones
      */
-function cargarMisNotas($conx, $usuario){
-    $consulta = "SELECT a.nombre_asignatura, df.definitiva_B1, df.definitiva_B2, df.definitiva_B3, df.definitiva_B4 
-    FROM estudiante e, usuario u, asignatura a, definitivas df
-    WHERE u.id_usuario = e.id_usuario AND e.n_matricula = df.n_matricula AND a.id_asignatura = df.id_asignatura
-    AND e.n_matricula = $usuario";
-    $resultado = mysqli_query($conx, $consulta);
-    $i = 1;
+function cargarMisNotas($conx, $usuario){ 
 
-    while ($fila = mysqli_fetch_array($resultado)){
-            
-        echo "<tr>";
-            echo "<td>" . $i . "</td>";
-            echo "<td>" . $fila['nombre_asignatura']. "</td>";
-            echo "<td>" . $fila['definitiva_B1'] . "</td>";
-            echo "<td>" . $fila['definitiva_B2'] . "</td>";
-            echo "<td>" . $fila['definitiva_B3'] . "</td>";
-            echo "<td>" . $fila['definitiva_B4'] . "</td>";
-        echo "</tr>";   
-            
-        $i++;
-                
+    $consulta = "SELECT c.curso, a.nombre_asignatura, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B1, d.definitiva_B2, d.definitiva_B3, d.definitiva_B4, i.año 
+        FROM asignatura a INNER JOIN definitivas d ON a.id_asignatura = d.id_asignatura 
+        INNER JOIN integrantescurso i ON d.estudiante = i.id_integrantecurso 
+        INNER JOIN curso c ON i.id_curso = c.id_curso 
+        INNER JOIN estudiante e ON e.id_estudiante = i.id_estudiante
+        INNER JOIN usuario u ON u.id_Usuario = e.id_Usuario AND u.nombre_perfil = '$usuario'";
 
-    }    
+    $resultado = $conx -> query($consulta);
+
+    while ($fila = mysqli_fetch_array($resultado)){?>
+        
+        <tr>
+            <td><?php echo $fila['nombre_asignatura']; ?></td>
+            <td><?php echo $fila['definitiva_B1']; ?></td>
+            <td><?php echo $fila['definitiva_B2']; ?></td>
+            <td><?php echo $fila['definitiva_B3']; ?></td>
+            <td><?php echo $fila['definitiva_B4']; ?></td>
+            <td><?php 
+                $promedio = 0;
+                for ($i=1; $i <= 4; $i++) { 
+                    $promedio += $fila['definitiva_B' . $i];
+                }
+                echo $promedio / 4;
+            ?></td>
+        </tr>
+
+    <?php }    
     mysqli_close($conx);
 }    
 

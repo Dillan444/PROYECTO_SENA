@@ -32,13 +32,12 @@
         <center>
         <table border="7">
                 <thead>
-                    <th>Indice    </th>
                     <th>Asignatura</th>
                     <th>Bimestre 1</th>
                     <th>Bimestre 2</th>
                     <th>Bimestre 3</th>
                     <th>Bimestre 4</th>
-                    <!-- <th>Registros</th> -->
+                    <th>Promedio</th>
                 </thead>
                 <tbody>
                     <?php cargarMisNotas($conx, $usuario);?>
