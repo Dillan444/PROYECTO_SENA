@@ -34,8 +34,7 @@
                     <th>N_Curso</th>
                     <th>GradoGrado</th>
                     <th>Materia</th>
-                    <th>Calificar</th>
-                    <th>Registros</th>
+                    <th>Acción</th>
                 </thead>
                 <tbody>
                     <?php cargarTabla($conx, $usuario);?>

@@ -58,7 +58,7 @@ function modificarDatosUsuario($d, $conx, $u){
             s_apellido =  '$d[s_apellido]',
             id_rol =  '$d[id_rol]',
             edad =  '$d[edad]'
-    WHERE id_datos_adicionales = '$result[0]';";
+            WHERE id_datos_adicionales = '$result[0]';";
 
         if(!$conx -> query($sqlUpdateU)){
 
@@ -76,4 +76,15 @@ function modificarDatosUsuario($d, $conx, $u){
 
     
 
+}
+
+function asignarCalificacionesEstudiantes($conx, $datos){
+
+    
+    $sqlUpdate = "UPDATE definitivas SET definitiva_B3 = $datos[nota] WHERE estudiante = $datos[estudiante] AND id_asignatura = $datos[materia]";
+        
+    if ($conx -> query($sqlUpdate)) {
+    }else{
+        echo "error";
+    }
 }

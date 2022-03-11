@@ -8,35 +8,35 @@
         3.Un bucle itera por cada fila para mostrarlos por cada fila de la tabla de la pagina 
         4.Se accede a cada dato con notación de laves []    */
 function cargarTabla($conx, $usuario){
-    // $consulta = "SELECT c.numero_curso, COUNT(e.n_matricula) AS cantidad
-    // FROM  estudiante e, curso c, integrantesCurso i
-    // WHERE e.n_matricula = i.n_matricula AND c.numero_curso = i.numero_curso
-    // GROUP BY numero_curso";
 
-    $consulta = "SELECT d.id_docente, u.p_nombre, u.p_apellido, c.numero_curso, a.nombre_asignatura
-    FROM usuario u, docente d, dicta dt, asignatura a, curso c, clases cl
-    WHERE u.id_Usuario = d.id_Usuario AND d.id_docente = dt.id_docente AND cl.id_asignatura = a.id_asignatura
-    AND cl.numero_curso = c.numero_curso
-    AND a.id_asignatura = dt.id_asignatura  AND a.nombre_asignatura = 'sociales' /*AND c.numero_curso = dt.numero_curso*/
-    AND d.id_docente = $usuario
-    ORDER BY c.numero_curso";
-    $resultado = mysqli_query($conx, $consulta);
+    $consulta = "SELECT c.curso, a.id_asignatura, a.nombre_asignatura, cl.año 
+        FROM curso c INNER JOIN clases cl ON c.id_curso = cl.id_curso 
+        INNER JOIN asignatura a ON a.id_asignatura = cl.id_asignatura 
+        INNER JOIN docente d ON d.id_docente = cl.id_docente 
+        INNER JOIN usuario u ON u.id_Usuario = d.id_Usuario AND u.nombre_perfil = '$usuario' 
+        ORDER BY c.curso";
 
-    while ($fila = mysqli_fetch_array($resultado)) {
+    $resultado = $conx -> query($consulta);
+
+    while ($fila = $resultado -> fetch_array()) {
         echo "<tr>";
-            echo "<td data-titulo = 'Curso'>" . $fila['numero_curso'] . "</td>";
-            echo "<td data-titulo = 'Grado'> ". buscarGrado($fila['numero_curso']) . "</td>";
-            echo "<td data_titulo = 'Cantidad'> " . $fila['nombre_asignatura'] . "</td>";
+            echo "<td data-titulo = 'Curso'>" . $fila['curso'] . "</td>";
+            echo "<td data-titulo = 'Grado'> ". buscarGrado($fila['curso']) . "</td>";
+            echo "<td data_titulo = 'Cantidad'> " . $fila['nombre_asignatura'] . "</td>"; ?>
 
-            echo"<td data-titulo = 'Calificar'> 
-                    <a href=\"../html/calificar.php?curso=$fila[numero_curso]&materia=$fila[nombre_asignatura]&user=$usuario\"><i class=\"far fa-edit\"></i></a>
-                </td>";
+            <!-- // echo"<td data-titulo = 'Calificar'> 
+            //         <a href=\"../html/calificar.php?curso=$fila[curso]&materia=$fila[nombre_asignatura]\"><i class=\"far fa-edit\"></i></a>
+            //     </td>";
                 
-            echo"<td data-titulo = 'Revisar'> 
-                    <a href='#?curso=$fila[numero_curso]&materia=$fila[nombre_asignatura]&user=$usuario'><i class=\"far fa-eye\"></i></a> 
-                </td>";
+            // echo"<td data-titulo = 'Revisar'> 
+            //         <a href='#?curso=$fila[curso]&materia=$fila[nombre_asignatura]&user=$usuario'><i class=\"far fa-eye\"></i></a> 
+            //     </td>"; -->
+            
+            <td data-titulo = 'Calificar'> 
+                <a href="../html/calificar.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>"><i class="far fa-edit"></i></a>
+            </td>   
                 
-        echo "</tr>";
+       <?php  echo "</tr>";
     }
     mysqli_close($conx);
 }
@@ -72,7 +72,7 @@ function buscarGrado($grado){
             
 }
 
-    /*ESTUDIANTES DEL DOCENTE x MATERIA & CURSO
+    /*ESTUDIANTES DEL DOCENTE x MATERIA & CURSO 
         Una vez que el docente escoja que curso y materia va a calificar se mostrar un listado de los integrantes
             para hacer su respectiva calficación
         1.Recibe unos datos por parametro
@@ -81,27 +81,35 @@ function buscarGrado($grado){
         4.Con un bucle se muestran los datos de una fila por cada iteración
         5.Se usa una variable para enumerar el indice
      */
-function cargarLista($conx, $materia, $user, $curso){
-    $consulta = "SELECT *
-    FROM estudiante e, usuario u, definitivas df, asignatura a, integrantescurso i, curso c, docente d, dicta dt
-    WHERE e.id_Usuario = u.id_Usuario AND e.n_matricula = df.n_matricula AND d.id_docente = dt.id_docente AND dt.id_asignatura = a.id_asignatura
-    AND dt.numero_curso = c.numero_curso 
-    AND d.id_docente = $user AND a.nombre_asignatura = '$materia' AND c.numero_curso = $curso
-    AND a.id_asignatura = df.id_asignatura AND c.numero_curso = i.numero_curso AND i.n_matricula = e.n_matricula";
-    $notas = mysqli_query($conx, $consulta);
-    $indide = 1;
+function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
+    $sqlDocente = "SELECT dc.id_docente FROM usuario u INNER JOIN docente dc ON dc.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$docente'";
+    $docente = $conx -> query($sqlDocente) -> fetch_array();
 
-    while ($fila = mysqli_fetch_array($notas)) {
-        echo "<tr>";
-            echo "<td>". $indide ."</td>";
-            echo "<td>". $fila['p_nombre']." ". $fila['s_nombre'] ."</td>";
-            echo "<td>". $fila['p_apellido']. " ".$fila['s_apellido'] ."</td>";
-            // echo "<td>". $fila['definitiva_B1'] ."</td>";
-            // echo "<td>". $fila['definitiva_B2'] ."</td>";
-            echo "<td> <input type=\"number\" name=\"$fila[nombre_perfil]\"/> </td>";
-            // echo "<td>". $fila['definitiva_B4'] ."</td>";
-        echo "</tr>";
-        $indide++;
+    $consulta = "SELECT u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B3, i.id_integrantecurso, d.definitiva_B3
+        FROM clases cl INNER JOIN curso c ON cl.id_curso = c.id_curso 
+        AND c.curso = $curso AND cl.id_asignatura = $materia AND cl.id_docente = '$docente[id_docente]'
+        INNER JOIN integrantescurso i ON i.id_curso = c.id_curso AND i.año = now()
+        INNER JOIN definitivas d ON d.estudiante = i.id_integrantecurso AND d.id_asignatura = $materia
+        INNER JOIN estudiante e ON i.id_estudiante = e.id_estudiante
+        INNER JOIN usuario u ON u.id_Usuario = e.id_Usuario";
+
+    $notas = mysqli_query($conx, $consulta);
+    $indice = 1;
+
+    while ($fila = $notas -> fetch_array()) {?>
+        <tr>
+            <td> <?php echo $indice; ?> </td>
+            <td> <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
+            <td> <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
+            <td> <form action="" method="post">
+                <input type="hidden" name="estudiante" value="<?php echo $fila['id_integrantecurso']; ?>">
+                <input type="hidden" name="materia" value="<?php echo $materia; ?>">
+                <input type="number" name="nota" id="nota" value="<?php echo $fila['definitiva_B3']?>">
+                <input type="submit" name="accion" value="Cargar">
+            </form> </td>
+        </tr>
+
+        <?php $indice++;
     }
 
     mysqli_close($conx);
