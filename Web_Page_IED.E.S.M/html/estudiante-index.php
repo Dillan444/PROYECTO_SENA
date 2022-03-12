@@ -43,6 +43,7 @@
                     <?php cargarMisNotas($conx, $usuario);?>
                 </tbody>
             </table>
+            <a href="./generarPDF.php" target="black"><button>Generar Boletin</button></a>
         </center>
     </main>
 

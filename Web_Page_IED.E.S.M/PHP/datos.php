@@ -195,7 +195,7 @@ function cargarMisNotas($conx, $usuario){
 
     $consulta = "SELECT c.curso, a.nombre_asignatura, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B1, d.definitiva_B2, d.definitiva_B3, d.definitiva_B4, i.año 
         FROM asignatura a INNER JOIN definitivas d ON a.id_asignatura = d.id_asignatura 
-        INNER JOIN integrantescurso i ON d.estudiante = i.id_integrantecurso 
+        INNER JOIN integrantescurso i ON d.estudiante = i.id_integrantecurso AND i.año = now() 
         INNER JOIN curso c ON i.id_curso = c.id_curso 
         INNER JOIN estudiante e ON e.id_estudiante = i.id_estudiante
         INNER JOIN usuario u ON u.id_Usuario = e.id_Usuario AND u.nombre_perfil = '$usuario'";
