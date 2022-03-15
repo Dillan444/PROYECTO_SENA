@@ -19,12 +19,12 @@
 }
 
 .h-user--info p{
-  font-size: 1.2rem;
-  color: var(--blanco-grisaceso);
+  font-size: 1.5rem;
+  color: black;
 }
 
 .h-user--info p:hover{
-    color: gray;
+    color: rgb(218, 42, 42);
 }
 
 .h-user .menu--icon{
