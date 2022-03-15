@@ -229,18 +229,50 @@ function mostrarDatosUsuario($conx){
         UNION SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo FROM usuario u right JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
     ";
 
+    
+
     if ($result = $conx -> query($sql)) {
         while ($fila = $result -> fetch_row()) {
             echo "<tr>";
                 foreach ($fila as $value) {
                     echo "<td>$value</td>";
-                }
-                echo "<td>
-                    <a href='modificarDatosUsuario.php?user=$fila[2]'>Modificar</a>
-                </td>";                             
-                echo "<td> <input type='button' name='estado' value='Deshabilitar' id='on-off' 
-                /> </td>";                             
-            echo"</tr>";
+                } ?>
+
+                <td>
+                    <a href="../html/modificarDatosUsuario.php?user=<?php echo $fila[2];?>"><button>Modificar</button></a>
+                </td>
+                
+                <td> <!-- Activación de Desactivación de cuentas de usuario -->
+                    <?php $estado = "SELECT estado FROM usuario WHERE nombre_perfil = '$fila[2]'"; 
+                    $rE = $conx -> query($estado) -> fetch_array();
+                    $estado = ($rE['estado'] == 0) ? 'Activar' : 'Desactivar' ;
+                    ?>
+                    <form action="" method="post">
+                        <input type="hidden" value="<?php echo $fila[2] ?>" name="user">
+                        <input type="hidden" value="<?php echo $rE['estado']; ?>" name="estadoActual">
+                        <input type="submit" value="<?php echo $estado; ?>" name="active" class="boton">
+                    </form>
+
+                    <?php 
+                        if (isset($_POST['active'])) {
+
+                            $u = $_POST['user'];
+                            $eAc = $_POST['estadoActual'];
+
+                            $newE = ($eAc) ? 0 : 1 ;
+                                                        
+                            $updateE = "UPDATE usuario SET estado = $newE WHERE nombre_perfil = '$u'";
+
+                            if (!$conx -> query($updateE)) {
+                                echo "No cambiado";
+                            }
+
+                            header("Location: verDatosUsuario.php");
+                        }
+                    ?>
+                </td>
+
+            <?php echo"</tr>";
         }
     }
 }

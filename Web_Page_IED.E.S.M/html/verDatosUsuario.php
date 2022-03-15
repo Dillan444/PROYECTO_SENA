@@ -42,8 +42,8 @@
                 <td>Correo</td>
                 <td>Teléfono</td>
                 <td>Sexo</td>
-                <td>Acción</td>
-                <td>Deshabilitar</td>
+                <td colspan="2" >Acción</td>
+                
             </tr>
         </thead>
         <tbody>
