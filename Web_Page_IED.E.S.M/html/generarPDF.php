@@ -18,7 +18,10 @@
         INNER JOIN usuario u ON u.id_Usuario = e.id_Usuario AND u.nombre_perfil = '$usuario'";
 
     $resultado = $conx -> query($consulta);
-    $datos = $conx -> query($consulta) -> fetch_array();
+    if(!$datos = $conx -> query($consulta) -> fetch_array()){
+        $datos['curso'] = "No Asignado";
+        $datos['año'] = "-/-/-";
+    }
 
 ob_start();
 ?>
@@ -56,7 +59,7 @@ ob_start();
             </td>
             <td>
                 <span>Grupo:</span>
-                <p><?php echo $datos['curso']?></p>
+                <p><?php echo $datos['curso']; ?></p>
             </td>
         </tr>
         <tr>
@@ -67,7 +70,7 @@ ob_start();
             </td>
             <td>
                 <span>Año:</span>
-                <p><?php echo $datos['año']?></p>
+                <p><?php echo $datos['año'];?></p>
             </td>
         </tr>
         
