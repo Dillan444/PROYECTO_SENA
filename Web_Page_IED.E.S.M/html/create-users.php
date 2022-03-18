@@ -91,6 +91,26 @@
                         <option value="E">Estudiante</option>
                     </select>
                 </label>
+
+                <label for="cursos">
+                    <span>Curso del Estudiante</span>
+                    <select name="curso_E" id="cursos">
+                        <?php 
+                            $sqlCursos = "SELECT curso FROM curso";
+
+                            if($cursos = $conx -> query($sqlCursos)){
+
+                                while ($curso = $cursos -> fetch_array()) {?>
+                                  
+                                 <option value="<?php echo $curso['curso'];?>">
+                                    <?php echo $curso['curso'];?>
+                                 </option>
+
+                                <?php }
+                            }
+                        ?>
+                    </select>
+                </label>
                 
             </fieldset>
             </div>

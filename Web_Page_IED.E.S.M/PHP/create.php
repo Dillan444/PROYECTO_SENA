@@ -15,7 +15,8 @@ if (isset($_POST['crear'])) {
         // Datos de la tabla Datos Adicionales
         "number" => $_POST['telefono'],
         "email" => $_POST['correo'],
-        "sex" => $_POST['sexo']
+        "sex" => $_POST['sexo'],
+        "curso_E" => $_POST['curso_E']
     );
 
     crearUsuarios($conx, $datosRegistro);
@@ -39,10 +40,21 @@ function crearUsuarios($conx, $dR){
         $password = generarPassword();
 
         if (insertUsuer($conx, $userName, $dR, $password, $id)) {
+ 
+            if(añadirUsuarioTablaRolCorrespondiente($conx, $userName, $dR['rol_in']) && $dR['rol_in'] == "E"){ #verificar correcta ejecución y que el rol se de E(estudiante)
 
-            añadirUsuarioTablaRolCorrespondiente($conx, $userName, $dR['rol_in']);
+                if(integrarEstudianteAlCurso($conx, $userName, $dR['curso_E'])){
+
+                    if(asignarEstudianteIntegranteCursoPlantillaDefinitivas($conx, $userName, $dR['curso_E'])){
+
+                        header("Location: ../html/create-users.php"); 
+                    }                
+                }
+            }else{
+                header("Location: ../html/create-users.php");
+            }
         }
-    } else {
+    }else{
 
         echo "Error: " . mysqli_error($conx);
     }
@@ -120,6 +132,9 @@ function insertUsuer($conx, $userName, $dR, $password, $id){
     return true;
 }
 
+/*INSERTAR USUARIO A LA TABLA DOCENTE O ESTUDIANTE
+ Dependiendo del rol que se cree en el sistema, este lo asignara a la tabla "DOCENTE" o "ESTUDIANTE
+ -si no funciona mostrara un error y si pasa retornará verdadero"*/
 function añadirUsuarioTablaRolCorrespondiente($conx, $userName, $rol){
     $sql = "SELECT id_Usuario FROM usuario WHERE nombre_perfil = '$userName'";
 
@@ -130,8 +145,73 @@ function añadirUsuarioTablaRolCorrespondiente($conx, $userName, $rol){
     $sql = "INSERT INTO $rolResult (id_$rolResult, id_Usuario) VALUES (null, '$id[id_Usuario]')";
 
     if ($conx->query($sql)) {
-        header("Location: ../html/create-users.php");
+        return true;
     } else {
         echo "Error: " . mysqli_error($conx);
     }
+}
+/*INSERTAR USUARIO ESTUDAINTE A LA TABLA INTEGRANTESCURSO */
+function integrarEstudianteAlCurso($conx, $userName, $cursoN){ 
+    $id_Estudiante = $conx -> query( #consultar el id del estudiante anteriormente creado
+     "SELECT id_estudiante FROM estudiante e INNER JOIN usuario u 
+     ON e.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$userName'"
+    ) -> fetch_array();
+
+    $id_curso = $conx -> query(
+     "SELECT id_curso FROM curso WHERE curso = $cursoN"
+    ) -> fetch_array();
+
+
+    $sqlIntegrantesCurso = #código para insertar en la tabla integrantescurso al usuario estudiante
+     "INSERT INTO integrantescurso (id_estudiante, id_curso, año) 
+     VALUES ('$id_Estudiante[id_estudiante]', '$id_curso[id_curso]', now())
+    ";
+
+    if($conx -> query($sqlIntegrantesCurso)){
+        return true;
+    }else{
+        echo "Ha ocurrido un error al integrar al estudiante a su curso";
+        echo mysqli_error($conx);
+    }
+}
+
+/*ASIGNAR AL ESTUDIANTE DE UN CURSO UNA PLANTILLA PARA SUS CALIFICACIONES */
+function asignarEstudianteIntegranteCursoPlantillaDefinitivas($conx, $userName, $cursoN){
+
+    $id_Estudiante = $conx -> query( #consultar el id del estudiante anteriormente creado
+     "SELECT id_estudiante FROM estudiante e INNER JOIN usuario u 
+     ON e.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$userName'"
+    ) -> fetch_array();
+
+    $id_integranteCurso = $conx -> query(  #consulta del id del la tabla integrantescurso insertado anteriormente
+     "SELECT id_integrantecurso 
+     FROM estudiante e INNER JOIN usuario u ON e.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$userName'
+     INNER JOIN integrantescurso i ON i.id_estudiante = e.id_estudiante AND e.id_estudiante = '$id_Estudiante[id_estudiante]'
+    ") -> fetch_array();
+
+    include "./datos.php";
+    $grado = buscarGrado($cursoN); #llamada a una función para convertir curso en grado Ej. 601 -> sexto, 703 -> septimo
+   
+    $materias = $conx -> query(  #consulta de las materias de un grado Ej. sexto = m1, m2, m3
+     "SELECT m.materia FROM materiasdelgrado m INNER JOIN asignatura a 
+     ON a.id_asignatura = m.materia AND m.grado = '$grado'"
+    );
+
+    #añadir en una variable todos los datos que se van a insertar posteriormente (materias que vera el estudiante en el curso) 
+    while ($materia = $materias -> fetch_array()) {
+       
+       $sqlTablaDefinitivas = "INSERT INTO definitivas (id_asignatura, estudiante) 
+        VALUES ($materia[materia], $id_integranteCurso[id_integrantecurso])"
+       ; #sentencia para insertar datos a la tabla
+  
+        if(!$conx -> query($sqlTablaDefinitivas)){ #verificación de ejecución de la sentencia
+           
+           echo "Ha ocurrido un error al vincula al integrante del curso a la sus definitivas";
+           echo mysqli_error($conx);
+           echo $sqlTablaDefinitivas;
+           break;
+        }
+    }
+    
+    return true;
 }
