@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-03-2022 a las 04:30:20
+-- Tiempo de generación: 18-03-2022 a las 03:25:14
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -72,14 +72,13 @@ INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `Tipo_asignatura
 (210, 'Física', 'Ciencias'),
 (211, 'Geometria', 'Matematicas'),
 (212, 'Ciencias Politícas', 'Social'),
-(213, 'Gestión', 'Area tecnica'),
+(213, 'Gestión Empresarial', 'Area tecnica'),
 (214, 'Estadísticas', 'Matematicas'),
 (215, 'Tecnología e Informa', 'Tecnologia'),
 (216, 'Emprendimiento', 'Area tecnica'),
 (217, 'Español', 'Lenguage'),
-(218, 'Música', 'Artistica'),
+(218, 'Artes', 'Artistica'),
 (219, 'Contaduria', 'Matematica'),
-(220, 'Frances', 'Lenguage'),
 (221, 'Cultura', 'Social');
 
 -- --------------------------------------------------------
@@ -252,7 +251,18 @@ INSERT INTO `datos_adicionales` (`id_datos_adicionales`, `correo`, `Telefono`, `
 (198, 'gsantifael@gmail.com', '3484733748', 'M'),
 (200, 'maririveros@gmail.com', '31238948337', 'F'),
 (201, 'jeremias@gmail.com', '31238948826', 'M'),
-(202, 'andresguerra@gmail.com', '3229837362', 'M');
+(202, 'andresguerra@gmail.com', '3229837362', 'M'),
+(204, 'nataortiz@outlook.com', '3158736098', 'F'),
+(207, 'nataortiz15@hotmail.com', '3168736098', 'F'),
+(209, 'salome13@hotmail.com', '3198736098', 'F'),
+(210, 'arturito@hotmail.com', '3118736098', 'M'),
+(211, 'gustaf@hotmail.com', '3008736098', 'M'),
+(213, 'sancheza@outlook.com', '3018736098', 'M'),
+(214, 'martiJhon@outlook.com', '3098736098', 'M'),
+(215, 'milksosa@gmail.com', '30338948345', 'F'),
+(216, 'cardenas@gmail.com', '31338948345', 'F'),
+(217, 'carmen@hotmail.com', '3228973726', 'F'),
+(218, 'robertoruiz@gmail.com', '3248736098', 'M');
 
 -- --------------------------------------------------------
 
@@ -303,7 +313,67 @@ INSERT INTO `definitivas` (`definitiva_B1`, `definitiva_B2`, `definitiva_B3`, `d
 (40, 48, 44, 47, 217, 9),
 (48, 40, 37, 40, 206, 10),
 (43, 44, 47, 43, 214, 10),
-(42, 45, 26, 40, 217, 10);
+(42, 45, 26, 40, 217, 10),
+(NULL, NULL, NULL, NULL, 200, 14),
+(NULL, NULL, NULL, NULL, 201, 14),
+(NULL, NULL, NULL, NULL, 202, 14),
+(NULL, NULL, NULL, NULL, 203, 14),
+(NULL, NULL, NULL, NULL, 204, 14),
+(NULL, NULL, NULL, NULL, 206, 14),
+(NULL, NULL, NULL, NULL, 207, 14),
+(NULL, NULL, NULL, NULL, 208, 14),
+(NULL, NULL, NULL, NULL, 210, 14),
+(NULL, NULL, NULL, NULL, 211, 14),
+(NULL, NULL, NULL, NULL, 213, 14),
+(NULL, NULL, NULL, NULL, 214, 14),
+(NULL, NULL, NULL, NULL, 215, 14),
+(NULL, NULL, NULL, NULL, 217, 14),
+(NULL, NULL, NULL, NULL, 218, 14),
+(NULL, NULL, NULL, NULL, 221, 14),
+(NULL, NULL, NULL, NULL, 200, 15),
+(NULL, NULL, NULL, NULL, 201, 15),
+(NULL, NULL, NULL, NULL, 203, 15),
+(NULL, NULL, NULL, NULL, 204, 15),
+(NULL, NULL, NULL, NULL, 206, 15),
+(NULL, NULL, NULL, NULL, 207, 15),
+(NULL, NULL, NULL, NULL, 208, 15),
+(NULL, NULL, NULL, NULL, 211, 15),
+(NULL, NULL, NULL, NULL, 213, 15),
+(NULL, NULL, NULL, NULL, 214, 15),
+(NULL, NULL, NULL, NULL, 215, 15),
+(NULL, NULL, NULL, NULL, 217, 15),
+(NULL, NULL, NULL, NULL, 218, 15),
+(NULL, NULL, NULL, NULL, 219, 15),
+(NULL, NULL, NULL, NULL, 200, 16),
+(NULL, NULL, NULL, NULL, 201, 16),
+(NULL, NULL, NULL, NULL, 203, 16),
+(NULL, NULL, NULL, NULL, 204, 16),
+(NULL, NULL, NULL, NULL, 206, 16),
+(NULL, NULL, NULL, NULL, 207, 16),
+(NULL, NULL, NULL, NULL, 208, 16),
+(NULL, NULL, NULL, NULL, 210, 16),
+(NULL, NULL, NULL, NULL, 211, 16),
+(NULL, NULL, NULL, NULL, 213, 16),
+(NULL, NULL, NULL, NULL, 214, 16),
+(NULL, NULL, NULL, NULL, 215, 16),
+(NULL, NULL, NULL, NULL, 217, 16),
+(NULL, NULL, NULL, NULL, 218, 16),
+(NULL, NULL, NULL, NULL, 219, 16),
+(NULL, NULL, NULL, NULL, 200, 17),
+(NULL, NULL, NULL, NULL, 201, 17),
+(NULL, NULL, NULL, NULL, 203, 17),
+(NULL, NULL, NULL, NULL, 204, 17),
+(NULL, NULL, NULL, NULL, 206, 17),
+(NULL, NULL, NULL, NULL, 207, 17),
+(NULL, NULL, NULL, NULL, 208, 17),
+(NULL, NULL, NULL, NULL, 210, 17),
+(NULL, NULL, NULL, NULL, 211, 17),
+(NULL, NULL, NULL, NULL, 213, 17),
+(NULL, NULL, NULL, NULL, 214, 17),
+(NULL, NULL, NULL, NULL, 215, 17),
+(NULL, NULL, NULL, NULL, 217, 17),
+(NULL, NULL, NULL, NULL, 218, 17),
+(NULL, NULL, NULL, NULL, 219, 17);
 
 -- --------------------------------------------------------
 
@@ -363,7 +433,8 @@ INSERT INTO `docente` (`id_docente`, `id_Usuario`) VALUES
 (216, 76),
 (217, 77),
 (218, 78),
-(219, 95);
+(219, 95),
+(220, 104);
 
 -- --------------------------------------------------------
 
@@ -426,7 +497,17 @@ INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
 (9, 11),
 (10, 12),
 (1, 93),
-(2, 94);
+(2, 94),
+(11, 96),
+(12, 97),
+(13, 98),
+(14, 99),
+(15, 100),
+(16, 101),
+(17, 102),
+(18, 103),
+(19, 105),
+(20, 106);
 
 -- --------------------------------------------------------
 
@@ -455,7 +536,127 @@ INSERT INTO `integrantescurso` (`id_integrantecurso`, `id_estudiante`, `id_curso
 (7, 7, 'o1', 2022),
 (8, 8, 'o1', 2022),
 (9, 9, 'n2', 2022),
-(10, 10, 'n2', 2022);
+(10, 10, 'n2', 2022),
+(11, 14, 'd3', 2022),
+(12, 15, 'd3', 2022),
+(13, 16, 'n1', 2022),
+(14, 17, 'n2', 2022),
+(15, 18, 's1', 2022),
+(16, 19, 't1', 2022),
+(17, 20, 't2', 2022);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `materiasdelgrado`
+--
+
+CREATE TABLE `materiasdelgrado` (
+  `grado` varchar(10) NOT NULL,
+  `materia` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `materiasdelgrado`
+--
+
+INSERT INTO `materiasdelgrado` (`grado`, `materia`) VALUES
+('decimo', 200),
+('decimo', 202),
+('decimo', 203),
+('decimo', 204),
+('decimo', 205),
+('decimo', 206),
+('decimo', 207),
+('decimo', 208),
+('decimo', 209),
+('decimo', 210),
+('decimo', 212),
+('decimo', 213),
+('decimo', 214),
+('decimo', 215),
+('decimo', 217),
+('decimo', 218),
+('decimo', 221),
+('noveno', 200),
+('noveno', 201),
+('noveno', 202),
+('noveno', 203),
+('noveno', 204),
+('noveno', 206),
+('noveno', 207),
+('noveno', 208),
+('noveno', 210),
+('noveno', 211),
+('noveno', 213),
+('noveno', 214),
+('noveno', 215),
+('noveno', 217),
+('noveno', 218),
+('noveno', 221),
+('octavo', 200),
+('octavo', 201),
+('octavo', 202),
+('octavo', 203),
+('octavo', 204),
+('octavo', 206),
+('octavo', 207),
+('octavo', 208),
+('octavo', 210),
+('octavo', 211),
+('octavo', 213),
+('octavo', 214),
+('octavo', 215),
+('octavo', 217),
+('octavo', 218),
+('octavo', 219),
+('octavo', 221),
+('once', 200),
+('once', 202),
+('once', 203),
+('once', 204),
+('once', 205),
+('once', 206),
+('once', 207),
+('once', 208),
+('once', 209),
+('once', 210),
+('once', 212),
+('once', 213),
+('once', 214),
+('once', 215),
+('once', 217),
+('once', 218),
+('once', 221),
+('septimo', 200),
+('septimo', 201),
+('septimo', 203),
+('septimo', 204),
+('septimo', 206),
+('septimo', 207),
+('septimo', 208),
+('septimo', 210),
+('septimo', 211),
+('septimo', 213),
+('septimo', 214),
+('septimo', 215),
+('septimo', 217),
+('septimo', 218),
+('septimo', 219),
+('sexto', 200),
+('sexto', 201),
+('sexto', 203),
+('sexto', 204),
+('sexto', 206),
+('sexto', 207),
+('sexto', 208),
+('sexto', 211),
+('sexto', 213),
+('sexto', 214),
+('sexto', 215),
+('sexto', 217),
+('sexto', 218),
+('sexto', 219);
 
 -- --------------------------------------------------------
 
@@ -581,7 +782,18 @@ INSERT INTO `usuario` (`id_Usuario`, `nombre_perfil`, `perfil`, `id_rol`, `p_nom
 (92, 'Rafael59', '', 'E', 'Rafael', 'Santiago', 'Gonzales', '', 19, 'myus9hu1up', 198, 1),
 (93, 'Jose62', '', 'E', 'Maria', 'Jose', 'Riveros', '', 15, '5sjs35n29d', 200, 1),
 (94, 'Jeremias487', '', 'E', 'Jeremias', '', 'Gastanvide', '', 14, 'a9fvukm7dn', 201, 1),
-(95, 'Carlos5', '', 'D', 'Carlos', 'Andres', 'Guerra', '', 28, 'wgfkwu492f', 202, 1);
+(95, 'Carlos5', '', 'D', 'Carlos', 'Andres', 'Guerra', '', 28, 'wgfkwu492f', 202, 1),
+(96, 'Natasha99', '', 'E', 'Natasha', '', 'Ortiz', 'Quiroga', 15, 'kjn9jp6?5e', 204, 0),
+(97, 'Natasha0', '', 'E', 'Natasha', '', 'Ortiz', 'Quiroga', 15, 'q1ldlhlayy', 207, 0),
+(98, 'Salome47', '', 'E', 'Salome', '', 'Parrado', 'Lopez', 13, 'mn26a9w?h9', 209, 0),
+(99, 'Arturo2', '', 'E', 'Carlos', 'Arturo', 'Gomez', 'Lopez', 17, '8?4ekiñwlr', 210, 0),
+(100, 'Gustavo08', '', 'E', 'Gustavo', '', 'Sanchez', 'Martines', 16, 'zdnicwuaap', 211, 0),
+(101, 'Andres57', '', 'E', 'Andres', 'Santiago', 'Sanchez', 'Martines', 14, 'o4x3yq95lj', 213, 0),
+(102, 'Jhon15', '', 'E', 'Jhon', 'Jairo', 'Martinez', '', 16, 'culbr1sr27', 214, 0),
+(103, 'Milk16', '', 'E', 'Milk', '', 'Rodriguez', 'Sosa', 13, 'zhxñjej9m2', 215, 0),
+(104, 'Carmen0', '', 'D', 'Carmen', 'Salome', 'Cardenas', '', 34, 'wbdj4rtxp?', 216, 0),
+(105, 'Carmen425', '', 'E', 'Carmen', '', 'Villalobos', '', 15, 'k?24wtahdr', 217, 0),
+(106, 'Roberto0845', '', 'E', 'Roberto', '', 'Posada', 'Ruiz', 12, '?9l0be4ps2', 218, 0);
 
 --
 -- Índices para tablas volcadas
@@ -676,6 +888,13 @@ ALTER TABLE `integrantescurso`
   ADD KEY `id_curso` (`id_curso`);
 
 --
+-- Indices de la tabla `materiasdelgrado`
+--
+ALTER TABLE `materiasdelgrado`
+  ADD UNIQUE KEY `UC_materiasdelgrado` (`grado`,`materia`),
+  ADD KEY `materia` (`materia`);
+
+--
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -711,31 +930,31 @@ ALTER TABLE `asignatura`
 -- AUTO_INCREMENT de la tabla `datos_adicionales`
 --
 ALTER TABLE `datos_adicionales`
-  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `integrantescurso`
 --
 ALTER TABLE `integrantescurso`
-  MODIFY `id_integrantecurso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_integrantecurso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id_Usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- Restricciones para tablas volcadas
@@ -795,6 +1014,12 @@ ALTER TABLE `estudiante`
 ALTER TABLE `integrantescurso`
   ADD CONSTRAINT `integrantescurso_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id_estudiante`),
   ADD CONSTRAINT `integrantescurso_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
+
+--
+-- Filtros para la tabla `materiasdelgrado`
+--
+ALTER TABLE `materiasdelgrado`
+  ADD CONSTRAINT `materiasdelgrado_ibfk_1` FOREIGN KEY (`materia`) REFERENCES `asignatura` (`id_asignatura`);
 
 --
 -- Filtros para la tabla `usuario`
