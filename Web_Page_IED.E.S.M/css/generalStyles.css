@@ -3,7 +3,7 @@
     --azul-claro: #aaaaff;
     --verde-intenso: #00e300;
     --vende-suave: #c6ffc6;
-    background-color: #dddada;
+    --blanco-grisaceso: #dddada;
     --blanco: white;
     --gris-suave: #faf9f9;
     --negro: black;
@@ -23,7 +23,7 @@ html{
 a{
     text-decoration: none;
 }
-.boton{
+/* .boton{
     width: 80px;
     height: 50px;
     top: 0;
@@ -34,4 +34,4 @@ a{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-}
+} */

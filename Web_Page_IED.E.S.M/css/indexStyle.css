@@ -136,7 +136,7 @@
 
 .main-content{
     min-width: 320px;
-    background-color: #dddada;
+    background-color: var(--blanco-grisaceso);
     padding: 40px 0;
     
 }
