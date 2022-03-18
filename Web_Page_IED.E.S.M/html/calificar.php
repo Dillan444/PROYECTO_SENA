@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/acciondocente.css">
     <!-- <link rel="stylesheet" href="../css/cabecera.css"> -->
     <title>Docente</title>
 </head>
