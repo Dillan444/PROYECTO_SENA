@@ -26,10 +26,10 @@ function cargarTabla($conx, $usuario){
             
             <td data-titulo = 'Calificar'> 
                 <a href="../html/calificar.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
-                    <button type="button" ><i class="far fa-edit"></i></button>
+                    <button class= "acciondocente" type="button" ><i class="far fa-edit"></i></button>
                 </a>
                 <a href="../html/registros.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
-                    <button type="button"><i class="far fa-eye"></i></button>
+                    <button class= "acciondocente"  type="button"><i class="far fa-eye"></i></button>
                 </a> 
             </td>   
                 

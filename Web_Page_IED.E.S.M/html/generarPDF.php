@@ -41,7 +41,7 @@ ob_start();
             <th colspan="3" width="385">
                 Institución Educativa Departamental Enrique Santos Montejo</th>
             <th rowspan="3" width="120">
-                <img src="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/PROYECTO_SENA/Web_Page_IED.E.S.M/img/Logo.png" alt="Escudo del Colegio" width="100">
+                <img src="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/PROYECTO_SENA/Web_Page_IED.E.S.M/img/Logo2.jpg" alt="Escudo del Colegio" width="100">
             </th>
             </th>
         </tr>
