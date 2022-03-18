@@ -17,8 +17,8 @@ table{
   }
   
   table thead{
-    background: #77c232;
-    color: white;
+    background:  #dddada;
+    color: black;
     border-bottom: black solid 2px;
   }
   
@@ -27,8 +27,8 @@ table{
   }
   
   tr:hover td{
-    background-color: #369681;
-    color: white;
+    background-color: #4648bd;
+    color: rgb(27, 26, 26);
   }
   
   tr td:hover{

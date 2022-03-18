@@ -3,9 +3,9 @@
     --azul-claro: #aaaaff;
     --verde-intenso: #00e300;
     --vende-suave: #c6ffc6;
-    --blanco-grisaceso: #f1f1f1;
+    background-color: #dddada;
     --blanco: white;
-    --gris-suave: #d3d3d3;
+    --gris-suave: #faf9f9;
     --negro: black;
 }
 
@@ -22,4 +22,16 @@ html{
 
 a{
     text-decoration: none;
+}
+.boton{
+    width: 80px;
+    height: 50px;
+    top: 0;
+    right: 0;
+    border-radius: 3px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }

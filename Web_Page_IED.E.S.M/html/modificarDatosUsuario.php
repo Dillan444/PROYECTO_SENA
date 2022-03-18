@@ -28,7 +28,9 @@ if (!isset($usuario)) {
 </head>
 
 <body>
-
+        <ul>
+          <a href="./administrador-index.php"> <button class="boton">Regresar</button> </a> 
+        </ul>
   <?php include "./header.php" ?>
 
   <main>
