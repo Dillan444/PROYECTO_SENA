@@ -41,7 +41,7 @@ function crearUsuarios($conx, $dR){
 
         if (insertUsuer($conx, $userName, $dR, $password, $id)) {
  
-            if(añadirUsuarioTablaRolCorrespondiente($conx, $userName, $dR['rol_in']) && $dR['rol_in'] == "E"){ #verificar correcta ejecución y que el rol se de E(estudiante)
+            if(añadirUsuarioTablaRolCorrespondiente($conx, $userName, $dR['rol_in']) && $dR['rol_in'] == "E" && $dR['curso_E'] != "otro"){ #verificar correcta ejecución y que el rol se de E(estudiante)
 
                 if(integrarEstudianteAlCurso($conx, $userName, $dR['curso_E'])){
 

@@ -168,7 +168,7 @@ function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
         3.Se almacenan en un arreglo los resultados
         4.Luego se imprimen los datos en pantalla*/
 function buscarNombreUsuario($usuario, $conx, $rol){
-    $nombreUsuario =  "SELECT * FROM usuario u WHERE u.nombre_perfil = '$usuario' AND id_rol = '$rol[0]'";
+    $nombreUsuario =  "SELECT * FROM usuario u WHERE u.nombre_perfil = '$usuario' AND id_rol = '$rol[0]' AND estado = 1";
     
     $fullName = $conx -> query($nombreUsuario);
 

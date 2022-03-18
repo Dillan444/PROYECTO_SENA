@@ -28,7 +28,7 @@ function validar($d){
     }
 
     $sql = $d['conx']->query("SELECT u.nombre_perfil 
-        FROM usuario u " . $trozoConsulta[0] . " INNER JOIN datos_adicionales ad ON " .$trozoConsulta[1] . " u.id_datos_adicionales = ad.id_datos_adicionales AND nombre_perfil = '$d[user]' AND id_rol = '$d[id_rol]' AND contraseña = '$d[pass]' " . $trozoConsulta[2] . "  AND correo = '$d[email]';");
+        FROM usuario u " . $trozoConsulta[0] . " INNER JOIN datos_adicionales ad ON " .$trozoConsulta[1] . " u.id_datos_adicionales = ad.id_datos_adicionales AND nombre_perfil = '$d[user]' AND id_rol = '$d[id_rol]' AND contraseña = '$d[pass]' " . $trozoConsulta[2] . "  AND correo = '$d[email]' AND u.estado = 1;");
 
     $resultado =  mysqli_num_rows($sql);
 

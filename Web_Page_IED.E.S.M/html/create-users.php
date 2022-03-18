@@ -92,9 +92,10 @@
                     </select>
                 </label>
 
-                <label for="cursos">
+                <label for="cursos" id="cursosG">
                     <span>Curso del Estudiante</span>
                     <select name="curso_E" id="cursos">
+                        <option value="otro" selected>Ninguno</option>
                         <?php 
                             $sqlCursos = "SELECT curso FROM curso";
 
@@ -149,6 +150,19 @@
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
     <script src="../js/menu.js"></script>
+    <script>
+        const cursos = document.getElementById("cursosG");
+        const rol = document.getElementById("rol_in");
+        cursos.style.display = "none";
+        
+        rol.addEventListener("input", () => {
+            if(rol.value == "E"){
+                cursos.style.display = "block"; 
+            }else{
+                cursos.style.display = "none";
+            }
+        });
+    </script>
 </body>
 
 </html>
