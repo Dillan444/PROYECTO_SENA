@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/botones.css">
     <title>Estudiante</title>
 </head>
 <body>
@@ -30,20 +31,22 @@
 
     <main>
         <center>
-        <table border="7">
-                <thead>
-                    <th>Asignatura</th>
-                    <th>Bimestre 1</th>
-                    <th>Bimestre 2</th>
-                    <th>Bimestre 3</th>
-                    <th>Bimestre 4</th>
-                    <th>Promedio</th>
-                </thead>
-                <tbody>
-                    <?php cargarMisNotas($conx, $usuario);?>
-                </tbody>
+        <table>
+            <thead>
+                <tr>
+                  <th>Asignatura</th>
+                  <th>Bimestre 1</th>
+                  <th>Bimestre 2</th>
+                  <th>Bimestre 3</th>
+                  <th>Bimestre 4</th>
+                  <th>Promedio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php cargarMisNotas($conx, $usuario);?>
+            </tbody>
             </table>
-            <a href="./generarPDF.php" target="black"><button>Generar Boletin</button></a>
+            <a href="./generarPDF.php" target="black" ><button class="boton">Generar Boletin</button></a>
         </center>
     </main>
 

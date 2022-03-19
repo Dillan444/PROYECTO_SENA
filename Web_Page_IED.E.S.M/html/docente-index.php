@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/botones.css">
     <title>Docente</title>
 </head>
 <body>
@@ -29,16 +30,18 @@
 
     <main>
         <center>
-        <table border="7">
-                <thead>
-                    <th>N_Curso</th>
-                    <th>GradoGrado</th>
-                    <th>Materia</th>
-                    <th>Acción</th>
-                </thead>
-                <tbody>
-                    <?php cargarTabla($conx, $usuario);?>
-                </tbody>
+        <table>
+            <thead>
+                <tr>
+                  <th>N_Curso</th>
+                  <th>GradoGrado</th>
+                  <th>Materia</th>
+                  <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php cargarTabla($conx, $usuario);?>
+            </tbody>
             </table>
         </center>
     </main>

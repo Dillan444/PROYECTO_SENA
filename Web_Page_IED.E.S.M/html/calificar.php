@@ -37,8 +37,7 @@
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
-    <link rel="stylesheet" href="../css/acciondocente.css">
-    <!-- <link rel="stylesheet" href="../css/cabecera.css"> -->
+    <link rel="stylesheet" href="../css/botones.css">
     <title>Docente</title>
 </head>
 <body>
@@ -52,12 +51,14 @@
             $sql = $conx -> query($sql) -> fetch_array();
             echo "<h2> $sql[nombre_asignatura] / $curso</h2>"?>
         <form action="" method="POST">
-            <table border="7">
+            <table>
                 <thead>
-                    <th>Indice</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>          
-                    <th>Nota Periodo</th>                
+                    <tr>
+                      <th>Indice</th>
+                      <th>Nombres</th>
+                      <th>Apellidos</th>          
+                      <th>Nota Periodo</th> 
+                    </tr>               
                 </thead>
                 <tbody>
                     <?=cargarListadoEstudiantilDocente($conx, $materia, $usuario, $curso);?>
@@ -65,7 +66,7 @@
             </table>
 
             <!-- <button type="submit" name="guardarNotas">GuardarNotas</button> -->
-            <a href="./docente-index.php"><button type="button" name="Regresar">Regresar</button></a>
+            <a href="./docente-index.php"><button type="button" name="Regresar" class="boton">Regresar</button></a>
         </form>
 
         </center>

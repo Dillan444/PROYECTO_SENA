@@ -1,0 +1,24 @@
+.boton{
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.boton:hover i{
+    color: orange;
+    transform: scale(1.1);
+}
+
+.desactivar{
+    background: rgb(218, 19, 19);
+    color: white;
+    font-weight: bold;
+}
+
+.activar{
+    background: rgb(4, 192, 4);
+    color: white;
+    width: 86.5px;
+    font-weight: bold;
+}

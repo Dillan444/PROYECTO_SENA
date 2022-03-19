@@ -28,17 +28,13 @@ if (!isset($usuario)) {
 </head>
 
 <body>
-        <!-- <ul>
-          <a href="./administrador-index.php"> 
-            <button class="boton">Regresar</button> </a> 
-        </ul> -->
+
   <?php include "./header.php" ?>
 
   <main>
     <article id="tab1" class="articulo-login">
       <div class="login-titulo">
         <h3>Actualiza Datos</h3>
-        <!-- <i class="fas fa-chalkboard-teacher"></i> -->
       </div>
 
       <form action="" method="POST" class="form-login">

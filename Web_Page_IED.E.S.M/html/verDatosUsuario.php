@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/botones.css">
     <title>Modificar</title>
 </head>
 <body>
@@ -30,19 +31,19 @@
     <table>
         <thead>
             <tr>
-                <td>id_usuario</td>
-                <td>id_datos_adicionales</td>
-                <td>nombre_perfil</td>
-                <td>id_rol</td>
-                <td>Primer_Nombre</td>
-                <td>Segundo_Nombre</td>
-                <td>Primer_Apellido</td>
-                <td>Segundo_Apellido</td>
-                <td>Edad</td>
-                <td>Correo</td>
-                <td>Teléfono</td>
-                <td>Sexo</td>
-                <td colspan="2" >Acción</td>
+                <th>id_usuario</th>
+                <th>id_datos_adicionales</th>
+                <th>Nombre de perfil</th>
+                <th>Rol</th>
+                <th>Primer nombre</th>
+                <th>Segundo nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Edad</th>
+                <th>Correo Electrnico</th>
+                <th>Teléfono</th>
+                <th>Sexo</th>
+                <th colspan="2" >Acción</th>
                 
             </tr>
         </thead>

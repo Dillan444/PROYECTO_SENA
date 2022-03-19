@@ -26,10 +26,10 @@ function cargarTabla($conx, $usuario){
             
             <td data-titulo = 'Calificar'> 
                 <a href="../html/calificar.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
-                    <button class= "acciondocente" type="button" ><i class="far fa-edit"></i></button>
+                    <button class= "boton" type="button" > Calificar <i class="far fa-edit"></i></button>
                 </a>
                 <a href="../html/registros.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
-                    <button class= "acciondocente"  type="button"><i class="far fa-eye"></i></button>
+                    <button class= "boton"  type="button"> Ver <i class="far fa-eye"></i></button>
                 </a> 
             </td>   
                 
@@ -101,8 +101,8 @@ function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
             <td> <form action="" method="post">
                 <input type="hidden" name="estudiante" value="<?php echo $fila['id_integrantecurso']; ?>">
                 <input type="hidden" name="materia" value="<?php echo $materia; ?>">
-                <input type="number" name="nota" id="nota" value="<?php echo $fila['definitiva_B3']?>">
-                <input type="submit" name="accion" value="Cargar">
+                <input type="text" max="50" min="0" name="nota" id="nota" value="<?php echo $fila['definitiva_B3']?>" class="boton">
+                <input type="submit" name="accion" value="Cargar" class="boton">
             </form> </td>
         </tr>
 
@@ -145,7 +145,7 @@ function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
                     $acumulado[5] = $indice;
                 }
 
-                echo $promedio / 4;
+                echo round($promedio / 4, 1);
             ?> </td>
         </tr>
 
@@ -155,7 +155,7 @@ function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
             <td>Promedio General</td>  
             <td></td>  
             <?php foreach ($acumulado as $periodo) { ?>
-                    <td><?php echo $periodo / $acumulado[5]; ?></td>
+                    <td><?php echo round($periodo / $acumulado[5], 1); ?></td>
             <?php }
             ?>
         </tr>
@@ -224,12 +224,12 @@ function cargarMisNotas($conx, $usuario){
 }    
 
 function mostrarDatosUsuario($conx){
-    $sql = "
-        SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo FROM usuario u LEFT JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
-        UNION SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo FROM usuario u right JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
+    $sql = 
+      "SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo 
+      FROM usuario u LEFT JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
+      UNION SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo 
+      FROM usuario u right JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
     ";
-
-    
 
     if ($result = $conx -> query($sql)) {
         while ($fila = $result -> fetch_row()) {
@@ -239,18 +239,25 @@ function mostrarDatosUsuario($conx){
                 } ?>
 
                 <td>
-                    <a href="../html/modificarDatosUsuario.php?user=<?php echo $fila[2];?>"><button>Modificar</button></a>
+                    <a href="../html/modificarDatosUsuario.php?user=<?php echo $fila[2];?>"><button class="boton">Modificar</button></a>
                 </td>
                 
                 <td> <!-- Activación de Desactivación de cuentas de usuario -->
                     <?php $estado = "SELECT estado FROM usuario WHERE nombre_perfil = '$fila[2]'"; 
                     $rE = $conx -> query($estado) -> fetch_array();
-                    $estado = ($rE['estado'] == 0) ? 'Activar' : 'Desactivar' ;
                     ?>
                     <form action="" method="post">
                         <input type="hidden" value="<?php echo $fila[2] ?>" name="user">
                         <input type="hidden" value="<?php echo $rE['estado']; ?>" name="estadoActual">
-                        <input type="submit" value="<?php echo $estado; ?>" name="active" class="boton">
+
+                        <?php
+                          if ($rE['estado'] == 0) {?>
+                            <input type="submit" value="Activar" name="active" class = "activar boton"> <?php
+                          }else{?>
+                            <input type="submit" value="Desactivar" name="active" class="desactivar boton">
+                            <?php
+                          }
+                        ?>
                     </form>
 
                     <?php 
