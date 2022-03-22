@@ -97,7 +97,7 @@ if (!isset($usuario)) {
 
       if (isset($_POST['form_update'])) {
         $datos = array(
-          "userName" => $_POST['userName'],
+          "nombre_perfil" => $_POST['userName'],
           "p_nombre" => $_POST['p_nombre'],
           "s_nombre" => $_POST['s_nombre'],
           "p_apellido" => $_POST['p_apellido'],
@@ -105,7 +105,7 @@ if (!isset($usuario)) {
           "edad" => $_POST['edad'],
           "sexo" => $_POST['sexo'],
           "telefono" => $_POST['telefono'],
-          "email" => $_POST['email'],
+          "correo" => $_POST['email'],
           "id_rol" => $_POST['id_rol']
         );
 

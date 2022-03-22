@@ -44,39 +44,80 @@ function modificarDatosUsuario($d, $conx, $u){
         
         $result = $result -> fetch_row();
 
-        $sqlUpdateDA = "UPDATE datos_adicionales SET 
-            correo =  '$d[email]',
-            telefono =  '$d[telefono]',
-            sexo =  '$d[sexo]'
-        WHERE id_datos_adicionales = '$result[0]'";
+        // $sqlUpdateDA = "UPDATE datos_adicionales SET 
+        //     correo =  '$d[email]',
+        //     telefono =  '$d[telefono]',
+        //     sexo =  '$d[sexo]'
+        // WHERE id_datos_adicionales = '$result[0]'";
 
-        $sqlUpdateU = "UPDATE usuario SET 
-            nombre_perfil =  '$d[userName]',
-            p_nombre =  '$d[p_nombre]',
-            s_nombre =  '$d[s_nombre]',
-            p_apellido =  '$d[p_apellido]',
-            s_apellido =  '$d[s_apellido]',
-            id_rol =  '$d[id_rol]',
-            edad =  '$d[edad]'
-            WHERE id_datos_adicionales = '$result[0]';";
+        tablaDatosAdicionales($conx, $d, $result[0]);
 
-        if(!$conx -> query($sqlUpdateU)){
+        tablaUsuario($conx, $d, $result[0]);
 
-            echo "Error: " . mysqli_error($conx);
-        }
+        // $sqlUpdateU = "UPDATE usuario SET 
+        //     nombre_perfil =  '$d[userName]',
+        //     p_nombre =  '$d[p_nombre]',
+        //     s_nombre =  '$d[s_nombre]',
+        //     p_apellido =  '$d[p_apellido]',
+        //     s_apellido =  '$d[s_apellido]',
+        //     id_rol =  '$d[id_rol]',
+        //     edad =  '$d[edad]'
+        //     WHERE id_datos_adicionales = '$result[0]';";
 
-        if(!$conx -> query($sqlUpdateDA)){
+        // if(!$conx -> query($sqlUpdateU)){
 
-            echo "Error: " . mysqli_error($conx);
-        }
+        //     echo "Error: " . mysqli_error($conx);
+        // }
+
+        // if(!$conx -> query($sqlUpdateDA)){
+
+        //     echo "Error: " . mysqli_error($conx);
+        // }
 
         header("Location: ../html/modificarDatosUsuario.php?user=$d[userName]");
 
     }
 
-    
-
 }
+
+function tablaDatosAdicionales($conx, $d, $id_d_a){
+    $sqlUpdateDA = "UPDATE datos_adicionales SET 
+      correo =  '$d[correo]',
+      Telefono =  '$d[Telefono]',
+      sexo =  '$d[sexo]'
+      WHERE id_datos_adicionales = '$id_d_a'";
+
+    if(!$conx -> query($sqlUpdateDA)){
+        if ($conx -> errno == 1062) {
+            echo "Error: " . mysqli_error($conx);
+                
+        }else{
+          
+            echo "Error: " . mysqli_error($conx);
+        }
+    }
+
+    return true;
+}
+
+function tablaUsuario($conx, $d, $id_d_a){
+    $sqlUpdateU = "UPDATE usuario SET 
+        nombre_perfil =  '$d[nombre_perfil]',
+        p_nombre =  '$d[p_nombre]',
+        s_nombre =  '$d[s_nombre]',
+        p_apellido =  '$d[p_apellido]',
+        s_apellido =  '$d[s_apellido]',
+        id_rol =  '$d[id_rol]',
+        edad =  '$d[edad]'
+        WHERE id_datos_adicionales = '$id_d_a';";
+
+    if(!$conx -> query($sqlUpdateU)){
+        echo "Error: " . mysqli_error($conx);
+    }
+
+    return true;
+}
+
 
 function asignarCalificacionesEstudiantes($conx, $datos){
 

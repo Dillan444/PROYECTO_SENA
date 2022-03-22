@@ -101,7 +101,7 @@ function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
             <td> <form action="" method="post">
                 <input type="hidden" name="estudiante" value="<?php echo $fila['id_integrantecurso']; ?>">
                 <input type="hidden" name="materia" value="<?php echo $materia; ?>">
-                <input type="text" max="50" min="0" name="nota" id="nota" value="<?php echo $fila['definitiva_B3']?>" class="boton">
+                <input type="number" max="50" min="0" name="nota" id="nota" value="<?php echo $fila['definitiva_B3']?>" class="boton">
                 <input type="submit" name="accion" value="Cargar" class="boton">
             </form> </td>
         </tr>
