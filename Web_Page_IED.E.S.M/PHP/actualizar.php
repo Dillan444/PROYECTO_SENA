@@ -89,11 +89,11 @@ function tablaDatosAdicionales($conx, $d, $id_d_a){
 
     if(!$conx -> query($sqlUpdateDA)){
         if ($conx -> errno == 1062) {
-            echo "Error: " . mysqli_error($conx);
+            return "Error: " . mysqli_error($conx);
                 
         }else{
           
-            echo "Error: " . mysqli_error($conx);
+            return "Error: " . mysqli_error($conx);
         }
     }
 
