@@ -4,16 +4,7 @@ body{
     background: var(--blanco-grisaceso);
     display: flex;
     justify-content: center;
-}
-
-#back{
-    position: fixed;
-    z-index: 4;
-    top: 70px;
-    left: 6px;
-    border: none;
-    padding: 6px 20px;
-    border-radius: 3px;
+    align-items: center;
 }
 
 .perfil-info{
@@ -34,6 +25,36 @@ body{
 
 .perfil-info span{
     font-size: 1.2rem;
+}
+
+.content{
+    position: relative;
+}
+
+#back{
+    position: fixed;
+    z-index: 3;
+    top: 70px;
+    left: 6px;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+#back img{
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 6px;
+}
+
+#back:active{
+    box-shadow: none;
+    padding: 5px 18px;
 }
 
 .perfil{
@@ -61,6 +82,11 @@ body{
     border-radius: 3px;
     padding: 6px 20px;
     margin: 12px 0;
+}
+
+.perfil-rol i{
+    margin-left: 6px;
+    color: var(--azul-intenso);
 }
 
 .line-gradient{
@@ -117,19 +143,43 @@ body{
 
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .perfil-data--actualizar input{
     width: 95%;
     max-width: 320px;
+    height: 30px;
+    font-size: 1.6rem;
     font-weight: bold;
     background-color: var(--azul-intenso);
     color: white;
     padding: 6px;
     margin: 10px 0;
     border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    border-radius: 3px 0 0 3px;
+    cursor:pointer;
+}
+
+.perfil-data--actualizar input:active{
+    transform: scale(0.95);
+}
+
+#reset{
+    width: 30px;
+    height: 30px;
+    border-radius: 0 3px 3px 0;
+    border: solid var(--azul-intenso) 1px;
+}
+
+#reset svg{
+    width: 40x;
+    height: 20px;
+    transition: 300ms;
+}
+
+#reset:active svg{
+    transform: rotate(360deg);
 }
 
 .error{
@@ -158,6 +208,12 @@ body{
         width: 100%;
         max-width: 1200px;
         margin-top: 65px;
+        max-height: 1000px;
+    }
+
+    #back{
+        position: absolute;
+        top: 0;
     }
 
     .perfil{
