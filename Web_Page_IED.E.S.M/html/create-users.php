@@ -77,7 +77,7 @@
             
                 <label for="telefono" class="text-in">
                     <span>Número de Telefono:</span> <br>
-                    <input type="text" name="telefono" id="telefono" placeholder="telefono"> 
+                    <input type="number" name="telefono" id="telefono" placeholder="telefono"> 
                 </label>
                 <label for="Correo" class="text-in">
                     <span>Correo electronico:</span><br>
@@ -110,6 +110,16 @@
                                 <?php }
                             }
                         ?>
+                    </select>
+                </label>
+
+                <label for="documento" class="text-in">
+                    <span>Documento y tipo de documento</span>
+                    <input type="number" name="documento" id="documento" placeholder="N° Identificación">
+                    <select name="tipo_documento" id="tipo_documento">
+                        <option value="CC">Cedula de Ciudadania</option>
+                        <option value="TI">Tarjeta de Identidad</option>
+                        <option value="CE">Certificado de Extrangería</option>
                     </select>
                 </label>
                 

@@ -6,6 +6,8 @@ if (isset($_POST['crear'])) {
 
         // Datos de la tabla usuario
         "rol_in" => $_POST['rol_in'],
+        "tipo_documento" => $_POST['tipo_documento'],
+        "documento" => ($_POST['documento'])?$_POST['documento']:"",
         "fst_name" => $_POST['P_nombre'],
         "scd_name" => $_POST['S_nombre'],
         "fst_lastName" => $_POST['P_apellido'],
@@ -39,7 +41,15 @@ function crearUsuarios($conx, $dR){
         $userName = generarUserName($conx, $dR);
         $password = generarPassword();
 
-        if (insertUsuer($conx, $userName, $dR, $password, $id)) {
+        if (insertarTablaUsuario($conx, $userName, $dR, $password, $id)) {
+
+            // $sqlIdUsuario = $conx -> query("SELECT id_Usuario FROM usuario WHERE nombre_perfil = '$userName'") -> fetch_row();
+
+            // $sqlInsertDocumento = "INSERT documento (id_documento, tipo_documento, id_Usuario) VALUES ($dR[documento], '$dR[tipo_documento]', $sqlIdUsuario[0])";
+
+            // if (!$conx -> query($sqlInsertDocumento)) {
+            //     echo "Ha ocurrido un problema: " . $conx -> error();
+            // }
  
             if(añadirUsuarioTablaRolCorrespondiente($conx, $userName, $dR['rol_in']) && $dR['rol_in'] == "E" && $dR['curso_E'] != "otro"){ #verificar correcta ejecución y que el rol se de E(estudiante)
 
@@ -119,9 +129,9 @@ function generarUserName($conx, $dR){
 /*INSERCIÓN EN LA TABLA USUARIO
         Se insertan los datos faltante en la tabla usuario con un insert into
         Se muestra un alert si se creo con exito o vicebersa*/
-function insertUsuer($conx, $userName, $dR, $password, $id){
-    $sqlInsert = "INSERT INTO usuario(id_usuario, nombre_perfil ,id_rol, p_nombre, s_nombre, p_apellido, s_apellido ,edad, contraseña, id_datos_adicionales)
-    VALUES (NULL, '$userName', '$dR[rol_in]', '$dR[fst_name]', '$dR[scd_name]', '$dR[fst_lastName]', '$dR[scd_lastName]', $dR[age], '$password', $id[id_datos_adicionales])";
+function insertarTablaUsuario($conx, $userName, $dR, $password, $id){
+    $sqlInsert = "INSERT INTO usuario(id_usuario, nombre_perfil ,id_rol, documento, tipo_documento, p_nombre, s_nombre, p_apellido, s_apellido ,edad, contraseña, id_datos_adicionales)
+    VALUES (NULL, '$userName', '$dR[rol_in]', $dR[documento], '$dR[tipo_documento]', '$dR[fst_name]', '$dR[scd_name]', '$dR[fst_lastName]', '$dR[scd_lastName]', $dR[age], '$password', $id[id_datos_adicionales])";
 
     if ($conx->query($sqlInsert)) {
     } else {
