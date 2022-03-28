@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-03-2022 a las 00:51:16
+-- Tiempo de generación: 28-03-2022 a las 16:58:55
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.4.22
 
@@ -91,29 +91,30 @@ CREATE TABLE `clases` (
   `id_asignatura` int(4) NOT NULL,
   `id_curso` char(2) NOT NULL,
   `id_docente` int(11) NOT NULL,
-  `año` year(4) NOT NULL
+  `año` year(4) NOT NULL,
+  `jornada` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `clases`
 --
 
-INSERT INTO `clases` (`id_asignatura`, `id_curso`, `id_docente`, `año`) VALUES
-(206, 'n2', 204, 2022),
-(206, 'o1', 201, 2022),
-(206, 's1', 204, 2022),
-(206, 's3', 204, 2022),
-(206, 't2', 201, 2022),
-(214, 'n2', 205, 2022),
-(214, 'o1', 200, 2022),
-(214, 's1', 200, 2022),
-(214, 's3', 205, 2022),
-(214, 't2', 200, 2022),
-(217, 'n2', 201, 2022),
-(217, 'o1', 201, 2022),
-(217, 's1', 201, 2022),
-(217, 's3', 201, 2022),
-(217, 't2', 203, 2022);
+INSERT INTO `clases` (`id_asignatura`, `id_curso`, `id_docente`, `año`, `jornada`) VALUES
+(206, 'n2', 204, 2022, 'D'),
+(206, 'o1', 201, 2022, 'D'),
+(206, 's1', 204, 2022, 'D'),
+(206, 's3', 204, 2022, 'D'),
+(206, 't2', 201, 2022, 'D'),
+(214, 'n2', 205, 2022, 'D'),
+(214, 'o1', 200, 2022, 'D'),
+(214, 's1', 200, 2022, 'D'),
+(214, 's3', 205, 2022, 'D'),
+(214, 't2', 200, 2022, 'D'),
+(217, 'n2', 201, 2022, 'D'),
+(217, 'o1', 201, 2022, 'D'),
+(217, 's1', 201, 2022, 'D'),
+(217, 's3', 201, 2022, 'D'),
+(217, 't2', 203, 2022, 'D');
 
 -- --------------------------------------------------------
 
@@ -265,7 +266,9 @@ INSERT INTO `datos_adicionales` (`id_datos_adicionales`, `correo`, `Telefono`, `
 (218, 'robertoruiz@gmail.com', '3248736098', 'M'),
 (219, 'ralf@hotmail.com', '3138736737', 'M'),
 (220, 'spaulo@outlook.com', '3239832938', 'M'),
-(222, 'hernesto@perez.com', '3001543334', 'M');
+(222, 'hernesto@perez.com', '3001543334', 'M'),
+(223, 'rafasantos@gmail.com', '3194583987', 'M'),
+(224, 'arturotorres@outlook.com', '3158973700', 'M');
 
 -- --------------------------------------------------------
 
@@ -410,7 +413,24 @@ INSERT INTO `definitivas` (`definitiva_B1`, `definitiva_B2`, `definitiva_B3`, `d
 (NULL, NULL, NULL, NULL, 215, 19),
 (NULL, NULL, NULL, NULL, 217, 19),
 (NULL, NULL, NULL, NULL, 218, 19),
-(NULL, NULL, NULL, NULL, 221, 19);
+(NULL, NULL, NULL, NULL, 221, 19),
+(NULL, NULL, NULL, NULL, 200, 20),
+(NULL, NULL, NULL, NULL, 201, 20),
+(NULL, NULL, NULL, NULL, 202, 20),
+(NULL, NULL, NULL, NULL, 203, 20),
+(NULL, NULL, NULL, NULL, 204, 20),
+(NULL, NULL, NULL, NULL, 206, 20),
+(NULL, NULL, NULL, NULL, 207, 20),
+(NULL, NULL, NULL, NULL, 208, 20),
+(NULL, NULL, NULL, NULL, 210, 20),
+(NULL, NULL, NULL, NULL, 211, 20),
+(NULL, NULL, NULL, NULL, 213, 20),
+(NULL, NULL, NULL, NULL, 214, 20),
+(NULL, NULL, NULL, NULL, 215, 20),
+(NULL, NULL, NULL, NULL, 217, 20),
+(NULL, NULL, NULL, NULL, 218, 20),
+(NULL, NULL, NULL, NULL, 219, 20),
+(NULL, NULL, NULL, NULL, 221, 20);
 
 -- --------------------------------------------------------
 
@@ -421,19 +441,20 @@ INSERT INTO `definitivas` (`definitiva_B1`, `definitiva_B2`, `definitiva_B3`, `d
 CREATE TABLE `direccion` (
   `id_docente` int(11) NOT NULL,
   `id_curso` char(2) NOT NULL,
-  `año` year(4) NOT NULL
+  `año` year(4) NOT NULL,
+  `jornada` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `direccion`
 --
 
-INSERT INTO `direccion` (`id_docente`, `id_curso`, `año`) VALUES
-(200, 's1', 2022),
-(201, 's3', 2022),
-(203, 'o1', 2022),
-(204, 'n2', 2022),
-(205, 't2', 2022);
+INSERT INTO `direccion` (`id_docente`, `id_curso`, `año`, `jornada`) VALUES
+(200, 's1', 2022, ''),
+(201, 's3', 2022, ''),
+(203, 'o1', 2022, ''),
+(204, 'n2', 2022, ''),
+(205, 't2', 2022, '');
 
 -- --------------------------------------------------------
 
@@ -471,7 +492,8 @@ INSERT INTO `docente` (`id_docente`, `id_Usuario`) VALUES
 (217, 77),
 (218, 78),
 (219, 95),
-(220, 104);
+(220, 104),
+(221, 111);
 
 -- --------------------------------------------------------
 
@@ -511,7 +533,8 @@ INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
 (20, 106),
 (21, 107),
 (22, 108),
-(23, 109);
+(23, 109),
+(24, 110);
 
 -- --------------------------------------------------------
 
@@ -523,33 +546,35 @@ CREATE TABLE `integrantescurso` (
   `id_integrantecurso` int(10) NOT NULL,
   `id_estudiante` int(15) NOT NULL,
   `id_curso` char(2) NOT NULL,
-  `año` year(4) NOT NULL
+  `año` year(4) NOT NULL,
+  `jornada` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `integrantescurso`
 --
 
-INSERT INTO `integrantescurso` (`id_integrantecurso`, `id_estudiante`, `id_curso`, `año`) VALUES
-(1, 1, 's1', 2022),
-(2, 2, 's1', 2022),
-(3, 3, 's3', 2022),
-(4, 4, 's3', 2022),
-(5, 5, 't2', 2022),
-(6, 6, 't2', 2022),
-(7, 7, 'o1', 2022),
-(8, 8, 'o1', 2022),
-(9, 9, 'n2', 2022),
-(10, 10, 'n2', 2022),
-(11, 14, 'd3', 2022),
-(12, 15, 'd3', 2022),
-(13, 16, 'n1', 2022),
-(14, 17, 'n2', 2022),
-(15, 18, 's1', 2022),
-(16, 19, 't1', 2022),
-(17, 20, 't2', 2022),
-(18, 22, 'o1', 2022),
-(19, 23, 'c1', 2022);
+INSERT INTO `integrantescurso` (`id_integrantecurso`, `id_estudiante`, `id_curso`, `año`, `jornada`) VALUES
+(1, 1, 's1', 2022, 'D'),
+(2, 2, 's1', 2022, 'D'),
+(3, 3, 's3', 2022, 'D'),
+(4, 4, 's3', 2022, 'D'),
+(5, 5, 't2', 2022, 'D'),
+(6, 6, 't2', 2022, 'D'),
+(7, 7, 'o1', 2022, 'D'),
+(8, 8, 'o1', 2022, 'D'),
+(9, 9, 'n2', 2022, 'D'),
+(10, 10, 'n2', 2022, 'D'),
+(11, 14, 'd3', 2022, 'D'),
+(12, 15, 'd3', 2022, 'D'),
+(13, 16, 'n1', 2022, 'D'),
+(14, 17, 'n2', 2022, 'D'),
+(15, 18, 's1', 2022, 'D'),
+(16, 19, 't1', 2022, 'D'),
+(17, 20, 't2', 2022, 'D'),
+(18, 22, 'o1', 2022, 'D'),
+(19, 23, 'c1', 2022, 'D'),
+(20, 24, 'o2', 2022, 'D');
 
 -- --------------------------------------------------------
 
@@ -726,7 +751,7 @@ INSERT INTO `usuario` (`id_Usuario`, `nombre_perfil`, `perfil`, `id_rol`, `docum
 (13, 'Albejalo', '', 'D', NULL, NULL, 'Albedy', 'Roman', 'Quiñones', 'Acosta', 33, 'Donalbedy3', 111, 1),
 (14, 'Fernanfra', '', 'E', NULL, NULL, 'Fernanda', '', 'Lopéz', 'Castro', 15, 'soyfer76', 112, 1),
 (15, 'elverda', '', 'E', NULL, NULL, 'Elver', 'David', 'Galarga', 'Forero', 17, 'elvergalar', 113, 1),
-(16, 'Dillan444', '', 'A', NULL, NULL, 'Dillan', 'Smith', 'Portocarrero', 'Rojas', 19, 'Diliporto', 114, 1),
+(16, 'Dillan444', '', 'A', 1001116817, NULL, 'Dillan', 'Smith', 'Portocarrero', 'Rojas', 19, 'Diliporto', 114, 1),
 (17, 'Santifabi', '', 'A', NULL, NULL, 'Farith', 'Santiago', 'Rojas', 'Garzón', 19, 'Srrojas26', 115, 1),
 (18, 'Cesarlll', '', 'D', NULL, NULL, 'Cesar', 'Luis', 'Velasquez', 'Parrado', 31, 'julioCesar', 116, 1),
 (19, 'Clarasssh', '', 'D', NULL, NULL, 'Clara', 'Mayerli', 'Torres', 'Mendoza', 32, 'Clarita', 117, 1),
@@ -763,11 +788,11 @@ INSERT INTO `usuario` (`id_Usuario`, `nombre_perfil`, `perfil`, `id_rol`, `docum
 (50, 'Ojotes	', '', 'E', NULL, NULL, 'Vairon	', 'Estevan', 'Sepulveda', 'Ruiz', 19, 'Vairoojito', 162, 1),
 (51, 'Riosucio	', '', 'E', NULL, NULL, 'Juan	', 'Sebastian', 'Virguéz', 'Zacipa', 18, 'Virguezrio', 163, 1),
 (52, 'Alejaani	', '', 'E', NULL, NULL, 'Annie	', 'Alejandra', 'Mora', 'Gonzalez', 18, 'Moritacant', 164, 1),
-(65, 'lorec', '', 'D', NULL, NULL, 'Lorena', '', 'Carrillo', 'Guzman', 30, 'apdfnpuir', NULL, 1),
+(65, 'lorec', '', 'D', NULL, NULL, 'Lorena', '', 'Carrillo', 'Guzman', 30, 'apdfnpuir', NULL, 0),
 (66, 'alfreN', '', 'D', NULL, NULL, 'Alfredo', '', 'Nuñes', 'Castro', 35, 'cm8afhnfh', NULL, 0),
-(67, 'ManuelAso', '', 'D', NULL, NULL, 'Manuel', 'Alfredo', 'Linares', 'Sosa', 40, 'cwec84cow3', NULL, 1),
-(68, 'jjP', '', 'D', NULL, NULL, 'Jenrry', 'Jonas', 'Piñeros', '', 37, 'cumehnoie8', NULL, 1),
-(69, 'karego', '', 'D', NULL, NULL, 'Karen', 'Julieth', 'Gomez', 'Parrado', 30, 'karenfeadc', NULL, 1),
+(67, 'ManuelAso', '', 'D', NULL, NULL, 'Manuel', 'Alfredo', 'Linares', 'Sosa', 40, 'cwec84cow3', NULL, 0),
+(68, 'jjP', '', 'D', NULL, NULL, 'Jenrry', 'Jonas', 'Piñeros', '', 37, 'cumehnoie8', NULL, 0),
+(69, 'karego', '', 'D', NULL, NULL, 'Karen', 'Julieth', 'Gomez', 'Parrado', 30, 'karenfeadc', NULL, 0),
 (70, 'clauG', '', 'D', NULL, NULL, 'Claudia', 'Milena', 'Rodrigez', 'Gonsalez', 36, '320ucnw093', NULL, 1),
 (71, 'TerePa', '', 'D', NULL, NULL, 'Tereza', '', 'Garcia', 'Cruz', 37, 'm48ruw9wp3', NULL, 1),
 (72, 'NiñoP', '', 'D', NULL, NULL, 'Dario', 'Julian', 'Niño', '', 42, 'n44hrw9p4n', NULL, 1),
@@ -804,7 +829,9 @@ INSERT INTO `usuario` (`id_Usuario`, `nombre_perfil`, `perfil`, `id_rol`, `docum
 (106, 'Roberto0845', '', 'E', NULL, NULL, 'Roberto', '', 'Posada', 'Ruiz', 12, '?9l0be4ps2', 218, 0),
 (107, 'Ralf993', '', 'E', NULL, NULL, 'Ralf', '', 'Carvajal', '', 14, '?o4ygh00lh', 219, 1),
 (108, 'Paulo26', '', 'E', NULL, NULL, 'Paulo', 'Stivent', 'Rodriguez', '', 16, 't31ga6othi', 220, 0),
-(109, 'Hernesto932', '', 'E', 1000938280, 'TI', 'Hernesto', '', 'Perez', '', 17, 'fwm7ipgs10', 222, 1);
+(109, 'Hernesto932', '', 'E', 1000938280, 'TI', 'Hernesto', '', 'Perez', '', 17, 'fwm7ipgs10', 222, 1),
+(110, 'Santos28', '', 'E', 1003739902, 'TI', 'Rafae', 'Santos', 'Betancour', '', 14, '94qspnhvhj', 223, 0),
+(111, 'Arturo92', '', 'D', 1003739923, 'CC', 'Arturo', '', 'Torres', '', 27, 't?isqwt?t9', 224, 1);
 
 --
 -- Índices para tablas volcadas
@@ -935,31 +962,31 @@ ALTER TABLE `asignatura`
 -- AUTO_INCREMENT de la tabla `datos_adicionales`
 --
 ALTER TABLE `datos_adicionales`
-  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_estudiante` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `integrantescurso`
 --
 ALTER TABLE `integrantescurso`
-  MODIFY `id_integrantecurso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_integrantecurso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id_Usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- Restricciones para tablas volcadas
