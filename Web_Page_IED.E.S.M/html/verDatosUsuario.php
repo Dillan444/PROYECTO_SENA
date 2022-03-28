@@ -32,7 +32,7 @@
         <thead>
             <tr>
                 <th>id_usuario</th>
-                <th>id_datos_adicionales</th>
+                <th>Documento</th>
                 <th>Nombre de perfil</th>
                 <th>Rol</th>
                 <th>Primer nombre</th>
@@ -40,7 +40,7 @@
                 <th>Primer apellido</th>
                 <th>Segundo apellido</th>
                 <th>Edad</th>
-                <th>Correo Electrnico</th>
+                <th>Correo Electronico</th>
                 <th>Teléfono</th>
                 <th>Sexo</th>
                 <th colspan="2" >Acción</th>

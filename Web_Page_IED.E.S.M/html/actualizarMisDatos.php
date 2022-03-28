@@ -80,7 +80,7 @@
               </label><br>
               <label for="">
                   <span>Documento Identidad</span>
-                  <input type="text" disabled value="99999999" id="documento" name="documento">
+                  <input type="text" disabled value="<?php echo ($datos['documento'])?$datos['documento']:9999999; ?>" id="documento" name="documento">
               </label><br>
               <label for="">
                   <span>Nombres</span>

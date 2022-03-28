@@ -10,7 +10,7 @@
         header("Location: ./login.html");
     }
 
-    $consulta = "SELECT c.curso, a.nombre_asignatura, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B1, d.definitiva_B2, d.definitiva_B3, d.definitiva_B4, i.año 
+    $consulta = "SELECT c.curso, a.nombre_asignatura, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B1, d.definitiva_B2, d.definitiva_B3, d.definitiva_B4, i.año, i.jornada
         FROM asignatura a INNER JOIN definitivas d ON a.id_asignatura = d.id_asignatura 
         INNER JOIN integrantescurso i ON d.estudiante = i.id_integrantecurso AND i.año = now() 
         INNER JOIN curso c ON i.id_curso = c.id_curso 
@@ -55,7 +55,23 @@ ob_start();
             </td>
             <td>
                 <span>Jornada:</span>
-                <p>Mañana</p>
+                <p><?php 
+                switch ($datos['jornada']) {
+                    case 'D':
+                        echo "Diurna";
+                        break;
+                    case 'N':
+                        echo "Nocturna";
+                        break;
+                    case 'FDS':
+                        echo "Fin de Semana";
+                        break;
+                    
+                    default:
+                        echo "Indefinido";
+                        break;
+                }
+                ?></p>
             </td>
             <td>
                 <span>Grupo:</span>

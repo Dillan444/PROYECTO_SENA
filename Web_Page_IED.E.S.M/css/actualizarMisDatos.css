@@ -40,6 +40,7 @@ body{
     padding: 6px 15px;
     border-radius: 3px;
     box-shadow: 3px 3px 6px;
+    transition: .3s;  
 
     display: flex;
     justify-content: center;

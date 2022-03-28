@@ -1,0 +1,96 @@
+body{
+    min-height: 100vh;
+    background-color: var(--gris-suave);
+}
+
+.contenedor-form {
+    width: 100%;
+    min-width: 320px;
+    min-height: calc(100vh - 60px);
+    padding: 6px 3px;
+    
+    display: flex;
+    align-items: center;
+}
+
+.form-creacionUsuarios{
+    display: grid;
+    grid-template-rows: auto;
+
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 6px;
+    border-radius: 3px;
+    background: var(--blanco-grisaceso);
+}
+
+.form-creacionUsuarios .datosDeEntrada{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 12px;
+    background-color: none;
+}
+
+.contenedor-form label{
+    width: 100%;
+    max-width: 320px;
+    font-size: 1.2rem;
+
+    display: flex;
+    flex-direction: column;
+    column-gap: 3px;
+}
+
+.contenedor-form label input, select{
+    padding: 6px 3px;
+    border-radius: 3px;
+    border: none;
+}
+
+.contenedor-form label.genero{
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 12px;
+}
+
+.botons-accion{
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.botons-accion input, button{
+    font-size: 1.5rem;
+    padding: 6px;
+    border-radius: 3px;
+    border: none;
+    margin-left: 6px;
+    width: 40%;
+    box-shadow: 3px 3px 6px;
+    background-color: var(--verde-intenso);
+    transition: .3s;
+}
+
+.botons-accion input:active, button:active{
+    padding: 3px;
+    width: calc(40% - 6px);
+    box-shadow: none;
+}
+
+@media (min-width: 664px){
+    .form-creacionUsuarios .datosDeEntrada{
+        height: 400px;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .botons-accion{
+        max-width: 400px;
+    }
+}

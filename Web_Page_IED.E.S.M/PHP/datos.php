@@ -225,9 +225,9 @@ function cargarMisNotas($conx, $usuario){
 
 function mostrarDatosUsuario($conx){
     $sql = 
-      "SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo 
+      "SELECT id_usuario, u.documento, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo 
       FROM usuario u LEFT JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
-      UNION SELECT id_usuario, da.id_datos_adicionales, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo 
+      UNION SELECT id_usuario, u.documento, u.nombre_perfil, u.id_rol, u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, u.edad, da.correo, da.Telefono, da.sexo 
       FROM usuario u right JOIN datos_adicionales da ON u.id_datos_adicionales = da.id_datos_adicionales WHERE u.id_rol NOT LIKE 'A'
     ";
 

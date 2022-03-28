@@ -4,7 +4,7 @@ if (isset($_POST['crear'])) {
 
     $datosRegistro = array(
 
-        // Datos de la tabla usuario
+        // Datos de la tabla -> usuario
         "rol_in" => $_POST['rol_in'],
         "tipo_documento" => $_POST['tipo_documento'],
         "documento" => ($_POST['documento'])?$_POST['documento']:"",
@@ -14,11 +14,14 @@ if (isset($_POST['crear'])) {
         "scd_lastName" => $_POST['S_apellido'],
         "age" => $_POST['edad'],
 
-        // Datos de la tabla Datos Adicionales
+        // Datos de la tabla -> Datos Adicionales
         "number" => $_POST['telefono'],
         "email" => $_POST['correo'],
         "sex" => $_POST['sexo'],
-        "curso_E" => $_POST['curso_E']
+
+        // Datos de la tabla -> integrantescurso
+        "curso_E" => $_POST['curso_E'],
+        "jornada" => $_POST['jornada']
     );
 
     crearUsuarios($conx, $datosRegistro);
@@ -42,18 +45,10 @@ function crearUsuarios($conx, $dR){
         $password = generarPassword();
 
         if (insertarTablaUsuario($conx, $userName, $dR, $password, $id)) {
-
-            // $sqlIdUsuario = $conx -> query("SELECT id_Usuario FROM usuario WHERE nombre_perfil = '$userName'") -> fetch_row();
-
-            // $sqlInsertDocumento = "INSERT documento (id_documento, tipo_documento, id_Usuario) VALUES ($dR[documento], '$dR[tipo_documento]', $sqlIdUsuario[0])";
-
-            // if (!$conx -> query($sqlInsertDocumento)) {
-            //     echo "Ha ocurrido un problema: " . $conx -> error();
-            // }
  
             if(añadirUsuarioTablaRolCorrespondiente($conx, $userName, $dR['rol_in']) && $dR['rol_in'] == "E" && $dR['curso_E'] != "otro"){ #verificar correcta ejecución y que el rol se de E(estudiante)
 
-                if(integrarEstudianteAlCurso($conx, $userName, $dR['curso_E'])){
+                if(integrarEstudianteAlCurso($conx, $userName, $dR['curso_E'], $dR['jornada'])){
 
                     if(asignarEstudianteIntegranteCursoPlantillaDefinitivas($conx, $userName, $dR['curso_E'])){
 
@@ -161,7 +156,7 @@ function añadirUsuarioTablaRolCorrespondiente($conx, $userName, $rol){
     }
 }
 /*INSERTAR USUARIO ESTUDAINTE A LA TABLA INTEGRANTESCURSO */
-function integrarEstudianteAlCurso($conx, $userName, $cursoN){ 
+function integrarEstudianteAlCurso($conx, $userName, $cursoN, $jornada){ 
     $id_Estudiante = $conx -> query( #consultar el id del estudiante anteriormente creado
      "SELECT id_estudiante FROM estudiante e INNER JOIN usuario u 
      ON e.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$userName'"
@@ -173,8 +168,8 @@ function integrarEstudianteAlCurso($conx, $userName, $cursoN){
 
 
     $sqlIntegrantesCurso = #código para insertar en la tabla integrantescurso al usuario estudiante
-     "INSERT INTO integrantescurso (id_estudiante, id_curso, año) 
-     VALUES ('$id_Estudiante[id_estudiante]', '$id_curso[id_curso]', now())
+     "INSERT INTO integrantescurso (id_estudiante, id_curso, año, jornada) 
+     VALUES ('$id_Estudiante[id_estudiante]', '$id_curso[id_curso]', now(), '$jornada')
     ";
 
     if($conx -> query($sqlIntegrantesCurso)){
