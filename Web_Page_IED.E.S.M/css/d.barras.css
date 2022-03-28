@@ -1,0 +1,110 @@
+:root{
+    --skill-bar-length: 0%;
+}
+.column{
+    display: grid;
+    gap: 0.5em;
+}
+@media screen and (min-width: 720px){
+    .column--right{
+        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, min-content);
+        /* align-items: start; */
+    } 
+    
+}
+.skills__tech, .poro{
+    color: rgb(255, 254, 255);
+
+}
+.card__title{
+    color: rgb(0, 0, 0);
+}
+.lulu{
+    color: black;
+}
+/* .main{
+    display: grid;
+    padding: 2em;
+    gap: 0.5em;
+} */
+.card{
+    background-color: rgb(95, 99, 99);
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+.card:hover{
+    transform: scale(1.01);
+}
+
+.skills{
+    padding: 1em 0;
+}
+.skills__header{
+    display: flex;
+    justify-content: space-between;
+    width: 175px;
+    margin-left: auto;
+}
+.skills__tech{
+    margin: 0;
+    font-size: 0.8rem;
+}
+.skills__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+}
+.skills__bar, 
+.skills__bar::after{
+    position: relative;
+    width: 175px;
+    height: 8px;
+    background-color: rgb(25, 226, 102);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.skills__bar::after{
+    content: "";
+    position: absolute;
+    left: -175px;
+    background-color: blue;
+    transition: var(--transition);
+    animation: skills__bar-fill 2s ease-in-out forwards;
+}
+.skills__bar--10::after{
+    --skill-bar-length:10%;
+}
+.skills__bar--20::after{
+    --skill-bar-length:20%;
+}
+.skills__bar--30::after{
+    --skill-bar-length:30%;
+}
+.skills__bar--40::after{
+    --skill-bar-length:40%;
+}
+.skills__bar--50::after{
+    --skill-bar-length:50%;
+}
+.skills__bar--60::after{
+    --skill-bar-length:60%;
+}
+.skills__bar--70::after{
+    --skill-bar-length:70%;
+}
+.skills__bar--80::after{
+    --skill-bar-length:80%;
+}
+.skills__bar--90::after{
+    --skill-bar-length:90%;
+}
+    
+@keyframes skills__bar-fill{
+    to{
+        transform: translatex(var(--skill-bar-length));
+    }
+}

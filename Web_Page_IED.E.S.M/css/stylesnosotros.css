@@ -20,12 +20,12 @@
 
     }
 
-    article:hover{
+    .pio:hover{
         transform: scale(1.01);
     }
-    article{
+    .pio{
     
-        background: rgba(12, 12, 12, 0.9);
+        background: rgba(85, 84, 84, 0.9);
         margin-bottom: 20px;
         border-radius: 10px;
 
@@ -45,7 +45,7 @@
     }
 
     
-    article div{
+    .pio {
         display: flex;
         gap: 20px;
         margin: 14px;
