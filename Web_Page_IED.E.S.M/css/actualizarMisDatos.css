@@ -11,7 +11,7 @@ body{
     width: 100vw;
     height: 62px;
     text-align: center;
-    background: var(--verde-intenso);
+    background: var(--azul-intenso);
     padding: 12px 0;
     position: fixed;
     top: 0;
@@ -20,11 +20,12 @@ body{
 
 .perfil-info h1{
     font-size: 2rem;
-    color: black;
+    color: rgb(252, 247, 247);
 }
 
 .perfil-info span{
     font-size: 1.2rem;
+    color: white;
 }
 
 .content{
@@ -153,8 +154,8 @@ body{
     height: 30px;
     font-size: 1.6rem;
     font-weight: bold;
-    background-color: var(--azul-intenso);
-    color: white;
+    background-color: var(--verde-intenso);
+    color: rgb(7, 7, 7);
     padding: 6px;
     margin: 10px 0;
     border: none;

@@ -9,19 +9,21 @@
     .column--right{
         grid-template-columns: repeat(3,1fr);
         grid-template-columns: repeat(3, min-content);
-        /* align-items: start; */
+        align-items: start;
     } 
     
 }
 .skills__tech, .poro{
-    color: rgb(255, 254, 255);
+    color: rgb(0, 0, 0);
 
 }
 .card__title{
     color: rgb(0, 0, 0);
+    font-size: 1.8rem;
 }
 .lulu{
     color: black;
+    font-size: 1.5rem;
 }
 /* .main{
     display: grid;
@@ -29,11 +31,12 @@
     gap: 0.5em;
 } */
 .card{
-    background-color: rgb(95, 99, 99);
+    background-color: rgb(218, 216, 216);
     width: 400px;
     padding: 10px;
     border-radius: 10px;
-    
+    border: solid 2px blue;
+    position: fixed;
 }
 .card:hover{
     transform: scale(1.01);
@@ -47,10 +50,12 @@
     justify-content: space-between;
     width: 175px;
     margin-left: auto;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 .skills__tech{
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
 }
 .skills__item{
     display: flex;
