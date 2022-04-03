@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2022 a las 16:58:55
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 7.4.22
+-- Tiempo de generación: 03-04-2022 a las 19:14:34
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,36 +50,38 @@ INSERT INTO `administrador` (`id_administrador`, `id_Usuario`, `codigo`) VALUES
 
 CREATE TABLE `asignatura` (
   `id_asignatura` int(4) NOT NULL,
-  `nombre_asignatura` varchar(20) NOT NULL,
-  `Tipo_asignatura` varchar(20) NOT NULL
+  `nombre_asignatura` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `asignatura`
 --
 
-INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `Tipo_asignatura`) VALUES
-(200, 'Sociales', 'Historia'),
-(201, 'Biologia', 'Ciencias'),
-(202, 'Algebra', 'Matematicas'),
-(203, 'E_Fisica', 'Deporte'),
-(204, 'Quimica', 'Ciencia N'),
-(205, 'Filosofia', 'Social'),
-(206, 'Ingles', 'Lenguaje'),
-(207, 'Religión', 'Etica y valores'),
-(208, 'Ética', 'Etica y valores'),
-(209, 'Dibujo Tecnico', 'Artistica'),
-(210, 'Física', 'Ciencias'),
-(211, 'Geometria', 'Matematicas'),
-(212, 'Ciencias Politícas', 'Social'),
-(213, 'Gestión Empresarial', 'Area tecnica'),
-(214, 'Estadísticas', 'Matematicas'),
-(215, 'Tecnología e Informa', 'Tecnologia'),
-(216, 'Emprendimiento', 'Area tecnica'),
-(217, 'Español', 'Lenguage'),
-(218, 'Artes', 'Artistica'),
-(219, 'Contaduria', 'Matematica'),
-(221, 'Cultura', 'Social');
+INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`) VALUES
+(223, 'Agronomia'),
+(202, 'Algebra'),
+(218, 'Artes'),
+(201, 'Biologia'),
+(212, 'Ciencias Politícas'),
+(219, 'Contaduria'),
+(221, 'Cultura'),
+(222, 'Danzas'),
+(209, 'Dibujo Tecnico'),
+(216, 'Emprendimiento'),
+(217, 'Español'),
+(214, 'Estadísticas'),
+(208, 'Ética'),
+(203, 'E_Fisica'),
+(205, 'Filosofia'),
+(210, 'Física'),
+(211, 'Geometria'),
+(213, 'Gestión Empresarial'),
+(206, 'Ingles'),
+(224, 'jejeje'),
+(204, 'Quimica'),
+(207, 'Religión'),
+(200, 'Sociales'),
+(215, 'Tecnología e Informa');
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,7 @@ INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `Tipo_asignatura
 
 CREATE TABLE `clases` (
   `id_asignatura` int(4) NOT NULL,
-  `id_curso` char(2) NOT NULL,
+  `id_curso` int(3) DEFAULT NULL,
   `id_docente` int(11) NOT NULL,
   `año` year(4) NOT NULL,
   `jornada` char(3) NOT NULL
@@ -100,21 +102,21 @@ CREATE TABLE `clases` (
 --
 
 INSERT INTO `clases` (`id_asignatura`, `id_curso`, `id_docente`, `año`, `jornada`) VALUES
-(206, 'n2', 204, 2022, 'D'),
-(206, 'o1', 201, 2022, 'D'),
-(206, 's1', 204, 2022, 'D'),
-(206, 's3', 204, 2022, 'D'),
-(206, 't2', 201, 2022, 'D'),
-(214, 'n2', 205, 2022, 'D'),
-(214, 'o1', 200, 2022, 'D'),
-(214, 's1', 200, 2022, 'D'),
-(214, 's3', 205, 2022, 'D'),
-(214, 't2', 200, 2022, 'D'),
-(217, 'n2', 201, 2022, 'D'),
-(217, 'o1', 201, 2022, 'D'),
-(217, 's1', 201, 2022, 'D'),
-(217, 's3', 201, 2022, 'D'),
-(217, 't2', 203, 2022, 'D');
+(206, 1, 204, 2022, 'D'),
+(206, 3, 204, 2022, 'D'),
+(206, 6, 201, 2022, 'D'),
+(206, 7, 201, 2022, 'D'),
+(206, 9, 204, 2022, 'D'),
+(214, 1, 200, 2022, 'D'),
+(214, 3, 205, 2022, 'D'),
+(214, 6, 200, 2022, 'D'),
+(214, 7, 200, 2022, 'D'),
+(214, 9, 205, 2022, 'D'),
+(217, 1, 201, 2022, 'D'),
+(217, 3, 201, 2022, 'D'),
+(217, 6, 203, 2022, 'D'),
+(217, 7, 201, 2022, 'D'),
+(217, 9, 201, 2022, 'D');
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,7 @@ INSERT INTO `clases` (`id_asignatura`, `id_curso`, `id_docente`, `año`, `jornad
 --
 
 CREATE TABLE `curso` (
-  `id_curso` char(2) NOT NULL,
+  `id_curso` int(3) NOT NULL,
   `curso` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -132,25 +134,25 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `curso`) VALUES
-('s1', 601),
-('s2', 602),
-('s3', 603),
-('s4', 604),
-('t1', 701),
-('t2', 702),
-('t3', 703),
-('o1', 801),
-('o2', 802),
-('o3', 803),
-('n1', 901),
-('n2', 902),
-('n3', 903),
-('d1', 1001),
-('d2', 1002),
-('d3', 1003),
-('c1', 1101),
-('c2', 1102),
-('c3', 1103);
+(1, 601),
+(2, 602),
+(3, 603),
+(4, 604),
+(5, 701),
+(6, 702),
+(14, 703),
+(7, 801),
+(16, 802),
+(17, 803),
+(8, 901),
+(9, 902),
+(15, 903),
+(10, 1001),
+(11, 1002),
+(18, 1003),
+(12, 1101),
+(13, 1102),
+(19, 1103);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,8 @@ INSERT INTO `datos_adicionales` (`id_datos_adicionales`, `correo`, `Telefono`, `
 (220, 'spaulo@outlook.com', '3239832938', 'M'),
 (222, 'hernesto@perez.com', '3001543334', 'M'),
 (223, 'rafasantos@gmail.com', '3194583987', 'M'),
-(224, 'arturotorres@outlook.com', '3158973700', 'M');
+(224, 'arturotorres@outlook.com', '3158973700', 'M'),
+(225, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -440,7 +443,7 @@ INSERT INTO `definitivas` (`definitiva_B1`, `definitiva_B2`, `definitiva_B3`, `d
 
 CREATE TABLE `direccion` (
   `id_docente` int(11) NOT NULL,
-  `id_curso` char(2) NOT NULL,
+  `id_curso` int(3) DEFAULT NULL,
   `año` year(4) NOT NULL,
   `jornada` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -450,11 +453,11 @@ CREATE TABLE `direccion` (
 --
 
 INSERT INTO `direccion` (`id_docente`, `id_curso`, `año`, `jornada`) VALUES
-(200, 's1', 2022, ''),
-(201, 's3', 2022, ''),
-(203, 'o1', 2022, ''),
-(204, 'n2', 2022, ''),
-(205, 't2', 2022, '');
+(200, 1, 2022, ''),
+(201, 3, 2022, ''),
+(203, 7, 2022, ''),
+(204, 9, 2022, ''),
+(205, 6, 2022, '');
 
 -- --------------------------------------------------------
 
@@ -545,7 +548,7 @@ INSERT INTO `estudiante` (`id_estudiante`, `id_Usuario`) VALUES
 CREATE TABLE `integrantescurso` (
   `id_integrantecurso` int(10) NOT NULL,
   `id_estudiante` int(15) NOT NULL,
-  `id_curso` char(2) NOT NULL,
+  `id_curso` int(3) DEFAULT NULL,
   `año` year(4) NOT NULL,
   `jornada` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -555,26 +558,26 @@ CREATE TABLE `integrantescurso` (
 --
 
 INSERT INTO `integrantescurso` (`id_integrantecurso`, `id_estudiante`, `id_curso`, `año`, `jornada`) VALUES
-(1, 1, 's1', 2022, 'D'),
-(2, 2, 's1', 2022, 'D'),
-(3, 3, 's3', 2022, 'D'),
-(4, 4, 's3', 2022, 'D'),
-(5, 5, 't2', 2022, 'D'),
-(6, 6, 't2', 2022, 'D'),
-(7, 7, 'o1', 2022, 'D'),
-(8, 8, 'o1', 2022, 'D'),
-(9, 9, 'n2', 2022, 'D'),
-(10, 10, 'n2', 2022, 'D'),
-(11, 14, 'd3', 2022, 'D'),
-(12, 15, 'd3', 2022, 'D'),
-(13, 16, 'n1', 2022, 'D'),
-(14, 17, 'n2', 2022, 'D'),
-(15, 18, 's1', 2022, 'D'),
-(16, 19, 't1', 2022, 'D'),
-(17, 20, 't2', 2022, 'D'),
-(18, 22, 'o1', 2022, 'D'),
-(19, 23, 'c1', 2022, 'D'),
-(20, 24, 'o2', 2022, 'D');
+(1, 1, 1, 2022, 'D'),
+(2, 2, 1, 2022, 'D'),
+(3, 3, 3, 2022, 'D'),
+(4, 4, 3, 2022, 'D'),
+(5, 5, 6, 2022, 'D'),
+(6, 6, 6, 2022, 'D'),
+(7, 7, 7, 2022, 'D'),
+(8, 8, 7, 2022, 'D'),
+(9, 9, 9, 2022, 'D'),
+(10, 10, 9, 2022, 'D'),
+(11, 14, 18, 2022, 'D'),
+(12, 15, 18, 2022, 'D'),
+(13, 16, 8, 2022, 'D'),
+(14, 17, 9, 2022, 'D'),
+(15, 18, 1, 2022, 'D'),
+(16, 19, 5, 2022, 'D'),
+(17, 20, 6, 2022, 'D'),
+(18, 22, 7, 2022, 'D'),
+(19, 23, 12, 2022, 'D'),
+(20, 24, 16, 2022, 'D');
 
 -- --------------------------------------------------------
 
@@ -956,13 +959,19 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  MODIFY `id_asignatura` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+  MODIFY `id_asignatura` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
+
+--
+-- AUTO_INCREMENT de la tabla `curso`
+--
+ALTER TABLE `curso`
+  MODIFY `id_curso` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_adicionales`
 --
 ALTER TABLE `datos_adicionales`
-  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
+  MODIFY `id_datos_adicionales` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
@@ -1003,8 +1012,8 @@ ALTER TABLE `administrador`
 --
 ALTER TABLE `clases`
   ADD CONSTRAINT `clases_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`),
-  ADD CONSTRAINT `clases_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
-  ADD CONSTRAINT `clases_ibfk_3` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`);
+  ADD CONSTRAINT `clases_ibfk_3` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `clases_ibfk_4` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
 
 --
 -- Filtros para la tabla `definitivas`
@@ -1019,8 +1028,8 @@ ALTER TABLE `definitivas`
 -- Filtros para la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
-  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`);
+  ADD CONSTRAINT `direccion_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`),
+  ADD CONSTRAINT `direccion_ibfk_3` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
 
 --
 -- Filtros para la tabla `docente`
