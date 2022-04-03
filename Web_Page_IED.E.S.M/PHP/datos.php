@@ -284,4 +284,29 @@ function mostrarDatosUsuario($conx){
     }
 }
 
+function buscarSiExisteDato($conx, $dato, $tabla, $columna){
+    // Se ejecuta una consulta para saber si la asignatua a enviar ya esta creada
+    $sql_search = "SELECT $columna FROM $tabla WHERE $columna = '$dato'";
+    $resultado = $conx->query($sql_search);
+    $resultado = mysqli_num_rows($resultado);
+    // si hay un resultado o más quiere decir que ya existe, entoces debuelve false
+    return ($resultado >= 1) ? false : true;
+}
+
+
+function mostrarDatos($conx, $columna, $tabla){
+
+// Se ejecuta una consulta para saber que datos ya esta creados
+$sql_search = "SELECT $columna FROM $tabla";
+$resultado = $conx->query($sql_search);
+
+
+// Se almacena en una variable un dato a medida que itera el bucle
+while($dato = $resultado->fetch_array()){?>
+
+<!-- se muestra en una etiqueta li cada dato -->
+<li><?php echo $dato[$columna]; ?></li>
+
+<?php }
+}
 ?>

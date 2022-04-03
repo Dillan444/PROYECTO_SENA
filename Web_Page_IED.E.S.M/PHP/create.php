@@ -21,7 +21,7 @@ if (isset($_POST['crear'])) {
 
         // Datos de la tabla -> integrantescurso
         "curso_E" => $_POST['curso_E'],
-        "jornada" => $_POST['jornada']
+        "jornada" => $_POST['jornada'],
     );
 
     crearUsuarios($conx, $datosRegistro);
@@ -219,4 +219,15 @@ function asignarEstudianteIntegranteCursoPlantillaDefinitivas($conx, $userName, 
     }
     
     return true;
+}
+
+function cargarNuevoDato($dato, $conx, $tabla, $columna){
+
+    $sqlInsert = "INSERT INTO $tabla ($columna) VALUES ('$dato')";
+
+    if($conx->query($sqlInsert)){
+        return "Insertado exitosamente";
+    }else{
+        return mysqli_error($conx);
+    }
 }
