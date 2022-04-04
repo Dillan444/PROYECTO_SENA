@@ -294,19 +294,25 @@ function buscarSiExisteDato($conx, $dato, $tabla, $columna){
 }
 
 
-function mostrarDatos($conx, $columna, $tabla){
+function mostrarDatos($conx, $column1, $column2, $tabla){
 
-// Se ejecuta una consulta para saber que datos ya esta creados
-$sql_search = "SELECT $columna FROM $tabla";
-$resultado = $conx->query($sql_search);
-
-
-// Se almacena en una variable un dato a medida que itera el bucle
-while($dato = $resultado->fetch_array()){?>
-
-<!-- se muestra en una etiqueta li cada dato -->
-<li><?php echo $dato[$columna]; ?></li>
-
-<?php }
-}
+  // Se ejecuta una consulta para saber que datos ya esta creados
+  $sql_search = "SELECT $column1, $column2 FROM $tabla";
+  $resultado = $conx->query($sql_search);
+  
+  
+  // Se almacena en una variable un dato a medida que itera el bucle
+  while($dato = $resultado->fetch_array()){?>
+  
+  <!-- se muestra en una etiqueta li cada dato -->
+  <li>
+    <form action="" method="post">
+      <input type="hidden" name="id_dato" id="" value="<?php echo $dato[$column1]; ?>">
+      <input type="submit" class="loko-dato" value="<?php echo $dato[$column2]; ?>">
+    </form>
+      
+   </li>
+  
+  <?php }
+  }
 ?>

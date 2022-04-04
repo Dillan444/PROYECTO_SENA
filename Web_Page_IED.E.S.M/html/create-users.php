@@ -11,6 +11,14 @@
         header("Location: login.html");
     }
 
+    $mensajeEstado = (isset($_GET['mensaje']))?$_GET['mensaje']:false;
+
+    if ($mensajeEstado) {
+
+        $mensaje = ($mensajeEstado == 'y')?"Creado":"$mensajeEstado";
+        echo "<script>alert('$mensaje');</script>"; 
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,6 +42,10 @@
 
     <section class="contenedor-form">
         <form action="" method="post" class="form-creacionUsuarios">
+            <div class="creacionUsuarios-title">
+                <h1>Crea cuentas de usuario</h1>
+            </div>
+
             <div class="datosDeEntrada">
 
                 <label for="tipo_documento" class="text-in">

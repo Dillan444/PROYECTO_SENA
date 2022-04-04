@@ -52,16 +52,16 @@ function crearUsuarios($conx, $dR){
 
                     if(asignarEstudianteIntegranteCursoPlantillaDefinitivas($conx, $userName, $dR['curso_E'])){
 
-                        header("Location: ../html/create-users.php"); 
+                        header("Location: ../html/create-users.php?mensaje='y'"); 
                     }                
                 }
             }else{
-                header("Location: ../html/create-users.php");
+                header("Location: ../html/create-users.php?mensaje='y'");
             }
         }
     }else{
-
-        echo "Error: " . mysqli_error($conx);
+        $mensaje =  mysqli_error($conx);
+        header("Location: ../html/create-users.php?mensaje='$mensaje'");
     }
 }
 

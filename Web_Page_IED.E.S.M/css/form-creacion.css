@@ -1,13 +1,13 @@
 body{
     min-height: 100vh;
-    background-color: var(--gris-suave);
+    background: var(--blanco-grisaceso);
 }
 
 .contenedor-form {
     width: 100%;
     min-width: 320px;
     min-height: calc(100vh - 60px);
-    padding: 6px 3px;
+    padding: 1px 3px;
     
     display: flex;
     align-items: center;
@@ -20,9 +20,19 @@ body{
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 12px 6px;
+    padding: 6px;
     border-radius: 3px;
-    background: var(--blanco-grisaceso);
+}
+
+.creacionUsuarios-title{
+    text-align: center;
+    font-size: 1.8rem;
+    background-color: var(--azul-intenso);
+    color: white;
+    font-weight: bold;
+    padding: 3px 0;
+    border-radius: 3px;
+    margin-bottom: 3px;
 }
 
 .form-creacionUsuarios .datosDeEntrada{
@@ -75,6 +85,7 @@ body{
     box-shadow: 3px 3px 6px;
     background-color: var(--verde-intenso);
     transition: .3s;
+    cursor: pointer;
 }
 
 .botons-accion input:active, button:active{
