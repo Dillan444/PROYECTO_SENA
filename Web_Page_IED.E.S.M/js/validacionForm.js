@@ -15,21 +15,48 @@ function repetido(){
     let string = userName.value;
 
     if (coincide) {
-        mensaje.innerHTML = "Nombre ya existe";
-        mensaje.style.color = "#c30202";
-        boton.disabled = true;
-        boton.style.cursor = "none";
+
+        aspectosCursor(
+            true,
+            "Nombre ya existe",
+            "#c30202",
+            "not-allowed"
+        );
+
     }else{
-        mensaje.innerHTML = "Aceptado";
-        mensaje.style.color = "#059409";
-        boton.disabled = false;
-        boton.style.cursor = "pointer";
+
+        aspectosCursor(
+            false,
+            "Aceptado",
+            "#059409",
+            "pointer"
+        );
         
         if (string.length < 4) {
-            boton.disabled = true;
-            mensaje.innerHTML = "Demaciado corto";
-            mensaje.style.color = "#c30202";
-            boton.style.cursor = "none";
+
+            aspectosCursor(
+                true,
+                "Demaciado corto",
+                "#c30202",
+                "not-allowed"
+            );
+
+
+        }if(string.length > 30){
+
+            aspectosCursor(
+                true,
+                "Demaciado largo",
+                "#c30202",
+                "not-allowed"
+            );
         }
     }
+}
+
+function aspectosCursor(active, message, color, typeCursor){
+    boton.disabled = active;
+    mensaje.innerHTML = message;
+    mensaje.style.color = color;
+    boton.style.cursor = typeCursor;
 }
