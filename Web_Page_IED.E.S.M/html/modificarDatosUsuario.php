@@ -42,7 +42,20 @@ if (!isset($usuario)) {
 
         <label for="userName" class="short short-1">
           <span>Nombre de Usuario</span>
-          <input type="text" name="userName" id="userName" placeholder="UserName" value="" autocomplete="name" required />
+          <input type="text" name="userName" id="userName" placeholder="UserName" value=""  required />
+        </label>
+        
+        <label for="typeDoc">
+          <span>Tipo de Documento</span>
+          <select name="typeDoc" id="typeDoc">
+            <option value="CC">Cedula de Ciudadania</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="CI">Certicado de Extranjería</option>
+          </select>
+        </label>
+        <label for="nDoc">
+          <span>Nombre de Usuario</span>
+          <input type="text" name="nDoc" id="nDoc" placeholder="N° Documento" value=""  required />
         </label>
         <label for="p_nombre">
           <span>Primer Nombre</span>
@@ -98,6 +111,8 @@ if (!isset($usuario)) {
       if (isset($_POST['form_update'])) {
         $datos = array(
           "nombre_perfil" => $_POST['userName'],
+          "tipo_Documento" => $_POST['typeDoc'],
+          "num_Documento" => $_POST['nDoc'],
           "p_nombre" => $_POST['p_nombre'],
           "s_nombre" => $_POST['s_nombre'],
           "p_apellido" => $_POST['p_apellido'],
@@ -121,6 +136,8 @@ if (!isset($usuario)) {
   
   <script>
     let userName = document.getElementById('userName'); 
+    let tipo_Documento = document.getElementById('typeDoc'); 
+    let num_Documento = document.getElementById('nDoc'); 
     let p_nombre = document.getElementById('p_nombre'); 
     let s_nombre = document.getElementById('s_nombre'); 
     let p_apellido = document.getElementById('p_apellido'); 
@@ -144,6 +161,8 @@ if (!isset($usuario)) {
         echo "
         <script> 
           userName.value = '$resultado[nombre_perfil]'; 
+          tipo_Documento.value = '$resultado[tipo_documento]';
+          num_Documento.value = '$resultado[documento]';
           p_nombre.value = '$resultado[p_nombre]'; 
           s_nombre.value = '$resultado[s_nombre]'; 
           p_apellido.value = '$resultado[p_apellido]'; 

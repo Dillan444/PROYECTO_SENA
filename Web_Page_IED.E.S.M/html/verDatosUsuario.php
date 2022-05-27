@@ -48,7 +48,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php mostrarDatosUsuario($conx); ?>
+            <?php mostrarDatosUsuario($conx, $usuario); ?>
         </tbody>
     </table>
 </main>
