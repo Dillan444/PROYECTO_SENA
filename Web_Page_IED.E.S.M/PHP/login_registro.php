@@ -1,3 +1,4 @@
+   
 <?php include('conexion.php');
 
 /*
@@ -20,7 +21,7 @@ $datos = array(
 function validar($d){
 
     $trozoConsulta = array(" ", " ", " ");
-    if ($d['cod']) {
+    if (isset($d['cod'])) {
         
         $trozoConsulta[0] = "INNER JOIN $d[rol] a ";
         $trozoConsulta[1] = "u.id_Usuario = a.id_usuario AND";
@@ -40,7 +41,29 @@ function validar($d){
 
         header("Location: ../html/$d[rol]-index.php");
     } else {
-        header("Location: ../html/login.html");
+        ?>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        </head>
+        <body>
+        <script> 
+            
+            // alert("Datos de usuario Incorrectos");
+            swal("Datos de usuario Incorrectos", {
+                icon: "warning",
+                dangerMode: true,
+                button: true,
+            });
+            setTimeout(function(){
+                history.back()
+            }, 3000);
+
+        </script>
+        </body>
+        </html><?php
+        
     }
 }
 
@@ -75,4 +98,4 @@ if (isset($_POST['form_administrador'])) {
     $datos["cod"] = $_POST['codigo'];
 
     validar($datos);
-}
+}?>

@@ -35,9 +35,6 @@
                     <li><strong>Modificas</strong></li>
                 </a>
                 
-                <a href="#">
-                    <li><strong>Habilita el Sistema </strong></li>
-                </a>
                 <a href="./createasigna-cursos.php">
                     <li><strong>Asignaturas-Cursos</strong></li>
                 </a>

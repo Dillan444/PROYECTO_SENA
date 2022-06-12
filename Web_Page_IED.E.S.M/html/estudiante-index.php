@@ -4,7 +4,7 @@
 
     $usuario = $_SESSION["usuario"];
 
-    $rol = array('Estudiante', 'n_matricula');
+    $rol = array('Estudiante');
 
     if (!isset($usuario)) {
         header("Location: ./login.html");

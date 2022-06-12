@@ -15,9 +15,8 @@
             <span><?php echo $usuario ?></span>
         </div><hr>
         <ul class="opciones--cuenta">
-            <a href="./actualizarMisDatos.php?r=<?php echo $rol[0]?>"><li>Actualizar mis Datos</li></a>
-            <?php echo "<a href=\"./cambioPassword.php?r=$rol[0]\"><li>Cambiar Contraseña</li></a>"; ?>
-            <a href="#"><li>Configuración</li></a>
+            <a href="./actualizarMisDatos.php"><li>Actualizar mis Datos</li></a>
+            <?php echo "<a href=\"./cambioPassword.php\"><li>Cambiar Contraseña</li></a>"; ?>
             <a href="../PHP/cerrarSesion.php"><li>Cerrar Sesión</li></a>
         </ul>
     </nav>

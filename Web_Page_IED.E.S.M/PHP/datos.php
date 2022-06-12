@@ -315,4 +315,27 @@ function mostrarDatos($conx, $column1, $column2, $tabla){
   
   <?php }
   }
+
+  function detectarRolUsuario($dato)
+    {
+        switch ($dato) {
+            case 'E': return array(
+                "rol" => "Estudiante", 
+                "icon" => '<i class="fas fa-user-graduate"></i>'); break;
+
+            case 'D': return array(
+                "rol" => "Docente", 
+                "icon" => "<i class='fas fa-chalkboard-teacher'></i>"); break;
+
+            case 'A': return array(
+                "rol" => "Administrador", 
+                "icon" => '<i class="fas fa-user-cog"></i>'); break;
+
+    
+            default: return array(
+                "rol" => "Rol desconocido", 
+                "icon" => "!"); break;
+
+        }
+    }
 ?>

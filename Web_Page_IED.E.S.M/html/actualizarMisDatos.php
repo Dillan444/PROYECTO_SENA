@@ -15,14 +15,7 @@
 
     $datos = $conx -> query($sqlDatos) -> fetch_array();
 
-    
-    switch ($datos['id_rol']) {
-        case 'E': $rol = "Estudiante"; $icon = '<i class="fas fa-user-graduate"></i>'; break;
-        case 'D': $rol = "Docente"; $icon = "<i class='fas fa-chalkboard-teacher'></i>"; break;
-        case 'A': $rol = "Administrador"; $icon = '<i class="fas fa-user-cog"></i>'; break;
-
-        default: $rol = "Rol desconocido"; $icon = "!"; break;
-    }
+    $rol = detectarRolUsuario($datos['id_rol']);    
 
     #CONSUTA DE LOS nompre_perfil YA EXISTENTES
     $sqlUsers = $conx -> query("SELECT u.nombre_perfil
@@ -32,6 +25,7 @@
       const usuarios = [];
     </script>";
     
+    // Almacenando datos de la consulta sql en un arreglo de javaScript
     while ($user = $sqlUsers -> fetch_array()) {
         
         $users = $user['nombre_perfil'];
@@ -58,16 +52,16 @@
     
     <section class="perfil-info">
         <h1>Actualiza tus datos</h1>
-        <span><?= buscarNombreUsuario($usuario, $conx, $datos['id_rol']);?></span>
+        <span><?= buscarNombreUsuario($usuario, $conx, $rol['rol']);?></span>
     </section>
     <main class="content">
-        <a href="./<?php echo $rol;?>-index.php">
+        <a href="./<?php echo $rol['rol'];?>-index.php">
             <button id="back"> <img src="../IMG/icons/arrow-left-solid.svg" alt="Regresar"> <span>Regresar</span></button>
         </a>
         <section class="perfil">
     
             <img src="../IMG/<?php echo ($datos['sexo'] === "F")?"userWoman":"userMan";?>.png" alt="imagen de perfil del usuario" class="perfil-imagen">
-            <span class="perfil-rol"><?php echo $rol; ?><?php echo $icon?></span>
+            <span class="perfil-rol"><?php echo $rol['rol']; ?><?php echo $rol['icon']?></span>
         </section>
         <div class="line-gradient"></div>
         <section class="perfil-data">

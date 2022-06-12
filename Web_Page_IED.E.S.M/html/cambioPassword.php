@@ -1,11 +1,17 @@
 <?php 
     include('../PHP/conexion.php');
     include('../PHP/actualizar.php');
+    include('../PHP/datos.php');
 
     session_start();
     $usuario = $_SESSION["usuario"];
 
-    $rol = $_GET['r'];
+    $sqlDatos = "SELECT * 
+      FROM usuario u INNER JOIN datos_adicionales da ON da.id_datos_adicionales = u.id_datos_adicionales AND u.nombre_perfil = '$usuario'";
+
+    $datos = $conx -> query($sqlDatos) -> fetch_array();
+
+    $rol = detectarRolUsuario($datos['id_rol']);
 
     if (!isset($usuario)) {
         header("Location: ./login.html");
@@ -51,7 +57,7 @@
             <div class="botones">
             <input type="submit" name="enviar" value="Enviar">
             <?php 
-            echo "<a href=\"./$rol-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
+            echo "<a href=\"./$rol[rol]-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
             ?>
 
         </div>

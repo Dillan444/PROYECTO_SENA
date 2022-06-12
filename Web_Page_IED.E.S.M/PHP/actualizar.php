@@ -103,8 +103,8 @@ function tablaDatosAdicionales($conx, $d, $id_d_a){
 function tablaUsuario($conx, $d, $id_d_a){
     $sqlUpdateU = "UPDATE usuario SET 
         nombre_perfil =  '$d[nombre_perfil]',
-        tipo_Documento = '$d[tipo_documento]',
-        num_Documento = '$d[documento]',
+        tipo_documento = '$d[tipo_documento]',
+        documento = '$d[documento]',
         p_nombre =  '$d[p_nombre]',
         s_nombre =  '$d[s_nombre]',
         p_apellido =  '$d[p_apellido]',
