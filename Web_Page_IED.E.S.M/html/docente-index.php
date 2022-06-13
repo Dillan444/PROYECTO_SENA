@@ -36,7 +36,7 @@
                   <th>N_Curso</th>
                   <th>GradoGrado</th>
                   <th>Materia</th>
-                  <th>Acción</th>
+                  <th colspan="2">Acción</th>
                 </tr>
             </thead>
             <tbody>

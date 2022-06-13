@@ -4,8 +4,8 @@
 
     $usuario = $_SESSION["usuario"];
     $rol = array('Docente');
-    $materia = $_GET['m'];
-    $curso = $_GET['c'];
+    $materia = $_POST['materia'];
+    $curso = $_POST['curso'];
 
     if(!isset($usuario)){
         header("Location: ./login.html");
@@ -21,7 +21,17 @@
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/botones.css">
     <title>Registro de Calificaciones</title>
+    <style>
+        #periodos-row{
+            background-color: #1818a6;
+        }
+
+        .right{
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     
@@ -36,21 +46,24 @@
         <table>
             <thead>
                 <tr>
-                    <th>Indice</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>          
-                    <th>P1</th> 
-                    <th>P2</th> 
-                    <th>P3</th> 
-                    <th>P4</th>
-                    <th>Promedio</th> 
+                    <th rowspan="2">Indice</th>
+                    <th rowspan="2">Nombres</th>
+                    <th rowspan="2">Apellidos</th>
+                    <th colspan="5">Periodo Academico</th>         
+                    <tr id="periodos-row">   
+                        <th rowspan="1">N°1</th> 
+                        <th rowspan="1">N°2</th> 
+                        <th rowspan="1">N°3</th> 
+                        <th rowspan="1">N°4</th>
+                        <th rowspan="1">Promedio</th>
+                    </tr>
                 </tr>
             </thead>
             <tbody>
                 <?= mostrarCalificacionesMisEstudiantes($conx, $materia, $usuario, $curso) ?>
             </tbody>
         </table>
-        <a href="./docente-index.php"><button>Regresar</button></a>
+        <a href="./docente-index.php"><button class="boton">Regresar</button></a>
     </center>
     </seccion>
 

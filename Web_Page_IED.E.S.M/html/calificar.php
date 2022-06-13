@@ -5,8 +5,8 @@
     session_start();
 
     $usuario = $_SESSION["usuario"];
-    $materia = $_GET['m'];
-    $curso = $_GET['c'];
+    $materia = $_POST['materia'];
+    $curso = $_POST['curso'];
 
     $rol = array('Docente');
     if (!isset($usuario)) {
@@ -16,7 +16,10 @@
     
     if (isset($_POST['accion'])) {
         $datos = array(
-            'nota' => $_POST['nota'],
+            'nota1' => $_POST['nota1'],
+            'nota2' => $_POST['nota2'],
+            'nota3' => $_POST['nota3'],
+            'nota4' => $_POST['nota4'],
             'estudiante' => $_POST['estudiante'],
             'materia'=> $_POST['materia']
         );
@@ -57,7 +60,11 @@
                       <th>Indice</th>
                       <th>Nombres</th>
                       <th>Apellidos</th>          
-                      <th>Nota Periodo</th> 
+                      <th>Periodo N°1</th> 
+                      <th>Periodo N°2</th> 
+                      <th>Periodo N°3</th> 
+                      <th>Periodo N°4</th> 
+                      <th>Acción</th>
                     </tr>               
                 </thead>
                 <tbody>

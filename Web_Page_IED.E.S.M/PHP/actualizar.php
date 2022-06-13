@@ -44,35 +44,8 @@ function modificarDatosUsuario($d, $conx, $u){
         
         $result = $result -> fetch_row();
 
-        // $sqlUpdateDA = "UPDATE datos_adicionales SET 
-        //     correo =  '$d[email]',
-        //     telefono =  '$d[telefono]',
-        //     sexo =  '$d[sexo]'
-        // WHERE id_datos_adicionales = '$result[0]'";
-
         tablaDatosAdicionales($conx, $d, $result[0]);
-
         tablaUsuario($conx, $d, $result[0]);
-
-        // $sqlUpdateU = "UPDATE usuario SET 
-        //     nombre_perfil =  '$d[userName]',
-        //     p_nombre =  '$d[p_nombre]',
-        //     s_nombre =  '$d[s_nombre]',
-        //     p_apellido =  '$d[p_apellido]',
-        //     s_apellido =  '$d[s_apellido]',
-        //     id_rol =  '$d[id_rol]',
-        //     edad =  '$d[edad]'
-        //     WHERE id_datos_adicionales = '$result[0]';";
-
-        // if(!$conx -> query($sqlUpdateU)){
-
-        //     echo "Error: " . mysqli_error($conx);
-        // }
-
-        // if(!$conx -> query($sqlUpdateDA)){
-
-        //     echo "Error: " . mysqli_error($conx);
-        // }
 
         header("Location: ../html/modificarDatosUsuario.php?user=$d[userName]");
 
@@ -101,10 +74,12 @@ function tablaDatosAdicionales($conx, $d, $id_d_a){
 }
 
 function tablaUsuario($conx, $d, $id_d_a){
+    $var = (!$d['documento']) ? " " : ", documento = $d[documento]";
+
     $sqlUpdateU = "UPDATE usuario SET 
         nombre_perfil =  '$d[nombre_perfil]',
-        tipo_documento = '$d[tipo_documento]',
-        documento = '$d[documento]',
+        tipo_documento = '$d[tipo_documento]'
+        $var,
         p_nombre =  '$d[p_nombre]',
         s_nombre =  '$d[s_nombre]',
         p_apellido =  '$d[p_apellido]',
@@ -124,10 +99,15 @@ function tablaUsuario($conx, $d, $id_d_a){
 function asignarCalificacionesEstudiantes($conx, $datos){
 
     
-    $sqlUpdate = "UPDATE definitivas SET definitiva_B3 = $datos[nota] WHERE estudiante = $datos[estudiante] AND id_asignatura = $datos[materia]";
+    $sqlUpdate = "UPDATE definitivas SET 
+      definitiva_B1 = $datos[nota1],
+      definitiva_B2 = $datos[nota2],
+      definitiva_B3 = $datos[nota3],
+      definitiva_B4 = $datos[nota4]
+      WHERE estudiante = $datos[estudiante] AND id_asignatura = $datos[materia]";
         
-    if ($conx -> query($sqlUpdate)) {
+    if (!$conx -> query($sqlUpdate)) {
+        echo "Error " . mysqli_error($conx);
     }else{
-        echo "error";
     }
 }

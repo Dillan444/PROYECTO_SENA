@@ -24,14 +24,19 @@ function cargarTabla($conx, $usuario){
             echo "<td data-titulo = 'Grado'> ". buscarGrado($fila['curso']) . "</td>";
             echo "<td data_titulo = 'Cantidad'> " . $fila['nombre_asignatura'] . "</td>"; ?>
             
-            <td data-titulo = 'Calificar'> 
-                <a href="../html/calificar.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
-                    <button class= "boton" type="button" > Calificar <i class="far fa-edit"></i></button>
-                </a>
-                <a href="../html/registros.php?c=<?php echo $fila['curso']?>&m=<?php echo $fila['id_asignatura']?>">
-                    <button class= "boton"  type="button"> Ver <i class="far fa-eye"></i></button>
-                </a> 
-            </td>   
+            
+            <td><form action="../html/calificar.php" method="post">
+                <input type="hidden" name="materia" value="<?php echo $fila['id_asignatura']; ?>" >
+                <input type="hidden" name="curso" value="<?php echo $fila['curso']; ?>" >
+                <button class= "boton" type="submit" > Calificar <i class="far fa-edit"></i></button>
+            </form></td>
+
+            <td><form action="../html/registros.php" method="post">
+                <input type="hidden" name="materia" value="<?php echo $fila['id_asignatura']; ?>" >
+                <input type="hidden" name="curso" value="<?php echo $fila['curso']; ?>" >
+                <button class= "boton" type="submit" > Ver <i class="far fa-edit"></i></button>
+            </form></td>
+               
                 
        <?php  echo "</tr>";
     }
@@ -82,7 +87,7 @@ function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
     $sqlDocente = "SELECT dc.id_docente FROM usuario u INNER JOIN docente dc ON dc.id_Usuario = u.id_Usuario AND u.nombre_perfil = '$docente'";
     $docente = $conx -> query($sqlDocente) -> fetch_array();
 
-    $consulta = "SELECT u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B3, i.id_integrantecurso, d.definitiva_B3
+    $consulta = "SELECT u.p_nombre, u.s_nombre, u.p_apellido, u.s_apellido, d.definitiva_B3, i.id_integrantecurso, d.definitiva_B1, d.definitiva_B2, d.definitiva_B4
         FROM clases cl INNER JOIN curso c ON cl.id_curso = c.id_curso 
         AND c.curso = $curso AND cl.id_asignatura = $materia AND cl.id_docente = '$docente[id_docente]'
         INNER JOIN integrantescurso i ON i.id_curso = c.id_curso AND i.año = now()
@@ -98,12 +103,25 @@ function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
             <td> <?php echo $indice; ?> </td>
             <td> <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
             <td> <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
-            <td> <form action="" method="post">
+            <form action="" method="post">
                 <input type="hidden" name="estudiante" value="<?php echo $fila['id_integrantecurso']; ?>">
                 <input type="hidden" name="materia" value="<?php echo $materia; ?>">
-                <input type="number" max="50" min="0" name="nota" id="nota" value="<?php echo $fila['definitiva_B3']?>" class="boton">
-                <input type="submit" name="accion" value="Cargar" class="boton">
-            </form> </td>
+                <td>
+                    <input type="number" max="50" min="0" name="nota1" id="nota1" value="<?php echo $fila['definitiva_B1']?>" class="boton">
+                </td>
+                <td>
+                    <input type="number" max="50" min="0" name="nota2" id="nota2" value="<?php echo $fila['definitiva_B2']?>" class="boton">
+                </td>
+                <td>
+                    <input type="number" max="50" min="0" name="nota3" id="nota3" value="<?php echo $fila['definitiva_B3']?>" class="boton">
+                </td>
+                <td>
+                    <input type="number" max="50" min="0" name="nota4" id="nota4" value="<?php echo $fila['definitiva_B4']?>" class="boton">
+                </td>
+                <td>
+                    <input type="submit" name="accion" value="Cargar" class="boton">
+                </td>
+            </form>
         </tr>
 
         <?php $indice++;
@@ -133,11 +151,11 @@ function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
             <td> <?php echo $indice; ?> </td>
             <td> <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
             <td> <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
-            <td> <?php echo $fila['definitiva_B1'] ?> </td>
-            <td> <?php echo $fila['definitiva_B2'] ?> </td>
-            <td> <?php echo $fila['definitiva_B3'] ?> </td>
-            <td> <?php echo $fila['definitiva_B4'] ?> </td>
-            <td> <?php 
+            <td class="right"> <?php echo $fila['definitiva_B1'] ?> </td>
+            <td class="right"> <?php echo $fila['definitiva_B2'] ?> </td>
+            <td class="right"> <?php echo $fila['definitiva_B3'] ?> </td>
+            <td class="right"> <?php echo $fila['definitiva_B4'] ?> </td>
+            <td class="right"> <?php 
                 $promedio = 0;
                 for ($i=1; $i <= 4; $i++) { 
                     $promedio += $fila['definitiva_B' . $i];
@@ -151,11 +169,9 @@ function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
 
     <?php $indice++; }?>
         <tr>
-            <td>Total</td>  
-            <td>Promedio General</td>  
-            <td></td>  
+            <td colspan="3">TOTAL Promedio General</td>    
             <?php foreach ($acumulado as $periodo) { ?>
-                    <td><?php echo round($periodo / $acumulado[5], 1); ?></td>
+                    <td class="right"><?php echo round($periodo / $acumulado[5], 1); ?></td>
             <?php }
             ?>
         </tr>
@@ -184,7 +200,6 @@ function buscarNombreUsuario($usuario, $conx, $rol){
     
     // mysqli_close($conx);
 }
-
 
     /*BUSCAR LAS CALIFICACIONES DEL ESTUDIANTE
         El estudiante puede buscar sus calificaciones por materia en cada uno de los bimestres 
@@ -293,7 +308,6 @@ function buscarSiExisteDato($conx, $dato, $tabla, $columna){
     return ($resultado >= 1) ? false : true;
 }
 
-
 function mostrarDatos($conx, $column1, $column2, $tabla){
 
   // Se ejecuta una consulta para saber que datos ya esta creados
@@ -316,7 +330,7 @@ function mostrarDatos($conx, $column1, $column2, $tabla){
   <?php }
   }
 
-  function detectarRolUsuario($dato)
+function detectarRolUsuario($dato)
     {
         switch ($dato) {
             case 'E': return array(
