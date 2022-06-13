@@ -34,7 +34,7 @@ function cargarTabla($conx, $usuario){
             <td><form action="../html/registros.php" method="post">
                 <input type="hidden" name="materia" value="<?php echo $fila['id_asignatura']; ?>" >
                 <input type="hidden" name="curso" value="<?php echo $fila['curso']; ?>" >
-                <button class= "boton" type="submit" > Ver <i class="far fa-edit"></i></button>
+                <button class= "boton" type="submit" > Ver <i class="far fa-eye"></i></button>
             </form></td>
                
                 
@@ -103,20 +103,21 @@ function cargarListadoEstudiantilDocente($conx, $materia, $docente, $curso){
             <td> <?php echo $indice; ?> </td>
             <td> <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
             <td> <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
-            <form action="" method="post">
+            <form action="#" method="post">
                 <input type="hidden" name="estudiante" value="<?php echo $fila['id_integrantecurso']; ?>">
                 <input type="hidden" name="materia" value="<?php echo $materia; ?>">
+                <input type="hidden" name="curso" value="<?php echo $curso; ?>">
                 <td>
-                    <input type="number" max="50" min="0" name="nota1" id="nota1" value="<?php echo $fila['definitiva_B1']?>" class="boton">
+                    <input type="number" max="50" min="0" name="nota1" id="nota1" value="<?php echo !$fila['definitiva_B1'] ? null : $fila['definitiva_B1']; ?>" class="boton">
                 </td>
                 <td>
-                    <input type="number" max="50" min="0" name="nota2" id="nota2" value="<?php echo $fila['definitiva_B2']?>" class="boton">
+                    <input type="number" max="50" min="0" name="nota2" id="nota2" value="<?php echo !$fila['definitiva_B2'] ? null : $fila['definitiva_B2']; ?>" class="boton">
                 </td>
                 <td>
-                    <input type="number" max="50" min="0" name="nota3" id="nota3" value="<?php echo $fila['definitiva_B3']?>" class="boton">
+                    <input type="number" max="50" min="0" name="nota3" id="nota3" value="<?php echo !$fila['definitiva_B3'] ? null : $fila['definitiva_B3']; ?>" class="boton">
                 </td>
                 <td>
-                    <input type="number" max="50" min="0" name="nota4" id="nota4" value="<?php echo $fila['definitiva_B4']?>" class="boton">
+                    <input type="number" max="50" min="0" name="nota4" id="nota4" value="<?php echo !$fila['definitiva_B4'] ? null : $fila['definitiva_B4']; ?>" class="boton">
                 </td>
                 <td>
                     <input type="submit" name="accion" value="Cargar" class="boton">
@@ -149,12 +150,12 @@ function mostrarCalificacionesMisEstudiantes($conx, $materia, $docente, $curso){
     while ($fila = $notas -> fetch_array()) {?>
         <tr>
             <td> <?php echo $indice; ?> </td>
-            <td> <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
-            <td> <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
-            <td class="right"> <?php echo $fila['definitiva_B1'] ?> </td>
-            <td class="right"> <?php echo $fila['definitiva_B2'] ?> </td>
-            <td class="right"> <?php echo $fila['definitiva_B3'] ?> </td>
-            <td class="right"> <?php echo $fila['definitiva_B4'] ?> </td>
+            <td width="150" > <?php echo $fila['p_nombre'] . " " . $fila['s_nombre'] ?> </td>
+            <td width="150" > <?php echo $fila['p_apellido'] . " " . $fila['s_apellido'] ?> </td>
+            <td class="right"> <?php echo !$fila['definitiva_B1']? null: $fila['definitiva_B1'] ?> </td>
+            <td class="right"> <?php echo !$fila['definitiva_B2']? null: $fila['definitiva_B2'] ?> </td>
+            <td class="right"> <?php echo !$fila['definitiva_B3']? null: $fila['definitiva_B3'] ?> </td>
+            <td class="right"> <?php echo !$fila['definitiva_B4']? null: $fila['definitiva_B4'] ?> </td>
             <td class="right"> <?php 
                 $promedio = 0;
                 for ($i=1; $i <= 4; $i++) { 

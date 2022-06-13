@@ -18,6 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/96a22afc86.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/generalStyles.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/table.css">
@@ -63,7 +64,17 @@
                 <?= mostrarCalificacionesMisEstudiantes($conx, $materia, $usuario, $curso) ?>
             </tbody>
         </table>
-        <a href="./docente-index.php"><button class="boton">Regresar</button></a>
+
+        <div class="boton-container">
+
+            <a href="./docente-index.php"><button class="boton">Regresar</button></a>
+            <form method="post" action="./calificar.php">
+                <input type="hidden" name="materia" value="<?php echo $materia; ?>">
+                <input type="hidden" name="curso" value="<?php echo $curso; ?>">
+                <button class="boton" type="submit">Calificar <i class="far fa-edit"></button>
+            </form>
+        </div>
+
     </center>
     </seccion>
 

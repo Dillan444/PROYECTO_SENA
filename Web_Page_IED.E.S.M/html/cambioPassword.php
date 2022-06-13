@@ -25,43 +25,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/generalStyles.css">
+    <link rel="stylesheet" href="../css/changePasswordForm.css">
+    <!-- <link rel="stylesheet" href="../css/form.css"> -->
     <title>Cambio de contraseña</title>
 </head>
 
 <body>
-            
-    <div class="contenedor">
-        <h2>Cambio de Contraseña</h2>
 
-        <form action="" method="POST">
+    <form action="" method="POST" class="pass-form">
 
+        <div class="form-label">
+            <h1>Cambio de Contraseña</h1>
             <!--  -->
             <label for="lastPassword">
+                <span>Antigua contraseña</span>
                 <input type="password" name="lastPassword" id="lastPassword" placeholder="Antigua Contraseña" required>
             </label>
             
-            <p></p>
             <!--  -->
             <label for="newPassword">
+                <span>Nueva contraseña</span>
                 <input type="password" name="newPassword" id="newPassword" placeholder="Nueva Contraseña" required>
             </label>
             
-            <p></p>
             <!--  -->
             <label for="confirmPassword">
+                <span>Confirma contraseña</span>
                 <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar Contraseña" required>
             </label>
-            
-            <p></p>
-            <div class="botones">
-            <input type="submit" name="enviar" value="Enviar">
-            <?php 
-            echo "<a href=\"./$rol[rol]-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
-            ?>
 
+            <p id="mensaje-pass"></p>
+            
+            <div class="botones">
+                <input type="submit" name="enviar" value="Enviar">
+                <?php 
+                    echo "<a href=\"./$rol[rol]-index.php\"><input type=\"button\" name=\"cancelar\" value=\"Regresar\"></a>";            
+                ?>
+            </div>
         </div>
+
     </form>
+
+    <script>
+        let mensaje = document.getElementById("mensaje-pass");
+    </script>
     
     <?php
         if (isset($_POST['enviar'])) {
@@ -74,8 +82,6 @@
         }
     ?>
 
-
-    </div>
 </body>
 
 </html>

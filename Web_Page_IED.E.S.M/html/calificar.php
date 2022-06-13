@@ -16,10 +16,10 @@
     
     if (isset($_POST['accion'])) {
         $datos = array(
-            'nota1' => $_POST['nota1'],
-            'nota2' => $_POST['nota2'],
-            'nota3' => $_POST['nota3'],
-            'nota4' => $_POST['nota4'],
+            'nota1' => !$_POST['nota1']?0:$_POST['nota1'],
+            'nota2' => !$_POST['nota2']?0:$_POST['nota2'],
+            'nota3' => !$_POST['nota3']?0:$_POST['nota3'],
+            'nota4' => !$_POST['nota4']?0:$_POST['nota4'],
             'estudiante' => $_POST['estudiante'],
             'materia'=> $_POST['materia']
         );
@@ -71,9 +71,16 @@
                     <?=cargarListadoEstudiantilDocente($conx, $materia, $usuario, $curso);?>
                 </tbody>
             </table>
+            <div class="boton-container">
+                <a href="./docente-index.php"><button type="button" name="Regresar" class="boton">Regresar</button></a>
 
-            <!-- <button type="submit" name="guardarNotas">GuardarNotas</button> -->
-            <a href="./docente-index.php"><button type="button" name="Regresar" class="boton">Regresar</button></a>
+                <form method="post" action="./registros.php">
+                    <input type="hidden" name="materia" value="<?php echo $materia; ?>">
+                    <input type="hidden" name="curso" value="<?php echo $curso; ?>">
+                    <button class="boton" type="submit">Ver <i class="far fa-eye"></i></button>
+                </form>
+            </div>
+
         </form>
 
         </center>

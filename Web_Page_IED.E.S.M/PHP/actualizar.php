@@ -11,7 +11,7 @@ function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx)
 
     if ($newpw !== $confpw) {
 
-        echo "<p class = 'mensaje'>La nueva contraseña no coincide con la confimación</p>";
+        echo "<script>mensaje.innerHTML = 'La nueva contraseña no coincide con la confimación'</script>";
 
     } else {
 
@@ -24,14 +24,13 @@ function cambioContraseña($lastpw, $newpw, $confpw, $user, $conx)
 
             $sqlUpdate = "UPDATE usuario SET contraseña = '$newpw' WHERE contraseña = '$lastpw' AND nombre_perfil = '$user'";
             if ($conx->query($sqlUpdate)) {
-
-                echo "<p class = 'mensaje'>Actualizado con exito</p>";
+                echo "<script>mensaje.innerHTML = 'Actualizado con exito'</script>";
             } else {
 
                 echo "Error: <br />" . mysqli_error($conx);
             }
         } else {
-            echo "<p class = 'mensaje'>La contraseña es incorrecta</p>";
+            echo "<script>mensaje.innerHTML = 'La contraseña es incorrecta'</script>";
         }
     }
 }
