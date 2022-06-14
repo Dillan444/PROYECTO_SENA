@@ -9,18 +9,27 @@
         4.Se accede a cada dato con notación de laves []    */
 function cargarTabla($conx, $usuario){
 
-    $consulta = "SELECT c.curso, a.id_asignatura, a.nombre_asignatura, cl.año 
-        FROM curso c INNER JOIN clases cl ON c.id_curso = cl.id_curso 
+    $consulta = "SELECT c.curso, a.id_asignatura, a.nombre_asignatura, cl.año, count(i.id_estudiante) AS cantidad
+        FROM curso c INNER JOIN clases cl ON c.id_curso = cl.id_curso
+        INNER JOIN integrantescurso i ON i.id_curso = c.id_curso  
         INNER JOIN asignatura a ON a.id_asignatura = cl.id_asignatura 
         INNER JOIN docente d ON d.id_docente = cl.id_docente 
         INNER JOIN usuario u ON u.id_Usuario = d.id_Usuario AND u.nombre_perfil = '$usuario' 
-        ORDER BY c.curso";
+        GROUP BY c.curso";
 
-    $resultado = $conx -> query($consulta);
+    if(!$resultado = $conx -> query($consulta)){
+        return "<tr><td colspan='5'>Ha ocurrido un problema al consultar los datos, intenta mas tarde o comunicate<br/> con un Administrador.
+        Código de error: " . mysqli_errno($conx) . " </td></tr>";
+    };
+
+    if (mysqli_num_rows($resultado) < 1){
+            return "<tr><td colspan='5'>No tienes cursos asignados</td></tr>";
+        }
 
     while ($fila = $resultado -> fetch_array()) {
         echo "<tr>";
             echo "<td data-titulo = 'Curso'>" . $fila['curso'] . "</td>";
+            echo "<td data_titulo = 'Cantidad'> " . $fila['cantidad'] . "</td>";
             echo "<td data-titulo = 'Grado'> ". buscarGrado($fila['curso']) . "</td>";
             echo "<td data_titulo = 'Cantidad'> " . $fila['nombre_asignatura'] . "</td>"; ?>
             

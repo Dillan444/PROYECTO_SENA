@@ -30,7 +30,7 @@
     <main class="cuerpo-admi">
         <nav>
             <ul>
-                <?php echo "<a href=\"../html/create-users.php?user=$usuario&rol=$rol[0]\"><li><strong>Crea Cuentas</strong></li></a>"; ?>
+                <?php echo "<a href=\"../html/create-users.php\"><li><strong>Crea Cuentas</strong></li></a>"; ?>
                 <a href="./verDatosUsuario.php">
                     <li><strong>Modificas</strong></li>
                 </a>

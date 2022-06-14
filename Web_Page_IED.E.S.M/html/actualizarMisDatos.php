@@ -109,7 +109,7 @@
             if(isset($_POST['accion'])){
                 $datos['nombre_perfil'] = $_POST['userName'];
                 $datos['correo'] = $_POST['email'];
-                $datos['Telefono'] = $_POST['telefono'];
+                $datos['telefono'] = $_POST['telefono'];
                
                 if ($error = tablaDatosAdicionales($conx, $datos, $datos['id_datos_adicionales']) !== true) {
                     echo "<span class = 'error'>" . mysqli_error($conx) ."</span>";

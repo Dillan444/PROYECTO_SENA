@@ -34,18 +34,18 @@
             <thead>
                 <tr>
                   <th>N_Curso</th>
+                <th>N° integrantes</th>
                   <th>GradoGrado</th>
                   <th>Materia</th>
                   <th colspan="2">Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <?php cargarTabla($conx, $usuario);?>
+                <?php echo cargarTabla($conx, $usuario);?>
             </tbody>
             </table>
         </center>
     </main>
-
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"> </script>
     <script src="../js/menu.js"></script>
 </body>

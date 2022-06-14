@@ -10,7 +10,7 @@ table{
   
   tr, td{
     transition: 300ms;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     height: 30px;
     padding: 0 6px;
   }
@@ -22,7 +22,7 @@ table{
   table thead{
     background:  #523ada;
     color: rgb(250, 243, 243);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     border-bottom: black solid 2px;
   }
   

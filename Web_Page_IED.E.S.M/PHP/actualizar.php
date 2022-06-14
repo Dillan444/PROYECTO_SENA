@@ -43,10 +43,21 @@ function modificarDatosUsuario($d, $conx, $u){
         
         $result = $result -> fetch_row();
 
-        tablaDatosAdicionales($conx, $d, $result[0]);
-        tablaUsuario($conx, $d, $result[0]);
+        if(tablaDatosAdicionales($conx, $d, $result[0]) === true){
+            if(tablaUsuario($conx, $d, $result[0])){
 
-        header("Location: ../html/modificarDatosUsuario.php?user=$d[userName]");
+                echo "<script>
+                    swal('Exelente',  'Datos actualizados exitosamente', 'success');
+            
+                    setTimeout(function(){
+                        location.href = '../html/modificarDatosUsuario.php?user=$d[nombre_perfil]'
+                    }, 3000);
+
+                </script>";
+
+            };
+        }
+
 
     }
 
@@ -55,17 +66,18 @@ function modificarDatosUsuario($d, $conx, $u){
 function tablaDatosAdicionales($conx, $d, $id_d_a){
     $sqlUpdateDA = "UPDATE datos_adicionales SET 
       correo =  '$d[correo]',
-      Telefono =  '$d[Telefono]',
+      Telefono =  '$d[telefono]',
       sexo =  '$d[sexo]'
       WHERE id_datos_adicionales = '$id_d_a'";
 
     if(!$conx -> query($sqlUpdateDA)){
         if ($conx -> errno == 1062) {
-            return "Error: " . mysqli_error($conx);
-                
+            echo "<script> inputs.mensaje_error.innerHTML = 'Hola Mundo'</script>
+            Duplicidad de datos: " . mysqli_error($conx);
+            return false; 
         }else{
           
-            return "Error: " . mysqli_error($conx);
+            return "Error en tabla Datos Adicionales: " . mysqli_error($conx);
         }
     }
 
@@ -73,22 +85,29 @@ function tablaDatosAdicionales($conx, $d, $id_d_a){
 }
 
 function tablaUsuario($conx, $d, $id_d_a){
-    $var = (!$d['documento']) ? " " : ", documento = $d[documento]";
+    $documento = (!$d['documento']) ? " " : ", documento = $d[documento]";
 
     $sqlUpdateU = "UPDATE usuario SET 
         nombre_perfil =  '$d[nombre_perfil]',
         tipo_documento = '$d[tipo_documento]'
-        $var,
+        $documento,
         p_nombre =  '$d[p_nombre]',
         s_nombre =  '$d[s_nombre]',
         p_apellido =  '$d[p_apellido]',
         s_apellido =  '$d[s_apellido]',
-        id_rol =  '$d[id_rol]',
         edad =  '$d[edad]'
         WHERE id_datos_adicionales = '$id_d_a';";
 
     if(!$conx -> query($sqlUpdateU)){
-        echo "Error: " . mysqli_error($conx);
+        if ($conx -> errno == 1062) {
+            echo "Duplicidad de datos: " . mysqli_error($conx);
+            return false;
+            
+        }else{
+            
+            echo "Error tabla usuario: " . mysqli_error($conx);
+            return false;
+        }
     }
 
     return true;

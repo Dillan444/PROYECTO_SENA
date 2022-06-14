@@ -20,6 +20,7 @@ if (!isset($usuario)) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="../css/generalStyles.css">
   <link rel="stylesheet" href="../css/menu.css">
   <link rel="stylesheet" href="../css/table.css">
@@ -29,7 +30,7 @@ if (!isset($usuario)) {
 
 <body>
 
-  <?php include "./header.php" ?>
+  <!-- <?php include "./header.php" ?> -->
 
   <main>
     <article id="tab1" class="articulo-login">
@@ -48,14 +49,15 @@ if (!isset($usuario)) {
         <label for="typeDoc">
           <span>Tipo de Documento</span>
           <select name="typeDoc" id="typeDoc">
+            <option selected value="NN">No definida</option>
             <option value="CC">Cedula de Ciudadania</option>
             <option value="TI">Tarjeta de Identidad</option>
             <option value="CI">Certicado de Extranjería</option>
           </select>
         </label>
         <label for="nDoc">
-          <span>Nombre de Usuario</span>
-          <input type="text" name="nDoc" id="nDoc" placeholder="N° Documento" value=""  required />
+          <span>Documento</span>
+          <input type="text" name="nDoc" id="nDoc" placeholder="N° Documento" />
         </label>
         <label for="p_nombre">
           <span>Primer Nombre</span>
@@ -90,19 +92,23 @@ if (!isset($usuario)) {
         </label>
         <label for="email" class="short short-2">
           <span>Correo Electronico</span>
-          <input type="email" name="email" placeholder="user@email.com" id="email" autocomplete="email" required />
+          <input type="email" name="email" placeholder="user@email.com" id="email" autocompe="email" required />
         </label>
         <label for="id_rol">
           <span>Rol</span>
-          <select name="id_rol" id="id_rol">
+          <select name="id_rol" id="id_rol" disabled>
             <option value="E">Estudiante</option>
             <option value="D">Docente</option>
+            <option value="A">Administrador</option>
           </select>
         </label>
 
         <div class="acciones">
           <input type="submit" class="boton_envio" name="form_update" id="update" value="Actualizar" />
+          <a href="./verDatosUsuario.php"><button class="boton" type="button">Regresar</button></a>
         </div>
+
+        <div class="mensaje-error"></div>
 
       </form>
 
@@ -110,18 +116,18 @@ if (!isset($usuario)) {
 
       if (isset($_POST['form_update'])) {
         $datos = array(
-          "nombre_perfil" => $_POST['userName'],
-          "tipo_Documento" => $_POST['typeDoc'],
-          "num_Documento" => $_POST['nDoc'],
-          "p_nombre" => $_POST['p_nombre'],
-          "s_nombre" => $_POST['s_nombre'],
-          "p_apellido" => $_POST['p_apellido'],
-          "s_apellido" => $_POST['s_apellido'],
-          "edad" => $_POST['edad'],
-          "sexo" => $_POST['sexo'],
-          "telefono" => $_POST['telefono'],
-          "correo" => $_POST['email'],
-          "id_rol" => $_POST['id_rol']
+          "nombre_perfil" => (isset($_POST['userName'])) ? $_POST['userName'] : " ",
+          "tipo_documento" => (isset($_POST['typeDoc'])) ? $_POST['typeDoc'] : " ",
+          "documento" => (isset($_POST['nDoc'])) ? $_POST['nDoc'] : " ",
+          "p_nombre" => (isset($_POST['p_nombre'])) ? $_POST['p_nombre'] : " ",
+          "s_nombre" => (isset($_POST['s_nombre'])) ? $_POST['s_nombre'] : " ",
+          "p_apellido" => (isset($_POST['p_apellido'])) ? $_POST['p_apellido'] : " ",
+          "s_apellido" => (isset($_POST['s_apellido'])) ? $_POST['s_apellido'] : " ",
+          "edad" => (isset($_POST['edad'])) ? $_POST['edad'] : " ",
+          "sexo" => (isset($_POST['sexo'])) ? $_POST['sexo'] : " ",
+          "telefono" => (isset($_POST['telefono'])) ? $_POST['telefono'] : " ",
+          "correo" => (isset($_POST['email'])) ? $_POST['email'] : " ",
+          "id_rol" => (isset($_POST['id_rol'])) ? $_POST['id_rol'] : " "
         );
 
         modificarDatosUsuario($datos, $conx, $userM);
@@ -135,18 +141,21 @@ if (!isset($usuario)) {
   <script src="../js/menu.js"></script>
   
   <script>
-    let userName = document.getElementById('userName'); 
-    let tipo_Documento = document.getElementById('typeDoc'); 
-    let num_Documento = document.getElementById('nDoc'); 
-    let p_nombre = document.getElementById('p_nombre'); 
-    let s_nombre = document.getElementById('s_nombre'); 
-    let p_apellido = document.getElementById('p_apellido'); 
-    let s_apellido = document.getElementById('s_apellido'); 
-    let edad = document.getElementById('edad'); 
-    let sexo = document.getElementById('sexo'); 
-    let telefono = document.getElementById('telefono'); 
-    let email = document.getElementById('email'); 
-    let id_rol = document.getElementById('id_rol'); 
+    const inputs = { 
+      "userName" : document.getElementById('userName'),
+      "tipo_Documento" : document.getElementById('typeDoc'),
+      "documento" : document.getElementById('nDoc'),
+      "p_nombre" : document.getElementById('p_nombre'),
+      "s_nombre" : document.getElementById('s_nombre'),
+      "p_apellido" : document.getElementById('p_apellido'),
+      "s_apellido" : document.getElementById('s_apellido'),
+      "edad" : document.getElementById('edad'),
+      "sexo" : document.getElementById('sexo'),
+      "telefono" : document.getElementById('telefono'),
+      "email" : document.getElementById('email'),
+      "id_rol" : document.getElementById('id_rol'),
+      "mensaje_error" : document.getElementById('mensaje-error')
+    }
 
 
   </script>
@@ -156,24 +165,28 @@ if (!isset($usuario)) {
 
       if ($resultado = $conx -> query($sql)) {
 
-        $resultado = $resultado -> fetch_array();
-
-        echo "
-        <script> 
-          userName.value = '$resultado[nombre_perfil]'; 
-          tipo_Documento.value = '$resultado[tipo_documento]';
-          num_Documento.value = '$resultado[documento]';
-          p_nombre.value = '$resultado[p_nombre]'; 
-          s_nombre.value = '$resultado[s_nombre]'; 
-          p_apellido.value = '$resultado[p_apellido]'; 
-          s_apellido.value = '$resultado[s_apellido]'; 
-          edad.value = '$resultado[edad]'; 
-          sexo.value = '$resultado[sexo]'; 
-          telefono.value = '$resultado[Telefono]'; 
-          email.value = '$resultado[correo]'; 
-          id_rol.value = '$resultado[id_rol]'; 
-        </script>";
+        if(!$rlt = $resultado -> fetch_array()){
+          echo "Ha ocurrido un error, no aparecen registros del usuario";
+          echo "<script> userName.value = '$userM'; </script>";
+        }else{
+          echo "
+          <script> 
+            inputs.userName.value = '$rlt[nombre_perfil]'; 
+            inputs.tipo_Documento.value = '$rlt[tipo_documento]';
+            inputs.documento.value = '$rlt[documento]';
+            inputs.p_nombre.value = '$rlt[p_nombre]'; 
+            inputs.s_nombre.value = '$rlt[s_nombre]'; 
+            inputs.p_apellido.value = '$rlt[p_apellido]'; 
+            inputs.s_apellido.value = '$rlt[s_apellido]'; 
+            inputs.edad.value = '$rlt[edad]'; 
+            inputs.sexo.value = '$rlt[sexo]'; 
+            inputs.telefono.value = '$rlt[Telefono]'; 
+            inputs.email.value = '$rlt[correo]'; 
+            inputs.id_rol.value = '$rlt[id_rol]';
+          </script>";
+        }
       }else{
+        echo "Error de ejecución: " . mysqli_errno($conx);
         echo "<script> userName.value = '$userM'; </script>";
       }
 
