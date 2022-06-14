@@ -178,9 +178,29 @@
 .Pie_pagina{
     color: white;
     /*height: 50px;*/
-    background-color: black;
+    background-color: blueviolet;
     text-align: center;
-    padding-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer.Pie_pagina >div {
+    font-size: 1.2rem;
+    flex-grow: 2;
+    background: #3a3939fa;
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+
+footer.Pie_pagina div.derechos_autor img {
+    width: 100%;
+    max-width: 155px;
+}
+
+footer.Pie_pagina .proyect_name {
+    width: 100%;
 }
 
 @media (min-width: 900px){

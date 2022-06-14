@@ -30,22 +30,7 @@
     margin-bottom: 12px;
 
 }
-.Pie_pagina{
-    width: 100%;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(3, 3, 3);
-    /* margin-top: 20px; */
-    border-radius: 3px;
-}
-.fotter{
-    list-style: none;
-    text-align: center;
-    font-size: 1.5rem;
-    color: white;
-}
+
 .boton{
     font-size: 1.2rem;
     padding: 6px 12px;
@@ -62,3 +47,32 @@
     box-shadow: none;
 }
 
+.Pie_pagina{
+    color: white;
+    /*height: 50px;*/
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer.Pie_pagina > div {
+    font-size: 1.2rem;
+    flex-grow: 2;
+    background: #3a3939fa;
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+
+footer.Pie_pagina div.derechos_autor img {
+    width: 100%;
+    max-width: 200px;
+}
+
+footer.Pie_pagina .proyect_name {
+    width: 100%;
+}
